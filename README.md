@@ -37,3 +37,25 @@ git checkout -b [namn-på-din-branch]
 ```console
 git push -u origin [namn-på-din-branch]
 ```
+
+### Ta bort en en "remote" branch
+
+Detta görs enklast via GitHub, annars kan du ange följande i terminalen.
+
+```console
+git push -d origin <namn-på-din-branch>
+```
+
+### Ta bort en en lokal branch
+
+Börja med att byta till en annan branch, exempelvis "main". Du kan inte ta bort en branch som du är på.
+
+```console
+git branch -d <namn-på-din-branch>
+```
+
+Ändra till s"tort D" (-D) för att tvinga.
+
+### Städa upp:
+
+git fetch --prune
