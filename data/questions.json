@@ -1,0 +1,66 @@
+{
+    "categories": [
+        {
+            "id": "movies",
+            "title": "What movies do you prefer?",
+            "statements": [
+                {
+                    "id": "movies-1",
+                    "text": "I like romantic comedies.",
+                    "options": ["Agree", "Disagree", "Neutral"]
+                },
+                {
+                    "id": "movies-2",
+                    "text": "I like action movies",
+                    "options": ["Agree", "Disagree", "Neutral"]
+                },
+                {
+                    "id": "movies-3",
+                    "text": "I like thriller movies",
+                    "options": ["Agree", "Disagree", "Neutral"]
+                },
+                {
+                    "id": "movies-4",
+                    "text": "I like drama movies.",
+                    "options": ["Agree", "Disagree", "Neutral"]
+                },
+                {
+                    "id": "movies-5",
+                    "text": "I simply don't like movies.",
+                    "options": ["Agree", "Disagree", "Neutral"]
+                }
+            ]
+        },
+        {
+            "id": "living",
+            "title": "Where and how do you want to live?",
+            "statements": [
+                {
+                    "id": "living-1",
+                    "text": "I'd like to live inside the city centre.",
+                    "options": ["Agree", "Disagree", "Neutral"]
+                },
+                {
+                    "id": "living-2",
+                    "text": "I'd like to live in an older apartment.",
+                    "options": ["Agree", "Disagree", "Neutral"]
+                },
+                {
+                    "id": "living-3",
+                    "text": "I prefer to live in a house rather than an apartment.",
+                    "options": ["Agree", "Disagree", "Neutral"]
+                },
+                {
+                    "id": "living-4",
+                    "text": "I'd like to live in a big city",
+                    "options": ["Agree", "Disagree", "Neutral"]
+                },
+                {
+                    "id": "living-5",
+                    "text": "I could see myself living abroad",
+                    "options": ["Agree", "Disagree", "Neutral"]
+                }
+            ]
+        }
+    ]
+}
