@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="sv">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -11,60 +11,96 @@
     <link rel="stylesheet" href="/styles.css">
     <link rel="shortcut icon" type="image/x-icon" href="/assets/icons/favicon.ico" sizes="64x64">
     <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
-    <title>Tycker ni lika? Roligt quiz för två spelare på en skärm!</title>
+    <title>Same Wave - A game for anyone curious about compatibility</title>
 </head>
 
 <body>
 
-    <main class="layout">
-        <h1>The amazing compatibility quiz or conversation starter game</h1>
+    <main class="screens">
 
-        <div class="player-info">
-            <div class="player-info__player">
-                <h2 class="player-info__label">Spelare</h2>
-                <span class="player-info__value">Adam</span>
+        <section class="screen" data-screen="welcome">
+            <div class="screen_content">
+                <h1 class="screen-content__title">Same Wave</h1>
+                <p class="screen-content__subtitle">Take turns answering quirky questions - are you on the same
+                    <span class="wave">wavelength</span>? A fun conversation starter
+                    for
+                    couples, friends, and anyone who wants to see how well they really know each other.
+                </p>
+
+                <button class="screen-content__button">Get started</button>
             </div>
 
-            <div class="player-info__progress">
-                <h2 class="player-info__heading">Fråga</h2>
-                <span class="player-info__count">3 av 5</span>
-            </div>
-        </div>
-        <section class="question__block">
-            <form>
-                <fieldset class="form__wrapper">
-                    <legend class="question">
-                        <span class="question-label">Fråga 1:</span>
-                        <span class="question-description">Terminator 2 är den bästa action-filmen någonsin?</span>
-                    </legend>
-
-                    <div class="answer__form-group" data-answer="agree">
-                        <label for="q1_a1" class="answer__label">
-                            <input type="radio" id="q1_a1" name="question1" value="agree" data-answer="agree">
-                            <span class="answer__text">Ja, håller med!</span>
-                        </label>
-                    </div>
-
-                    <div class="answer__form-group" data-answer="disagree">
-                        <label for="q1_a2" class="answer__label">
-                            <input type="radio" id="q1_a2" name="question1" value="disagree" data-answer="disagree">
-                            <span class="answer__text">Nej, håller inte med!</span>
-                        </label>
-                    </div>
-
-                    <div class="answer__form-group" data-answer="neutral">
-                        <label for="q1_a3" class="answer__label">
-                            <input type="radio" id="q1_a3" name="question1" value="neutral" data-answer="neutral">
-                            <span class="answer__text">Jag är neutral i frågan.</span>
-                        </label>
-                    </div>
-
-                    <button class="question__block-button">Lås in och gå vidare</button>
-
-                </fieldset>
-            </form>
         </section>
+
+        <section class="screen" data-screen="rules">
+            <div class="screen_content">
+                <h1 class="screen-content__title">How to play</h1>
+                <p class="screen-content__subtitle">Two players, one device. Take turns answering the same questions—one
+                    person answers, passes the device, then the other answers. Your responses stay hidden until the
+                    final reveal when you compare everything and see if you're in sync.
+                </p>
+
+                <ul class="screen-content__list">
+                    <li class="screen-content-list-item">Pick a category</li>
+                    <li class="screen-content-list-item">Input your names</li>
+                    <li class="screen-content-list-item">Take turns answering on one device</li>
+                    <li class="screen-content-list-item">Responses stay hidden until the end</li>
+                    <li class="screen-content-list-item">No time limit!</li>
+                </ul>
+
+                <button class="screen-content__button">Pick a category</button>
+            </div>
+        </section>
+
+        <section class="screen" data-screen="category">
+            <div class="screen_content">
+                <h1 class="screen-content__title">Pick a category</h1>
+                <p class="screen-content__subtitle">First date? Start light with favorites and preferences. Long-term
+                    couple? Go deep with values and dreams. Just hanging with friends? Dive into the weird stuff.
+                </p>
+
+                <label class="screen-content-categories-label" for="screen-content-categories">Select a category</label>
+                <select class="screen-content-categories" id="screen-content-categories" name="category">
+                    <option value="movies">Movies (5 questions)</option>
+                    <option value="living">Living (5 questions)</option>
+                    <option value="music">Music (5 questions)</option>
+                </select>
+
+                <button class="screen-content__button">Enter names</button>
+            </div>
+        </section>
+
+        <section class="screen" data-screen="input">
+            <div class="screen_content">
+                <h1 class="screen-content__title">Who's playing?</h1>
+                <p class="screen-content__subtitle">Please remember to answer honestly. No screen-peeking!
+                    Press play to start the game when you're ready. Good luck!</p>
+
+                <div class="screen-content__players">
+                    <div class="name-input">
+                        <label class="name-input__label" for="player_1_input">Player 1</label>
+                        <input class="name-input__field" id="player_1_input" />
+                    </div>
+                    <div class="name-input">
+                        <label class="name-input__label" for="player_2_input">Player 2</label>
+                        <input class="name-input__field" id="player_2_input" />
+                    </div>
+                </div>
+
+                <button class="screen-content__button">Start the game</button>
+            </div>
+        </section>
+
+        <section class="screen" data-screen="question">
+            JSON questions
+        </section>
+
+        <section class="screen" data-screen="result">
+            Result of quiz
+        </section>
+
     </main>
+
 
     <script src="/game.js"></script>
 </body>

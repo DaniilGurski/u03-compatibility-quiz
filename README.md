@@ -5,6 +5,7 @@ The cool and quirky conversation starter or when you want to find out if you and
 This game is sort of a "SPA" that uses localStorage for state management. All parts of the game is broken down into "screens", example:
 
 - Intro screen (game title)
+- Rule screen (this is how you play)
 - Category screen (game categories)
 - Name input + start game screen (input, button)
 - Transition screen (black screen with countdown)
@@ -30,3 +31,7 @@ The HTML and CSS are static, and the data/user input is dynamic.
 6. Player 2 answers the same question/statement
 7. Step 4-6 are repeated until there are no more questions/statements
 8. The Result screen is shown and displayed what both Player 1 and Player 2 answered. Some cool statistics are shown in a neat and somewhat fancy way
+
+## Design inpo
+
+https://neo-brutalism-ui-library.vercel.app/

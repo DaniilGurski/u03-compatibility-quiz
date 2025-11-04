@@ -1,6 +1,31 @@
 addEventListener("DOMContentLoaded", (event) => {
-    console.log("The DOM is loaded, ya'll!")
-})
+
+    // Är det smart att anropa denna efter varje tryck på en knapp?
+
+    function sectionScroller() {
+        const nextSectionScroller = document.querySelectorAll(".screen-content__button");
+
+        nextSectionScroller.forEach(button => {
+            button.addEventListener("click", () => {
+                const currentSection = button.closest("section");
+                const nextSection = currentSection.nextElementSibling;
+
+                if (nextSection) {
+                    nextSection.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                    currentSection.inert = true;
+                    nextSection.inert = false;
+                }
+            });
+        });
+    }
+
+    sectionScroller();
+
+});
 
 
 // What we need
