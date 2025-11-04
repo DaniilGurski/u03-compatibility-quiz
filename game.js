@@ -3,7 +3,7 @@ addEventListener("DOMContentLoaded", (event) => {
     // Är det smart att anropa denna efter varje tryck på en knapp?
 
     function sectionScroller() {
-        const nextSectionScroller = document.querySelectorAll(".screen-content__button");
+        const nextSectionScroller = document.querySelectorAll(".screen__button");
 
         nextSectionScroller.forEach(button => {
             button.addEventListener("click", () => {
