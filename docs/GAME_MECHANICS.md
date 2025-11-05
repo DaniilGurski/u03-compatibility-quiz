@@ -42,11 +42,11 @@ Static HTML, some instructions on how the game is played. Contains a button that
 
 ## Pick a category
 
-Static HTML section with a dynamic part. The section contains a <select> element which dynamically loads and shows multiple <option> elements inside the <select>  based on how many categories there exists in **"/data/questions.json"**.
+Static HTML section with a dynamic part. The section contains a `<select>` element which dynamically loads and shows multiple `<option>` elements inside the `<select>`  based on how many categories there exists in **"/data/questions.json"**.
 
-- Should populate the <select> with as many <option> as there are categories
-- Should write out in the <option> how many questions there are in a category
-- Save the choosen category 
+- Should populate the `<select>` with as many `<option>` as there are categories
+- Should write out in the `<option>` how many questions there are in a category
+- Save the choosen category
 
 The section contains a button that takes you two the "Who's playing?"-section.
 
