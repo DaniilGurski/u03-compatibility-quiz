@@ -193,7 +193,7 @@ legend {
 }
 
 .screen[data-screen="input"] {
-    background-color: var(--color-green-200);
+    background-color: var(--color-lime-200);
 }
 
 .screen[data-screen="question"] {
@@ -364,17 +364,41 @@ legend {
     gap: 1.25rem;
 }
 
+.question-form__player-name {
+    padding-inline: .75rem;
+    padding-block: .5rem;
+    border-radius: .25rem;
+    background-color: var(--color-yellow-200);
+    font-weight: 600;
+    line-height: 1;
+    inline-size: max-content;
+}
+
 .question-form__header {
     display: flex;
     flex-flow: column wrap;
     gap: 1.25rem;
     margin-block-end: 1.25rem;
+    inline-size: inherit;
+}
+
+.question-form__title-group {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1ch
 }
 
 .question-form__title {
     font-size: 3.5rem;
     font-weight: 700;
     line-height: 1.25;
+}
+
+.question-form__question-max {
+    font-size: 1.25em;
+    font-weight: 700;
 }
 
 .question-form__description {

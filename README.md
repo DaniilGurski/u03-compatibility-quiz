@@ -5,36 +5,17 @@ Take turns answering quirky questions - are you on the same wavelength? A fun co
 
 Same Wave is a game for anyone curious about compatibility.
 
-## How the game works
-This game is sort of a "SPA" that uses localStorage for state management. All parts of the game is broken down into "screens", example:
+## How to play
+Two people play togheter on a shared screen and take turns answering questions/statements. The goal of this game is to find out if the two players think alike on certain subject matters.
 
-- Intro screen (game title)
-- Rule screen (this is how you play)
-- Category screen (game categories)
-- Name input + start game screen (input, button)
-- Transition screen (black screen with countdown)
-- Result screen
-
-The HTML and CSS are static, and the data/user input is dynamic.
-
-## File structure
-
-- index.html - contains all the markup, block by block
-- styles.css - contains global styling for all markup
-- game.js - the actual quiz
-- data/questions.json - the questions/categories/statements
-
-
-## How the game works
-
-1. Two players: Player 1 and Player 2
-2. Choose a category
-3. Input both names and press start
-4. Player 1 answers one question/statement
-5. A black screen with a countdown is displayed
-6. Player 2 answers the same question/statement
-7. Step 4-6 are repeated until there are no more questions/statements
-8. The Result screen is shown and displayed what both Player 1 and Player 2 answered. Some cool statistics are shown in a neat and somewhat fancy way
+1. Choose a category togehter
+2. Input your names and press start to load the questions/statements
+3. Player 1 answers the question/statement by choosing "Agree", "Disagree" or "Neutral"
+4. A black screen indicationg the input was reviced along with a countdown is displayed
+5. While the countdown is going, Player 1 hands the screen to Player 2
+6. Player 2 does the exact same thing
+7. Step 3-6 are repeated until there are no more questions/statements
+8. The Result screen is shown and displays what both Player 1 and Player 2 have answered. Some cool statistics are shown in a neat and somewhat fancy way
 
 ## Design inpo
 

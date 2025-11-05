@@ -32,20 +32,27 @@ addEventListener("DOMContentLoaded", (event) => {
 
         const countdown = document.querySelector(".screen__counter");
 
-        countdown.textContent = "3";
+        countdown.textContent = "5";
 
         setTimeout(() => {
-            countdown.textContent = "2";
+            countdown.textContent = "4";
         }, 1000);
 
         setTimeout(() => {
-            countdown.textContent = "1";
+            countdown.textContent = "3";
         }, 2000);
 
         setTimeout(() => {
-            countdown.textContent = "Go!";
+            countdown.textContent = "2";
         }, 3000);
 
+        setTimeout(() => {
+            countdown.textContent = "1";
+        }, 4000);
+
+        setTimeout(() => {
+            countdown.textContent = "Go!";
+        }, 5000);
     };
 
     nextPayerCountdown();

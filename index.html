@@ -102,7 +102,11 @@
                 <form class="question-form">
                     <fieldset class="question-form__question">
                         <legend class="question-form__header">
-                            <span class="question-form__title">Question 1</span>
+                            <span class="question-form__player-name">Player 1's turn</span>
+                            <div class="question-form__title-group">
+                                <span class="question-form__title">Question 1</span>
+                                <span class="question-form__question-max ">of 10</span>
+                            </div>
                             <span class="question-form__description">I like romantic comedies.</span>
                         </legend>
 
@@ -140,8 +144,11 @@
         <section class="screen" data-screen="blackout">
             <div class="screen__content">
                 <h1 class="screen__title">Good answer!</h1>
-                <p class="screen__subtitle">Next up, <span>Player</span> in <span class="screen__counter">3</span>
+                <p class="screen__subtitle">Next up, Player 2! Give the phone to them and press the button to load the
+                    question when you're ready!
                 </p>
+
+                <button class="screen__button">Next question</button>
             </div>
         </section>
 
@@ -149,6 +156,9 @@
             <div class="screen__content">
                 <h1 class="screen__title">Results</h1>
                 <p class="screen__subtitle">The results are in! Here's what's up.</p>
+
+                <button class="screen__button">Play again</button>
+
             </div>
         </section>
 
