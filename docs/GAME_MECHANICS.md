@@ -9,4 +9,4 @@
 - Store users input into an array
 - Some way to move between "slides" or "sections"
 - Refresh handler - what if the user refreshes the page?
-- 
+- Form error handling
