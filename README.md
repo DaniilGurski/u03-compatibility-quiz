@@ -1,5 +1,9 @@
-# The amazing compatibility quiz or conversation starter game
+# Same Wave
 The cool and quirky conversation starter or when you want to find out if you and your partner agrees on something.
+
+Take turns answering quirky questions - are you on the same wavelength? A fun conversation starterf or couples, friends, and anyone who wants to see how well they really know each other.
+
+Same Wave is a game for anyone curious about compatibility.
 
 ## How the game works
 This game is sort of a "SPA" that uses localStorage for state management. All parts of the game is broken down into "screens", example:

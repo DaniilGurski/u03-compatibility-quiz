@@ -1,6 +1,6 @@
 addEventListener("DOMContentLoaded", (event) => {
 
-    // Är det smart att anropa denna efter varje tryck på en knapp?
+    // Is this a smart way to handle the changing between sections?
 
     function sectionScroller() {
         const nextSectionScroller = document.querySelectorAll(".screen__button");
@@ -24,6 +24,31 @@ addEventListener("DOMContentLoaded", (event) => {
     }
 
     sectionScroller();
+
+    // Countdown after turn
+    // How can we get this to only trigger after the slide has loaded?
+
+    function nextPayerCountdown() {
+
+        const countdown = document.querySelector(".screen__counter");
+
+        countdown.textContent = "3";
+
+        setTimeout(() => {
+            countdown.textContent = "2";
+        }, 1000);
+
+        setTimeout(() => {
+            countdown.textContent = "1";
+        }, 2000);
+
+        setTimeout(() => {
+            countdown.textContent = "Go!";
+        }, 3000);
+
+    };
+
+    nextPayerCountdown();
 
 });
 

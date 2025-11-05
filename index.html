@@ -23,8 +23,7 @@
                 <h1 class="screen__title">Same Wave</h1>
                 <p class="screen__subtitle">Take turns answering quirky questions - are you on the same
                     <span class="wave">wavelength</span>? A fun conversation starter
-                    for
-                    couples, friends, and anyone who wants to see how well they really know each other.
+                    for couples, friends, and anyone who wants to see how well they really know each other.
                 </p>
 
                 <button class="screen__button">Get started</button>
@@ -62,6 +61,7 @@
                 <div class="category-select">
                     <label class="category-select__label" for="category-select__field">Select a category</label>
                     <select class="category-select__field" id="category-select__field" name="category">
+                        <option value="">Browse categories...</option>
                         <option value="movies">Movies (5 questions)</option>
                         <option value="living">Living (5 questions)</option>
                         <option value="music">Music (5 questions)</option>
@@ -81,11 +81,13 @@
                 <div class="screen__players">
                     <div class="player-input">
                         <label class="player-input__label" for="player_1_input">Player 1</label>
-                        <input class="player-input__field" id="player_1_input" />
+                        <input class="player-input__field" id="player_1_input" placeholder="Daty McDate" />
+                        <span class="player-input__error" aria-live="assertive"></span>
                     </div>
                     <div class="player-input">
                         <label class="player-input__label" for="player_2_input">Player 2</label>
-                        <input class="player-input__field" id="player_2_input" />
+                        <input class="player-input__field" id="player_2_input" placeholder="Friendy McFriend" />
+                        <span class="player-input__error" aria-live="assertive"></span>
                     </div>
                 </div>
 
@@ -98,27 +100,30 @@
                 <form class="question-form">
                     <fieldset class="question-form__question">
                         <legend class="question-form__header">
-                            <span class="question-form__title">Question 1:</span>
+                            <span class="question-form__title">Question 1</span>
                             <span class="question-form__description">I like romantic comedies.</span>
                         </legend>
 
                         <div class="answer-option" data-answer="agree">
                             <label for="q1_a1" class="answer-option__label">
-                                <input type="radio" id="q1_a1" name="question1" value="agree" data-answer="agree" class="answer-option__input">
+                                <input type="radio" id="q1_a1" name="question1" value="agree" data-answer="agree"
+                                    class="answer-option__input">
                                 <span class="answer-option__text">Agree</span>
                             </label>
                         </div>
 
                         <div class="answer-option" data-answer="disagree">
                             <label for="q1_a2" class="answer-option__label">
-                                <input type="radio" id="q1_a2" name="question1" value="disagree" data-answer="disagree" class="answer-option__input">
+                                <input type="radio" id="q1_a2" name="question1" value="disagree" data-answer="disagree"
+                                    class="answer-option__input">
                                 <span class="answer-option__text">Disagree</span>
                             </label>
                         </div>
 
                         <div class="answer-option" data-answer="neutral">
                             <label for="q1_a3" class="answer-option__label">
-                                <input type="radio" id="q1_a3" name="question1" value="neutral" data-answer="neutral" class="answer-option__input">
+                                <input type="radio" id="q1_a3" name="question1" value="neutral" data-answer="neutral"
+                                    class="answer-option__input">
                                 <span class="answer-option__text">Neutral</span>
                             </label>
                         </div>
@@ -127,6 +132,14 @@
 
                     </fieldset>
                 </form>
+            </div>
+        </section>
+
+        <section class="screen" data-screen="blackout">
+            <div class="screen__content">
+                <h1 class="screen__title">Good answer!</h1>
+                <p class="screen__subtitle">Next up, <span>Player</span> in <span class="screen__counter">3</span>
+                </p>
             </div>
         </section>
 

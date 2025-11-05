@@ -196,6 +196,11 @@ legend {
     background-color: oklch(0.7849 0.1027 274.62);
 }
 
+.screen[data-screen="blackout"] {
+    background-color: oklch(0 0 0);
+    color: oklch(1 0 0);
+}
+
 .screen[data-screen="result"] {
     background-color: oklch(0 0 0);
     color: oklch(1 0 0);
@@ -217,6 +222,10 @@ legend {
 
 .screen__subtitle {
     font-size: 1.5rem;
+}
+
+.screen__counter {
+
 }
 
 .screen__list-item {
@@ -376,7 +385,6 @@ legend {
     justify-content: center;
     border: 2px solid oklch(0 0 0);
     border-radius: .375rem;
-    padding: .625rem;
     block-size: 3.5rem;
     transition: all 0.2s ease;
     cursor: pointer;
@@ -438,6 +446,7 @@ legend {
     gap: .5ch;
     inline-size: 100%;
     block-size: inherit;
+    padding: .625rem;
     cursor: pointer;
 }
 
