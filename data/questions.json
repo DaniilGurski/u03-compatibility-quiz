@@ -3,6 +3,7 @@
         {
             "id": "movies",
             "title": "What movies do you prefer?",
+            "description": "A fun quiz designed to find out if you share a preference for movies.",
             "statements": [
                 {
                     "id": "movies-1",
@@ -54,6 +55,7 @@
         {
             "id": "living",
             "title": "Where and how do you want to live?",
+            "description": "A fun quiz to take to see if you're aligned when it comes to moving in togheter",
             "statements": [
                 {
                     "id": "living-1",
