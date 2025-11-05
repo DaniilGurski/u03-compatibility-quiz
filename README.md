@@ -30,7 +30,7 @@ The HTML and CSS are static, and the data/user input is dynamic.
 1. Two players: Player 1 and Player 2
 2. Choose a category
 3. Input both names and press start
-4. Player 1 answers the question/statement
+4. Player 1 answers one question/statement
 5. A black screen with a countdown is displayed
 6. Player 2 answers the same question/statement
 7. Step 4-6 are repeated until there are no more questions/statements

@@ -81,12 +81,14 @@
                 <div class="screen__players">
                     <div class="player-input">
                         <label class="player-input__label" for="player_1_input">Player 1</label>
-                        <input class="player-input__field" id="player_1_input" placeholder="Daty McDate" />
+                        <input class="player-input__field" id="player_1_input" type="text" minlength="1" required
+                            placeholder="Daty McDate" />
                         <span class="player-input__error" aria-live="assertive"></span>
                     </div>
                     <div class="player-input">
                         <label class="player-input__label" for="player_2_input">Player 2</label>
-                        <input class="player-input__field" id="player_2_input" placeholder="Friendy McFriend" />
+                        <input class="player-input__field" id="player_2_input" type="text" minlength="1" required
+                            placeholder="Friendy McFriend" />
                         <span class="player-input__error" aria-live="assertive"></span>
                     </div>
                 </div>
@@ -144,7 +146,10 @@
         </section>
 
         <section class="screen" data-screen="result">
-            Result of quiz
+            <div class="screen__content">
+                <h1 class="screen__title">Results</h1>
+                <p class="screen__subtitle">The results are in! Here's what's up.</p>
+            </div>
         </section>
 
     </main>

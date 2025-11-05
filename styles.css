@@ -52,6 +52,10 @@
     --color-cyan-300: oklch(0.9072 0.1127 200.94);
     --color-cyan-400: oklch(0.8835 0.1302 201.15);
 
+    /* Slate */
+
+    --color-slate--500: oklch(0.5544 0.0407 257.42);
+
     --color-text: oklch(0.6836 0.1852 45.18);
 
     --font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
@@ -168,10 +172,10 @@ legend {
 }
 
 .screen[inert]::after {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
-    background: oklch(0 0 0 / .5);
+    background-color: oklch(from var(--color-black) l c h / .5);
     pointer-events: none;
     user-select: none;
 }
@@ -185,25 +189,24 @@ legend {
 }
 
 .screen[data-screen="category"] {
-    background-color: oklch(0.9591 0.1071 102.48);
+    background-color: var(--color-violet-200);
 }
 
 .screen[data-screen="input"] {
-    background-color: oklch(0.932 0.1066 137.79);
+    background-color: var(--color-green-200);
 }
 
 .screen[data-screen="question"] {
-    background-color: oklch(0.7849 0.1027 274.62);
+    background-color: var(--color-pink-200);
 }
 
 .screen[data-screen="blackout"] {
-    background-color: oklch(0 0 0);
+    background-color: var(--color-black);
     color: oklch(1 0 0);
 }
 
 .screen[data-screen="result"] {
-    background-color: oklch(0 0 0);
-    color: oklch(1 0 0);
+    background-color: var(--color-yellow-200);
 }
 
 .screen__content {
@@ -224,9 +227,7 @@ legend {
     font-size: 1.5rem;
 }
 
-.screen__counter {
-
-}
+.screen__counter {}
 
 .screen__list-item {
     list-style-position: inside;
@@ -243,11 +244,11 @@ legend {
     padding-inline: 1.25rem;
     block-size: 3.5rem;
     inline-size: max-content;
-    border: 2px solid oklch(0 0 0);
+    border: 2px solid var(--color-black);
     border-radius: 2.5rem;
     cursor: pointer;
     text-decoration: none;
-    background-color: oklch(0.9591 0.1071 102.48);
+    background-color: var(--color-yellow-200);
     line-height: 1;
     font-weight: 600;
     color: light-dark(var(--color-black), var(--color-white));
@@ -256,12 +257,12 @@ legend {
 }
 
 .screen__button:hover {
-    background-color: oklch(0.9417 0.1571 103.13);
+    background-color: var(--color-yellow-300);
     box-shadow: 2px 2px 0px oklch(0 0 0);
 }
 
 .screen__button:active {
-    background-color: oklch(0.9147 0.1908 101.03);
+    background-color: var(--color-yellow-400);
 }
 
 /* Category selection */
@@ -292,7 +293,7 @@ legend {
     padding-block: .5rem;
     padding-inline: .75rem;
     block-size: 3.5rem;
-    background-color: oklch(0.9307 0.1439 137.85);
+    background-color: var(--color-lime-200);
     border: 2px solid oklch(0 0 0);
     border-radius: .375rem;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none' stroke='currentColor' stroke-linecap='round' stroke-linejoin='round' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
@@ -302,12 +303,12 @@ legend {
 }
 
 .category-select__field:hover {
-    background-color: oklch(0.9041 0.1873 138.21);
+    background-color: var(--color-lime-300);
     box-shadow: 2px 2px 0px oklch(0 0 0);
 }
 
 .category-select__field:active {
-    background-color: oklch(0.8733 0.2292 138.71);
+    background-color: var(--color-lime-400);
 }
 
 /* Player input */
@@ -331,18 +332,22 @@ legend {
     opacity: 1;
     padding: .625rem;
     block-size: 3.5rem;
-    background-color: oklch(0.8381 0.1446 330.4);
+    background-color: var(--color-white);
     border: 2px solid oklch(0 0 0);
     border-radius: .375rem;
 }
 
-.player-input__field:hover {
-    background-color: oklch(0.7905 0.1785 330.87);
+.player-input__field:focus-visible {
+    background-color: var(--color-pink-200);
     box-shadow: 2px 2px 0px oklch(0 0 0);
+
+    &::placeholder {
+        color: var(--color-slate--500);
+    }
 }
 
-.player-input__field:active {
-    background-color: oklch(0.7721 0.1984 331.07);
+.player-input__error {
+    display: none;
 }
 
 /* Questions */
