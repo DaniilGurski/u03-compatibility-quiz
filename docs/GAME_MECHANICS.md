@@ -1,6 +1,9 @@
 # Same Wave Game Mechanics
 
+Let's use this file as reference as to how the game works. We should definitely add more stuff to the DOCS as we go.
+
 - Use LocalStorage to set an get data. Example: Save progressively the players answers as an array.
+
 
 ## What we need (to-do)
 
@@ -57,6 +60,10 @@ Static HTML section with a dynamic part. The section contains two input fields, 
 - Save the users names, as they will be used throughout the game
 
 The section contains a button that starts the game.
+
+## Get ready
+
+A semi static HTML section with dynamic content that tells the player's whos turn it is.
 
 ## Question
 

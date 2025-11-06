@@ -11,10 +11,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Schema for better "SEO visibility
 - CHANGELOG.md for keeping track of notable changes between releases
+- Match/mismatch responses in JSON
+- A nice bold gothic font for our main headings
 
 ### Changed
 
--
+- How the result cards worked
 
 ### Deprecated
 
@@ -26,7 +28,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
--
+- Overflow on small screens
 
 ### Security
 

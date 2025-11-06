@@ -24,7 +24,11 @@
             "Your turn now!",
             "Pass it over!",
             "Ready for the next player?"
-        ]
+        ],
+        "matchStatus": {
+            "match": "You're in sync!",
+            "mismatch": "Different takes"
+        }
     },
     "categories": [
         {

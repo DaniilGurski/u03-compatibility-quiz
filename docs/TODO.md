@@ -7,4 +7,4 @@
 - Answer handling and handoff logic
 - Result calucaltion and display
 - Utilities (input validation, error messages refresing of page, retart quiz)
-- Extras (share result, animations, countdowns, stuff like that)
+- Extras (share result, animations, countdowns, sounds, game music, stuff like that)
