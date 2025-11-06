@@ -1,4 +1,31 @@
 {
+    "responseMessages": {
+        "beforeGame": [
+            "Ready",
+            "Prepare yourself",
+            "Focus up",
+            "Hey",
+            "You're up"
+        ],
+        "afterAnswer": [
+            "Nice choice",
+            "Interesting",
+            "Bold move",
+            "Got it",
+            "Noted",
+            "Spicy take",
+            "Straight up",
+            "Love it",
+            "Alright then",
+            "From the horse's mouth"
+        ],
+        "handoffToPlayer": [
+            "Time to switch!",
+            "Your turn now!",
+            "Pass it over!",
+            "Ready for the next player?"
+        ]
+    },
     "categories": [
         {
             "id": "movies",
