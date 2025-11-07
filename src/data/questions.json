@@ -1,139 +1,94 @@
 {
-    "responseMessages": {
-        "beforeGame": [
-            "Ready",
-            "Prepare yourself",
-            "Focus up",
-            "Hey",
-            "You're up"
-        ],
-        "afterAnswer": [
-            "Nice choice",
-            "Interesting",
-            "Bold move",
-            "Got it",
-            "Noted",
-            "Spicy take",
-            "Straight up",
-            "Love it",
-            "Alright then",
-            "From the horse's mouth"
-        ],
-        "handoffToPlayer": [
-            "Time to switch!",
-            "Your turn now!",
-            "Pass it over!",
-            "Ready for the next player?"
-        ],
-        "matchStatus": {
-            "match": "You're in sync!",
-            "mismatch": "Different takes"
-        }
-    },
-    "categories": [
+  "responseMessages": {
+    "beforeGame": ["Ready", "Prepare yourself", "Focus up", "Hey", "You're up"],
+    "afterAnswer": [
+      "Nice choice",
+      "Interesting",
+      "Bold move",
+      "Got it",
+      "Noted",
+      "Spicy take",
+      "Straight up",
+      "Love it",
+      "Alright then",
+      "From the horse's mouth"
+    ],
+    "handoffToPlayer": [
+      "Time to switch!",
+      "Your turn now!",
+      "Pass it over!",
+      "Ready for the next player?"
+    ],
+    "matchStatus": {
+      "match": "You're in sync!",
+      "mismatch": "Different takes"
+    }
+  },
+
+  "categories": [
+    {
+      "id": "movies",
+      "title": "What movies do you prefer?",
+      "description": "A fun quiz designed to find out if you share a preference for movies.",
+      "questions": [
         {
-            "id": "movies",
-            "title": "What movies do you prefer?",
-            "description": "A fun quiz designed to find out if you share a preference for movies.",
-            "questions": [
-                {
-                    "id": "movies-1",
-                    "text": "I like romantic comedies.",
-                    "options": [
-                        "Agree",
-                        "Disagree",
-                        "Neutral"
-                    ]
-                },
-                {
-                    "id": "movies-2",
-                    "text": "I like action movies",
-                    "options": [
-                        "Agree",
-                        "Disagree",
-                        "Neutral"
-                    ]
-                },
-                {
-                    "id": "movies-3",
-                    "text": "I like thriller movies",
-                    "options": [
-                        "Agree",
-                        "Disagree",
-                        "Neutral"
-                    ]
-                },
-                {
-                    "id": "movies-4",
-                    "text": "I like drama movies.",
-                    "options": [
-                        "Agree",
-                        "Disagree",
-                        "Neutral"
-                    ]
-                },
-                {
-                    "id": "movies-5",
-                    "text": "I simply don't like movies.",
-                    "options": [
-                        "Agree",
-                        "Disagree",
-                        "Neutral"
-                    ]
-                }
-            ]
+          "id": "movies-1",
+          "text": "I like romantic comedies.",
+          "options": ["Agree", "Disagree", "Neutral"]
         },
         {
-            "id": "living",
-            "title": "Where and how do you want to live?",
-            "description": "A fun quiz to take to see if you're aligned when it comes to moving in togheter",
-            "questions": [
-                {
-                    "id": "living-1",
-                    "text": "I'd like to live inside the city centre.",
-                    "options": [
-                        "Agree",
-                        "Disagree",
-                        "Neutral"
-                    ]
-                },
-                {
-                    "id": "living-2",
-                    "text": "I'd like to live in an older apartment.",
-                    "options": [
-                        "Agree",
-                        "Disagree",
-                        "Neutral"
-                    ]
-                },
-                {
-                    "id": "living-3",
-                    "text": "I prefer to live in a house rather than an apartment.",
-                    "options": [
-                        "Agree",
-                        "Disagree",
-                        "Neutral"
-                    ]
-                },
-                {
-                    "id": "living-4",
-                    "text": "I'd like to live in a big city",
-                    "options": [
-                        "Agree",
-                        "Disagree",
-                        "Neutral"
-                    ]
-                },
-                {
-                    "id": "living-5",
-                    "text": "I could see myself living abroad",
-                    "options": [
-                        "Agree",
-                        "Disagree",
-                        "Neutral"
-                    ]
-                }
-            ]
+          "id": "movies-2",
+          "text": "I like action movies",
+          "options": ["Agree", "Disagree", "Neutral"]
+        },
+        {
+          "id": "movies-3",
+          "text": "I like thriller movies",
+          "options": ["Agree", "Disagree", "Neutral"]
+        },
+        {
+          "id": "movies-4",
+          "text": "I like drama movies.",
+          "options": ["Agree", "Disagree", "Neutral"]
+        },
+        {
+          "id": "movies-5",
+          "text": "I simply don't like movies.",
+          "options": ["Agree", "Disagree", "Neutral"]
         }
-    ]
+      ]
+    },
+    {
+      "id": "living",
+      "title": "Where and how do you want to live?",
+      "description": "A fun quiz to take to see if you're aligned when it comes to moving in togheter",
+      "questions": [
+        {
+          "id": "living-1",
+          "text": "I'd like to live inside the city centre.",
+          "options": ["Agree", "Disagree", "Neutral"]
+        },
+        {
+          "id": "living-2",
+          "text": "I'd like to live in an older apartment.",
+          "options": ["Agree", "Disagree", "Neutral"]
+        },
+        {
+          "id": "living-3",
+          "text": "I prefer to live in a house rather than an apartment.",
+          "options": ["Agree", "Disagree", "Neutral"]
+        },
+        {
+          "id": "living-4",
+          "text": "I'd like to live in a big city",
+          "options": ["Agree", "Disagree", "Neutral"]
+        },
+        {
+          "id": "living-5",
+          "text": "I could see myself living abroad",
+          "options": ["Agree", "Disagree", "Neutral"]
+        }
+      ]
+    }
+  ]
 }

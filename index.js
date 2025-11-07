@@ -14,8 +14,9 @@ const navigationButtons = document.querySelectorAll(
 );
 
 // Get playerState from local storage OR, if none exists, assign an empty object.
-export const playerState =
-  JSON.parse(localStorage.getItem("quiz-player-state")) ?? {};
+export const playerState = JSON.parse(
+  localStorage.getItem("quiz-player-state")
+) ?? { selectedCategory: "movies" };
 
 const handleNavigationButtonClick = (e) => {
   try {
@@ -35,12 +36,8 @@ export function changeScreen(screenName) {
     );
   }
 
-  console.log("chaning to screen", screenName);
-
   // Hide all screens (sections) except the one with the passed screen name
   screenElements.forEach((screenElement) => {
-    console.log(screenElement.dataset.screen !== screenName);
-
     screenElement.classList.toggle(
       "hidden",
       screenElement.dataset.screen !== screenName

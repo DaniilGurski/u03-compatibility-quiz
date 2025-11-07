@@ -11,6 +11,8 @@
     <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg"> -->
     <title>Same Wave - A game for anyone curious about compatibility</title>
     <script src="index.js" type="module" defer></script>
+    <script src="src/scripts/category.js" type="module" defer></script>
+    <script src="src/scripts/input.js" type="module" defer></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -119,12 +121,12 @@
           </p>
 
           <div class="category-select">
-            <label class="category-select__label" for="category-select__field"
+            <label class="category-select__label" for="category-select"
               >Select a category</label
             >
             <select
               class="category-select__field"
-              id="category-select__field"
+              id="category-select"
               name="category"
             >
               <!-- The <options> will be poplated by JS bsed on the amount of categories in the .json file. It should show the name of the category + amount of questions (lenght) -->
@@ -147,40 +149,40 @@
             start the game when you're ready. Good luck!
           </p>
 
-          <div class="screen__players">
-            <div class="player-input">
-              <label class="player-input__label" for="player_1_input"
-                >Player 1</label
-              >
-              <input
-                class="player-input__field"
-                id="player_1_input"
-                type="text"
-                minlength="1"
-                required
-                placeholder="Daty McDate"
-              />
-              <span class="player-input__error" aria-live="assertive"></span>
+          <form id="players-form">
+            <div class="screen__players">
+              <div class="player-input">
+                <label class="player-input__label" for="player-one"
+                  >Player 1</label
+                >
+                <input
+                  class="player-input__field"
+                  id="player-one"
+                  type="text"
+                  name="player-one"
+                  minlength="1"
+                  placeholder="Daty McDate"
+                />
+                <span class="player-input__error" aria-live="assertive"></span>
+              </div>
+              <div class="player-input">
+                <label class="player-input__label" for="player-two"
+                  >Player 2</label
+                >
+                <input
+                  class="player-input__field"
+                  id="player-two"
+                  type="text"
+                  name="player-two"
+                  minlength="1"
+                  placeholder="Friendy McFriend"
+                />
+                <span class="player-input__error" aria-live="assertive"></span>
+              </div>
             </div>
-            <div class="player-input">
-              <label class="player-input__label" for="player_2_input"
-                >Player 2</label
-              >
-              <input
-                class="player-input__field"
-                id="player_2_input"
-                type="text"
-                minlength="1"
-                required
-                placeholder="Friendy McFriend"
-              />
-              <span class="player-input__error" aria-live="assertive"></span>
-            </div>
-          </div>
 
-          <button class="screen__button" data-type="navigation" data-to="ready">
-            Start the game
-          </button>
+            <button class="screen__button" type="submit">Start the game</button>
+          </form>
         </div>
       </section>
 
@@ -200,7 +202,13 @@
             Take a deep breath. Remember to answer honestly and make sure no
             one's peeking!
           </p>
-          <button class="screen__button">I'm ready</button>
+          <button
+            class="screen__button"
+            data-type="navigation"
+            data-to="question"
+          >
+            I'm ready
+          </button>
         </div>
       </section>
 
