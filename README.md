@@ -1,4 +1,5 @@
 # Same Wave
+
 The cool and quirky conversation starter or when you want to find out if you and your partner agrees on something.
 
 Take turns answering quirky questions - are you on the same wavelength? A fun conversation starter for couples, friends, and anyone who wants to see how well they really know each other.
@@ -6,6 +7,7 @@ Take turns answering quirky questions - are you on the same wavelength? A fun co
 Same Wave is a game for anyone curious about compatibility.
 
 ## How to play
+
 Two people play togheter on a shared screen and take turns answering questions/statements. The goal of this game is to find out if the two players think alike on certain subject matters.
 
 1. Choose a category togehter
