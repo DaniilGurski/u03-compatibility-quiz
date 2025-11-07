@@ -4,21 +4,14 @@ The cool and quirky conversation starter or when you want to find out if you and
 
 Take turns answering quirky questions - are you on the same wavelength? A fun conversation starter for couples, friends, and anyone who wants to see how well they really know each other.
 
-Same Wave is a game for anyone curious about compatibility.
+Same Wave is a game for anyone curious about compatibility. For life's big, small, deep, and delightfully weird questions!
 
-## How to play
+## How to Play
+Same Wave is a two-player game where you discover if you think alike on various topics. Both players share one device and take turns answering questions privately.
 
-Two people play togheter on a shared screen and take turns answering questions/statements. The goal of this game is to find out if the two players think alike on certain subject matters.
+### Game flow
 
-1. Choose a category togehter
-2. Input your names and press start to load the questions/statements
-3. Player 1 answers the question/statement by choosing "Agree", "Disagree" or "Neutral"
-4. A black screen indicationg the input was reviced along with a countdown is displayed
-5. While the countdown is going, Player 1 hands the screen to Player 2
-6. Player 2 does the exact same thing
-7. Step 3-6 are repeated until there are no more questions/statements
-8. The Result screen is shown and displays what both Player 1 and Player 2 have answered. Some cool statistics are shown in a neat and somewhat fancy way
-
-## Design inpo
-
-https://neo-brutalism-ui-library.vercel.app/
+1. **Choose a category** - Pick something you're both into (or think you are)
+2. **Take turns answering** - Tap "Agree", "Disagree", or "Neutral" - no overthinking!
+3. **Pass the device** - Hand off between rounds (trust us, it's part of the fun)
+4. **See your results** - Find out if you're on the same wavelength
