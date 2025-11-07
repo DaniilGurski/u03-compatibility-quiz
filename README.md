@@ -1,39 +1,22 @@
-# U03 - Compatibility Quiz
+# Same Wave
+The cool and quirky conversation starter or when you want to find out if you and your partner agrees on something.
 
-## Tips
+Take turns answering quirky questions - are you on the same wavelength? A fun conversation starter for couples, friends, and anyone who wants to see how well they really know each other.
 
-### Klona projektet till din dator
+Same Wave is a game for anyone curious about compatibility.
 
-- Öppna ett nytt fönster i VS Code.
-- Klicka på **"Clone Repository"** (du behöver vara inloggad på ditt GitHub-konto).
-- Gå till projektets GitHub-sida och kopiera repository-URL:en (visas när du hovrar över **Code**-knappen).
-- Klistra in URL:en i VS Code.
-- Välj en mapp där projektkoden ska sparas, t.ex. "FJS25/frontend/".
-- När kloningen är klar kan du öppna mappen och börja arbeta !
+## How to play
+Two people play togheter on a shared screen and take turns answering questions/statements. The goal of this game is to find out if the two players think alike on certain subject matters.
 
-### Skapa en ny branch
+1. Choose a category togehter
+2. Input your names and press start to load the questions/statements
+3. Player 1 answers the question/statement by choosing "Agree", "Disagree" or "Neutral"
+4. A black screen indicationg the input was reviced along with a countdown is displayed
+5. While the countdown is going, Player 1 hands the screen to Player 2
+6. Player 2 does the exact same thing
+7. Step 3-6 are repeated until there are no more questions/statements
+8. The Result screen is shown and displays what both Player 1 and Player 2 have answered. Some cool statistics are shown in a neat and somewhat fancy way
 
-- Se till att du är på main-branchen:
+## Design inpo
 
-```console
-git checkout main
-```
-
-- Hämta den senaste versionen av koden:
-
-```console
-git pull
-```
-
-- Skapa och byt till en ny branch
-
-```console
-git checkout -b [namn-på-din-branch]
-```
-
-- Nu kan du jobba som vanligt – staga och committa din kod.
-  När du är klar, ladda upp din branch till GitHub:
-
-```console
-git push -u origin [namn-på-din-branch]
-```
+https://neo-brutalism-ui-library.vercel.app/
