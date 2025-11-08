@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex, nofollow, noarchive, noimageindex" />
@@ -11,9 +10,8 @@
     <!-- <link rel="shortcut icon" type="image/x-icon" href="/assets/icons/favicon.ico" sizes="64x64">
     <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg"> -->
     <title>Same Wave - A game for anyone curious about compatibility</title>
-    <script src="index.js" type="module" defer></script>
-    <script src="src/scripts/category.js" type="module" defer></script>
-    <script src="src/scripts/input.js" type="module" defer></script>
+
+    <script src="src/main.js" type="module" defer></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -54,224 +52,281 @@
         }
       }
     </script>
-</head>
+  </head>
 
-<body>
+  <body>
     <main class="screens">
-        <!-- Intro/entry - the first screen the user sees -->
+      <!-- Intro/entry - the first screen the user sees -->
 
-        <section class="screen" data-screen="welcome">
-            <div class="screen__content">
-                <h1 class="screen__title">Same Wave</h1>
-                <p class="screen__subtitle">
-                    Take turns answering quirky questions - are you on the same
-                    <span class="wave">wavelength</span>? A fun conversation starter for
-                    couples, friends, and anyone who wants to see how well they really
-                    know each other.
-                </p>
+      <section class="screen" data-screen="welcome">
+        <div class="screen__content">
+          <h1 class="screen__title">Same Wave</h1>
+          <p class="screen__subtitle">
+            Take turns answering quirky questions - are you on the same
+            <span class="wave">wavelength</span>? A fun conversation starter for
+            couples, friends, and anyone who wants to see how well they really
+            know each other.
+          </p>
 
-                <button class="screen__button" data-type="navigation" data-to="rules">
-                    Get started
-                </button>
+          <button class="screen__button" data-type="navigation" data-to="rules">
+            Get started
+          </button>
+        </div>
+      </section>
+
+      <!-- Rules for the game -->
+
+      <section class="screen" data-screen="rules">
+        <div class="screen__content">
+          <h1 class="screen__title">How to play</h1>
+          <p class="screen__subtitle">
+            Two players, one device. Take turns answering the same questions—one
+            person answers, passes the device, then the other answers. Your
+            responses stay hidden until the final reveal when you compare
+            everything and see if you're in sync.
+          </p>
+
+          <ul class="screen__list">
+            <li class="screen__list-item">Pick a category</li>
+            <li class="screen__list-item">Input your names</li>
+            <li class="screen__list-item">
+              Take turns answering on one device
+            </li>
+            <li class="screen__list-item">
+              Responses stay hidden until the end
+            </li>
+            <li class="screen__list-item">No time limit!</li>
+          </ul>
+
+          <button
+            class="screen__button"
+            data-type="navigation"
+            data-to="category"
+          >
+            Pick a category
+          </button>
+        </div>
+      </section>
+
+      <!-- Players choose a category -->
+
+      <section class="screen" data-screen="category">
+        <div class="screen__content">
+          <h1 class="screen__title">Pick a category</h1>
+          <p class="screen__subtitle">
+            First date? Start light with favorites and preferences. Long-term
+            couple? Go deep with values and dreams. Just hanging with friends?
+            Dive into the weird stuff.
+          </p>
+
+          <div class="category-select">
+            <label class="category-select__label" for="category-select"
+              >Select a category</label
+            >
+            <select
+              class="category-select__field"
+              id="category-select"
+              name="category"
+            >
+              <!-- The <options> will be poplated by JS bsed on the amount of categories in the .json file. It should show the name of the category + amount of questions (lenght) -->
+            </select>
+          </div>
+
+          <button class="screen__button" data-type="navigation" data-to="input">
+            Who's playing?
+          </button>
+        </div>
+      </section>
+
+      <!-- Players input their names -->
+
+      <section class="screen" data-screen="input">
+        <div class="screen__content">
+          <h1 class="screen__title">Who's playing?</h1>
+          <p class="screen__subtitle">
+            Please remember to answer honestly. No screen-peeking! Press play to
+            start the game when you're ready. Good luck!
+          </p>
+
+          <form id="players-form">
+            <div class="screen__players">
+              <div class="player-input">
+                <label class="player-input__label" for="player-one"
+                  >Player 1</label
+                >
+                <input
+                  class="player-input__field"
+                  id="player-one"
+                  type="text"
+                  name="player-one"
+                  minlength="1"
+                  placeholder="Daty McDate"
+                />
+                <span class="player-input__error" aria-live="assertive"></span>
+              </div>
+              <div class="player-input">
+                <label class="player-input__label" for="player-two"
+                  >Player 2</label
+                >
+                <input
+                  class="player-input__field"
+                  id="player-two"
+                  type="text"
+                  name="player-two"
+                  minlength="1"
+                  placeholder="Friendy McFriend"
+                />
+                <span class="player-input__error" aria-live="assertive"></span>
+              </div>
             </div>
-        </section>
 
-        <!-- Rules for the game -->
+            <button class="screen__button" type="submit">Start the game</button>
+          </form>
+        </div>
+      </section>
 
-        <section class="screen" data-screen="rules">
-            <div class="screen__content">
-                <h1 class="screen__title">How to play</h1>
-                <p class="screen__subtitle">
-                    Two players, one device. Take turns answering the same questions—one
-                    person answers, passes the device, then the other answers. Your
-                    responses stay hidden until the final reveal when you compare
-                    everything and see if you're in sync.
-                </p>
+      <!-- Before the question -->
 
-                <ul class="screen__list">
-                    <li class="screen__list-item">Pick a category</li>
-                    <li class="screen__list-item">Input your names</li>
-                    <li class="screen__list-item">
-                        Take turns answering on one device
-                    </li>
-                    <li class="screen__list-item">
-                        Responses stay hidden until the end
-                    </li>
-                    <li class="screen__list-item">No time limit!</li>
-                </ul>
+      <section class="screen" data-screen="ready">
+        <div class="screen__content">
+          <h1 class="screen__title">
+            <span
+              class="screen__title__text screen__title__text--greeting"
+              id="ready-message"
+            ></span>
+            <span
+              class="screen__title__text screen__title__text--username"
+              id="ready-player-name"
+            ></span>
+          </h1>
+          <p class="screen__subtitle">
+            Take a deep breath. Remember to answer honestly and make sure no
+            one's peeking!
+          </p>
+          <button
+            class="screen__button"
+            data-type="navigation"
+            data-to="question"
+          >
+            I'm ready
+          </button>
+        </div>
+      </section>
 
-                <button class="screen__button" data-type="navigation" data-to="category">
-                    Pick a category
-                </button>
-            </div>
-        </section>
+      <!-- The question section -->
 
-        <!-- Players choose a category -->
-
-        <section class="screen" data-screen="category">
-            <div class="screen__content">
-                <h1 class="screen__title">Pick a category</h1>
-                <p class="screen__subtitle">
-                    First date? Start light with favorites and preferences. Long-term
-                    couple? Go deep with values and dreams. Just hanging with friends?
-                    Dive into the weird stuff.
-                </p>
-
-                <div class="category-select">
-                    <label class="category-select__label" for="category-select">Select a category</label>
-                    <select class="category-select__field" id="category-select" name="category">
-                        <!-- The <options> will be poplated by JS bsed on the amount of categories in the .json file. It should show the name of the category + amount of questions (lenght) -->
-                    </select>
+      <section class="screen" data-screen="question">
+        <div class="screen__content">
+          <form class="question-form">
+            <fieldset class="question-form__fieldset">
+              <legend class="question-form__legend">
+                <span class="question-form__player-name"></span>
+                <div class="question-form__legendquestion-form__progress">
+                  <span class="question-form__progress-current"></span>
+                  <span class="question-form__progress-total"></span>
                 </div>
+                <span class="question-form__fieldset-text"></span>
+              </legend>
 
-                <button class="screen__button" data-type="navigation" data-to="input">
-                    Who's playing?
-                </button>
+              <div class="answer-option" data-answer="agree">
+                <label for="q1_a1" class="answer-option__label">
+                  <input
+                    type="radio"
+                    id="q1_a1"
+                    name="question1"
+                    value="agree"
+                    data-answer="agree"
+                    class="answer-option__input"
+                  />
+                  <span class="answer-option__text"></span>
+                </label>
+              </div>
+
+              <div class="answer-option" data-answer="disagree">
+                <label for="q1_a2" class="answer-option__label">
+                  <input
+                    type="radio"
+                    id="q1_a2"
+                    name="question1"
+                    value="disagree"
+                    data-answer="disagree"
+                    class="answer-option__input"
+                  />
+                  <span class="answer-option__text"></span>
+                </label>
+              </div>
+
+              <div class="answer-option" data-answer="neutral">
+                <label for="q1_a3" class="answer-option__label">
+                  <input
+                    type="radio"
+                    id="q1_a3"
+                    name="question1"
+                    value="neutral"
+                    data-answer="neutral"
+                    class="answer-option__input"
+                  />
+                  <span class="answer-option__text"></span>
+                </label>
+              </div>
+
+              <button class="screen__button">Lock in and continue</button>
+            </fieldset>
+          </form>
+        </div>
+      </section>
+
+      <!-- After the player has answered to indicate the answer was recorded -->
+
+      <section class="screen" data-screen="blackout">
+        <div class="screen__content">
+          <h1 class="screen__title">
+            <span
+              class="screen__title__text screen__title__text--greeting"
+            ></span>
+            <span
+              class="screen__title__text screen__title__text--username"
+            ></span>
+          </h1>
+          <p class="screen__subtitle">
+            Answer recorded. Now close your eyes and pass the device.
+          </p>
+          <button class="screen__button">Hand it over</button>
+        </div>
+      </section>
+
+      <!-- Present a "synco-score" and display how the players matched -->
+
+      <section class="screen" data-screen="result">
+        <div class="screen__content">
+          <h1 class="screen__title">Results</h1>
+          <p class="screen__subtitle">
+            The results are in! Here's what's up: You matched on
+            <span class="screen__subtitle__match-count"></span>. That gives you
+            a sync-o-score of:
+            <span class="screen__subtitle__score"></span>
+            <span class="screen__subtitle__comment"></span>
+          </p>
+
+          <div class="screen__results">
+            <!-- Result cards will be inserted here by JS -->
+          </div>
+
+          <template id="result-card-template">
+            <div class="result-card">
+              <span class="result-card__tag" data-match="match"></span>
+              <h2 class="result-card__question-title"></h2>
+              <p class="result-card__question-description"></p>
+              <div class="result-card__answers">
+                <h3 class="result-card__answer-title"></h3>
+                <p class="result-card__answer-summary"></p>
+              </div>
             </div>
-        </section>
+          </template>
 
-        <!-- Players input their names -->
-
-        <section class="screen" data-screen="input">
-            <div class="screen__content">
-                <h1 class="screen__title">Who's playing?</h1>
-                <p class="screen__subtitle">
-                    Please remember to answer honestly. No screen-peeking! Press play to
-                    start the game when you're ready. Good luck!
-                </p>
-
-                <form id="players-form">
-                    <div class="screen__players">
-                        <div class="player-input">
-                            <label class="player-input__label" for="player-one">Player 1</label>
-                            <input class="player-input__field" id="player-one" type="text" name="player-one"
-                                minlength="1" placeholder="Daty McDate" />
-                            <span class="player-input__error" aria-live="assertive"></span>
-                        </div>
-                        <div class="player-input">
-                            <label class="player-input__label" for="player-two">Player 2</label>
-                            <input class="player-input__field" id="player-two" type="text" name="player-two"
-                                minlength="1" placeholder="Friendy McFriend" />
-                            <span class="player-input__error" aria-live="assertive"></span>
-                        </div>
-                    </div>
-
-                    <button class="screen__button" type="submit">Start the game</button>
-                </form>
-            </div>
-        </section>
-
-        <!-- Before the question -->
-
-        <section class="screen" data-screen="ready">
-            <div class="screen__content">
-                <h1 class="screen__title">
-                    <span class="screen__title__text screen__title__text--greeting"></span>
-                    <span class="screen__title__text screen__title__text--username"></span>
-                </h1>
-                <p class="screen__subtitle">
-                    Take a deep breath. Remember to answer honestly and make sure no
-                    one's peeking!
-                </p>
-                <button class="screen__button" data-type="navigation" data-to="question">
-                    I'm ready
-                </button>
-            </div>
-        </section>
-
-        <!-- The question section -->
-
-        <section class="screen" data-screen="question">
-            <div class="screen__content">
-                <form class="question-form">
-                    <fieldset class="question-form__fieldset">
-                        <legend class="question-form__legend">
-                            <span class="question-form__player-name"></span>
-                            <div class="question-form__legendquestion-form__progress">
-                                <span class="question-form__progress-current"></span>
-                                <span class="question-form__progress-total"></span>
-                            </div>
-                            <span class="question-form__fieldset-text"></span>
-                        </legend>
-
-                        <div class="answer-option" data-answer="agree">
-                            <label for="q1_a1" class="answer-option__label">
-                                <input type="radio" id="q1_a1" name="question1" value="agree" data-answer="agree"
-                                    class="answer-option__input" />
-                                <span class="answer-option__text"></span>
-                            </label>
-                        </div>
-
-                        <div class="answer-option" data-answer="disagree">
-                            <label for="q1_a2" class="answer-option__label">
-                                <input type="radio" id="q1_a2" name="question1" value="disagree" data-answer="disagree"
-                                    class="answer-option__input" />
-                                <span class="answer-option__text"></span>
-                            </label>
-                        </div>
-
-                        <div class="answer-option" data-answer="neutral">
-                            <label for="q1_a3" class="answer-option__label">
-                                <input type="radio" id="q1_a3" name="question1" value="neutral" data-answer="neutral"
-                                    class="answer-option__input" />
-                                <span class="answer-option__text"></span>
-                            </label>
-                        </div>
-
-                        <button class="screen__button">Lock in and continue</button>
-                    </fieldset>
-                </form>
-            </div>
-        </section>
-
-        <!-- After the player has answered to indicate the answer was recorded -->
-
-        <section class="screen" data-screen="blackout">
-            <div class="screen__content">
-                <h1 class="screen__title">
-                    <span class="screen__title__text screen__title__text--greeting"></span>
-                    <span class="screen__title__text screen__title__text--username"></span>
-                </h1>
-                <p class="screen__subtitle">
-                    Answer recorded. Now close your eyes and pass the device.
-                </p>
-                <button class="screen__button">Hand it over</button>
-            </div>
-        </section>
-
-        <!-- Present a "synco-score" and display how the players matched -->
-
-        <section class="screen" data-screen="result">
-            <div class="screen__content">
-                <h1 class="screen__title">Results</h1>
-                <p class="screen__subtitle">
-                    The results are in! Here's what's up: You matched on
-                    <span class="screen__subtitle__match-count"></span>. That gives you
-                    a sync-o-score of:
-                    <span class="screen__subtitle__score"></span>
-                    <span class="screen__subtitle__comment"></span>
-                </p>
-
-                <div class="screen__results">
-                    <!-- Result cards will be inserted here by JS -->
-                </div>
-
-                <template id="result-card-template">
-                    <div class="result-card">
-                        <span class="result-card__tag" data-match="match"></span>
-                        <h2 class="result-card__question-title"></h2>
-                        <p class="result-card__question-description"></p>
-                        <div class="result-card__answers">
-                            <h3 class="result-card__answer-title"></h3>
-                            <p class="result-card__answer-summary"></p>
-                        </div>
-                    </div>
-                </template>
-
-                <button class="screen__button">Play again</button>
-            </div>
-        </section>
+          <button class="screen__button">Play again</button>
+        </div>
+      </section>
     </main>
-</body>
-
+  </body>
 </html>
