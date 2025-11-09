@@ -37,17 +37,9 @@ export default class CategoryManager {
     }
   }
 
-  setupEventListeners() {
-    this.categorySelect.addEventListener("change", (e) => {
-      this.notifyEventListeners(e.target.value);
-    });
-  }
+  setupEventListeners() {}
 
   onSelect(callback) {
-    this.listeners.push(callback);
-  }
-
-  notifyEventListeners(categoryId) {
-    this.listeners.forEach((callback) => callback(categoryId));
+    this.categorySelect.addEventListener("change", callback);
   }
 }

@@ -161,6 +161,7 @@
                   name="player-one"
                   minlength="1"
                   placeholder="Daty McDate"
+                  value="McDate"
                 />
                 <span class="player-input__error" aria-live="assertive"></span>
               </div>
@@ -175,6 +176,7 @@
                   name="player-two"
                   minlength="1"
                   placeholder="Friendy McFriend"
+                  value="McFriend"
                 />
                 <span class="player-input__error" aria-live="assertive"></span>
               </div>
@@ -220,12 +222,24 @@
           <form class="question-form">
             <fieldset class="question-form__fieldset">
               <legend class="question-form__legend">
-                <span class="question-form__player-name"></span>
+                <span
+                  class="question-form__player-name"
+                  id="question-player-name"
+                ></span>
                 <div class="question-form__legendquestion-form__progress">
-                  <span class="question-form__progress-current"></span>
-                  <span class="question-form__progress-total"></span>
+                  <span
+                    class="question-form__progress-current"
+                    id="question-progress"
+                  ></span>
+                  <span
+                    class="question-form__progress-total"
+                    id="question-total"
+                  ></span>
                 </div>
-                <span class="question-form__fieldset-text"></span>
+                <span
+                  class="question-form__fieldset-text"
+                  id="question-text"
+                ></span>
               </legend>
 
               <div class="answer-option" data-answer="agree">
@@ -238,7 +252,7 @@
                     data-answer="agree"
                     class="answer-option__input"
                   />
-                  <span class="answer-option__text"></span>
+                  Agree
                 </label>
               </div>
 
@@ -252,7 +266,7 @@
                     data-answer="disagree"
                     class="answer-option__input"
                   />
-                  <span class="answer-option__text"></span>
+                  Disagree
                 </label>
               </div>
 
@@ -266,11 +280,13 @@
                     data-answer="neutral"
                     class="answer-option__input"
                   />
-                  <span class="answer-option__text"></span>
+                  Neutral
                 </label>
               </div>
 
-              <button class="screen__button">Lock in and continue</button>
+              <button class="screen__button" id="question-continue">
+                Lock in and continue
+              </button>
             </fieldset>
           </form>
         </div>

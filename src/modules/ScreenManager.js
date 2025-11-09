@@ -12,20 +12,11 @@ export default class ScreenManager {
     ];
 
     this.screenElements = document.querySelectorAll("section");
+
+
     this.navigationButtons = document.querySelectorAll(
       "button[data-type='navigation']"
     );
-  }
-
-  handleNavigationButtonClick(e) {
-    try {
-      const button = e.target;
-      const screenName = button.dataset.to;
-
-      this.changeScreen(screenName);
-    } catch (error) {
-      console.error(error.message);
-    }
   }
 
   changeScreen(screenName) {
@@ -52,31 +43,16 @@ export default class ScreenManager {
 
   setupNavigationButtons() {
     this.navigationButtons.forEach((button) => {
-      button.addEventListener("click", (e) =>
-        this.handleNavigationButtonClick(e)
-      );
+      button.addEventListener("click", (e) => {
+        try {
+          const button = e.target;
+          const screenName = button.dataset.to;
+
+          this.changeScreen(screenName);
+        } catch (error) {
+          console.error(error.message);
+        }
+      });
     });
-  }
-
-  populateReadyScreen(playerName) {
-    const beforeMessages = [
-      "Ready",
-      "Prepare yourself",
-      "Focus up",
-      "Hey",
-      "You're up",
-    ];
-    const randomIndex = Math.floor(Math.random() * beforeMessages.length);
-    const randomMessage = beforeMessages[randomIndex];
-
-    const messageSpan = document.querySelector(
-      "[data-screen='ready'] #ready-message"
-    );
-    const playerNameSpan = document.querySelector(
-      "[data-screen='ready'] #ready-player-name"
-    );
-
-    messageSpan.textContent = randomMessage + ",";
-    playerNameSpan.textContent = playerName;
   }
 }
