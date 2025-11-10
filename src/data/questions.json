@@ -307,6 +307,103 @@
           ]
         }
       ]
+    },
+    {
+      "id": "flirty",
+      "title": "How do you flirt?",
+      "description": "From smooth talkers to shy smilers, discover your flirting styles and see if you're reading the same signals.",
+      "questions": [
+        {
+          "id": "flirty-1",
+          "text": "If the vibe's right, I'll flirt without overthinking it.",
+          "options": [
+            "Agree",
+            "Disagree",
+            "Neutral"
+          ]
+        },
+        {
+          "id": "flirty-2",
+          "text": "I think a little jealousy can make things more exciting.",
+          "options": [
+            "Agree",
+            "Disagree",
+            "Neutral"
+          ]
+        },
+        {
+          "id": "flirty-3",
+          "text": "I'd make the first move if I really liked someone.",
+          "options": [
+            "Agree",
+            "Disagree",
+            "Neutral"
+          ]
+        },
+        {
+          "id": "flirty-4",
+          "text": "Compliments go a long way with me.",
+          "options": [
+            "Agree",
+            "Disagree",
+            "Neutral"
+          ]
+        },
+        {
+          "id": "flirty-5",
+          "text": "Playful teasing is my go-to flirting style.",
+          "options": [
+            "Agree",
+            "Disagree",
+            "Neutral"
+          ]
+        },
+        {
+          "id": "flirty-6",
+          "text": "I prefer subtle hints over being direct.",
+          "options": [
+            "Agree",
+            "Disagree",
+            "Neutral"
+          ]
+        },
+        {
+          "id": "flirty-7",
+          "text": "If someone plays hard to get, I lose interest.",
+          "options": [
+            "Agree",
+            "Disagree",
+            "Neutral"
+          ]
+        },
+        {
+          "id": "flirty-8",
+          "text": "Physical touch is important when I'm interested in someone.",
+          "options": [
+            "Agree",
+            "Disagree",
+            "Neutral"
+          ]
+        },
+        {
+          "id": "flirty-9",
+          "text": "I think eye contact says more than words ever could.",
+          "options": [
+            "Agree",
+            "Disagree",
+            "Neutral"
+          ]
+        },
+        {
+          "id": "flirty-10",
+          "text": "I enjoy a bit of mystery when getting to know someone.",
+          "options": [
+            "Agree",
+            "Disagree",
+            "Neutral"
+          ]
+        }
+      ]
     }
   ]
 }

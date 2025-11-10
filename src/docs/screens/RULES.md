@@ -1,5 +1,5 @@
 # Rules screen
-The rule screen constists off static HTML that will not be manipulated with JavaScript.
+The rule screen consists off static HTML that will not be manipulated with JavaScript.
 
 ## Rules screen markup
 

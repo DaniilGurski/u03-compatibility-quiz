@@ -9,13 +9,74 @@
 7. [Handoff](/src/docs/screens/HANDOFF.md)
 8. [Result](/src/docs/screens/RESULT.md)
 
+## Additional Documentation
+
+- [Validation Guide](/src/docs/VALIDATION.md) - Complete guide to all form validation
+- [Debug Mode](/src/docs/DEBUG_MODE.md) - How to use debug mode for testing
+- [Game Mechanics](/src/docs/GAME_MECHANICS.md) - Overall game architecture and flow
+
+## Complete Game Flow
+
+```
+┌──────────┐
+│ Welcome  │ (Static intro screen)
+└────┬─────┘
+     │
+     ▼
+┌──────────┐
+│  Rules   │ (Static how-to-play)
+└────┬─────┘
+     │
+     ▼
+┌──────────┐
+│ Category │ (Choose quiz category + validation)
+└────┬─────┘
+     │
+     ▼
+┌──────────┐
+│  Input   │ (Enter player names + validation)
+└────┬─────┘
+     │
+     ▼
+┌──────────┐
+│  Ready   │ ◄──────────┐ (Shows current player)
+└────┬─────┘            │
+     │                  │
+     ▼                  │
+┌──────────┐            │
+│ Question │            │ (Player answers)
+└────┬─────┘            │
+     │                  │
+     ▼                  │
+┌──────────┐            │
+│ Handoff  │            │ (Confirm answer recorded)
+└────┬─────┘            │
+     │                  │
+     ├─── More Qs? ─────┘ (Loop: Ready → Question → Handoff)
+     │    YES
+     │
+     │ NO (Last question completed)
+     ▼
+┌──────────┐
+│  Result  │ (Show sync-o-score + all answers)
+└────┬─────┘
+     │
+     └─── Play Again? → Category
+```
+
+**Key Points:**
+- Ready → Question → Handoff = The game loop
+- Loop runs 2× per question (once per player)
+- For 5 questions: Loop runs 10 times total
+- After last question: Handoff shows "All done!" then goes to Result
+
 ## How does this game work?
 This is a quiz game where two players takes turns answering questions separately, on one device, passing the device (phone, computer) back and forth between them.
 
 ## How is the game built
 This game is built using HTML, CSS and JavaScript. Almost all HTML is present in the initial page load and most DOM elements exist from the start. JavaScript is mostly used to manipulate existing DOM elements.
 
-Worth to mention is that almost all markup is rendered below the fold. This is a highly curated quiz game and it follows a specific order. That means that we controll what the players see and interact with at every step of the game.
+Worth to mention is that almost all markup is rendered below the fold. This is a highly curated quiz game and it follows a specific order. That means that we control what the players see and interact with at every step of the game.
 
 The players of this game always see a "screen" that covers 100% of the viewport. There are multiple screens to this game, but only one is active at a time.
 

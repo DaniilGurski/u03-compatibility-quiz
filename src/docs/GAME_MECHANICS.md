@@ -17,10 +17,10 @@ The HTML and CSS are static, and the data/user input is dynamic.
 ## File structure
 
 - index.html - contains all the markup, section by section
-- styles.css - contains global styling for all markup
+- style.css - contains global styling for all markup
 - game.js - the actual quiz
-- data/questions.json - the questions/categories/statements
-- docs/ - how it all works and comes togheter
+- /src/data/data/questions.json - the questions/categories/statements
+- /src/docs/ - how it all works and comes togheter
 
 ## Welcome screen
 Static HTML, some introduction to the game. Contains a button that takes you to to the "How to play"-section

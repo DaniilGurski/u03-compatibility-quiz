@@ -11,7 +11,6 @@
     <!-- <link rel="shortcut icon" type="image/x-icon" href="/assets/icons/favicon.ico" sizes="64x64">
     <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg"> -->
     <title>Same Wave - A game for anyone curious about compatibility</title>
-    <script src="game.js" defer></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -89,12 +88,8 @@
                 <ul class="screen__list">
                     <li class="screen__list-item">Pick a category</li>
                     <li class="screen__list-item">Input your names</li>
-                    <li class="screen__list-item">
-                        Take turns answering on one device
-                    </li>
-                    <li class="screen__list-item">
-                        Responses stay hidden until the end
-                    </li>
+                    <li class="screen__list-item">Take turns answering on one device</li>
+                    <li class="screen__list-item">Responses stay hidden until the end</li>
                     <li class="screen__list-item">No time limit!</li>
                 </ul>
 
@@ -120,6 +115,7 @@
                     <select class="category-select__field" id="category-select" name="category">
                         <!-- The <options> will be poplated by JS bsed on the amount of categories in the .json file. It should show the name of the category + amount of questions (lenght) -->
                     </select>
+                    <span class="category-select__error" aria-live="assertive"></span>
                 </div>
 
                 <button class="screen__button" data-type="navigation" data-to="input">
@@ -216,7 +212,7 @@
                                 <span class="answer-option__text"></span>
                             </label>
                         </div>
-
+                        <span class="question-form__error" aria-live="assertive"></span>
                         <button class="screen__button" data-type="navigation" data-to="handoff">Lock in and
                             continue</button>
                     </fieldset>
@@ -248,7 +244,7 @@
                     The results are in! Here's what's up: You matched on
                     <span class="screen__subtitle__match-count"></span>. That gives you
                     a sync-o-score of:
-                    <span class="screen__subtitle__score"></span>
+                    <span class="screen__subtitle__score"></span>. 
                     <span class="screen__subtitle__comment"></span>
                 </p>
 
@@ -272,6 +268,7 @@
             </div>
         </section>
     </main>
+    <script async defer src="game.js"></script>
 </body>
 
 </html>

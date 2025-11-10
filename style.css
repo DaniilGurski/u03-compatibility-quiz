@@ -268,6 +268,7 @@ legend {
 .screen__button {
   padding-inline: 1.25rem;
   block-size: 3.5rem;
+  min-block-size: 3.5rem;
   inline-size: max-content;
   border: 2px solid var(--color-black);
   border-radius: 2.5rem;
@@ -371,9 +372,9 @@ legend {
   }
 }
 
-.player-input__error {
+/* .player-input__error {
   display: none;
-}
+} */
 
 /* Questions */
 

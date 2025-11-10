@@ -1,5 +1,5 @@
 # Welcome screen
-The welcome screen constists off static HTML that will not be manipulated with JavaScript.
+The welcome screen consists off static HTML that will not be manipulated with JavaScript.
 
 ## Welcome screen markup
 

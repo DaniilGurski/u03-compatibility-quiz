@@ -32,13 +32,13 @@ git swith branchyourswitchingto
 git checkout main
 
 ### Multi kill (delete local and remote branches)
-git branch -D yournewbranchname && git push origin --delete yournewbranchname
+git branch -D yourbranchname && git push origin --delete yourbranchname
 
 ### Stage (add to index)
-git add . (to add everything) or git add thefileyouwanttostage
+git add . (to add everything) or git add thefileyouwanttostage to stage files individually
 
 ### Commit (create a point in time)
 git commit -m "Your commit message"
 
-### Push (publish it on GitHub)
+### Push (send your branch to GitHub)
 git push -u orgin yourbranchname
