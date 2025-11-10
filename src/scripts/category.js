@@ -1,4 +1,4 @@
-import { playerState } from "../../index.js";
+import { setPlayerState } from "./playerState.js";
 
 const categorySelect = document.getElementById("category-select");
 
@@ -33,8 +33,7 @@ async function getQuestionCategories() {
 
 // When user selects new category, save it in the playerState object and in local storage.
 categorySelect.addEventListener("change", (e) => {
-  playerState.selectedCategory = e.target.value;
-  localStorage.setItem("quiz-player-state", JSON.stringify(playerState));
+  setPlayerState({ selectedCategory: e.target.value });
 });
 
 getQuestionCategories();
