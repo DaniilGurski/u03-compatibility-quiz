@@ -1,37 +1,22 @@
 # Same Wave Game Mechanics
 
-Let's use this file as reference as to how the game works. We should definitely add more stuff to the DOCS as we go.
-
-- Use LocalStorage to set an get data. Example: Save progressively the players answers as an array.
-
-
-## What we need (to-do)
-
-- Fetch questions from data/questions.json
-- Store users input into an array
-- Some way to move between "slides" or "sections"
-- Refresh handler - what if the user refreshes the page?
-- Form error handling
-- Cool countdown
-
 ## How the game works
 
-Two players takes turns answering questions separately, passing the phone back and forth between them. This game is sort of a "SPA" that uses localStorage for state management. 
+Two players takes turns answering questions separately, passing the phone back and forth between them. All parts of the game is broken down into "screens", example:
 
-All parts of the game is broken down into "screens", example:
-
-- Intro screen (game title and description)
+- Intro screen (game title and game description)
 - Rule screen (this is how you play)
-- Category screen (choose between categories with question)
+- Category screen (choose between categories with questions)
 - Name input + start game screen (player input names, button)
-- Transition screen (button to load next question)
+- Get ready (before game starts)
+- Handoff screen (button to load next question)
 - Result screen
 
 The HTML and CSS are static, and the data/user input is dynamic.
 
 ## File structure
 
-- index.html - contains all the markup, block by block
+- index.html - contains all the markup, section by section
 - styles.css - contains global styling for all markup
 - game.js - the actual quiz
 - data/questions.json - the questions/categories/statements
@@ -88,7 +73,6 @@ The switch (or handoff)-screen contains a button to load the next question. When
 A section (is this a static section?) where to players input (answers) are displayed in some fancy and fun way (to be decided).
 
 Section contains a button to restart the game. Maybe to "share to social feed" or maybe just as an image?
-
 
 ## Design inpo
 

@@ -11,9 +11,7 @@
     <!-- <link rel="shortcut icon" type="image/x-icon" href="/assets/icons/favicon.ico" sizes="64x64">
     <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg"> -->
     <title>Same Wave - A game for anyone curious about compatibility</title>
-    <script src="index.js" type="module" defer></script>
-    <script src="src/scripts/category.js" type="module" defer></script>
-    <script src="src/scripts/input.js" type="module" defer></script>
+    <script src="game.js" defer></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -156,7 +154,8 @@
                         </div>
                     </div>
 
-                    <button class="screen__button" type="submit">Start the game</button>
+                    <button class="screen__button" type="submit" data-type="navigation" data-to="ready">Start the
+                        game</button>
                 </form>
             </div>
         </section>
@@ -218,7 +217,8 @@
                             </label>
                         </div>
 
-                        <button class="screen__button">Lock in and continue</button>
+                        <button class="screen__button" data-type="navigation" data-to="handoff">Lock in and
+                            continue</button>
                     </fieldset>
                 </form>
             </div>
@@ -226,7 +226,7 @@
 
         <!-- After the player has answered to indicate the answer was recorded -->
 
-        <section class="screen" data-screen="blackout">
+        <section class="screen" data-screen="handoff">
             <div class="screen__content">
                 <h1 class="screen__title">
                     <span class="screen__title__text screen__title__text--greeting"></span>
@@ -235,7 +235,7 @@
                 <p class="screen__subtitle">
                     Answer recorded. Now close your eyes and pass the device.
                 </p>
-                <button class="screen__button">Hand it over</button>
+                <button class="screen__button" data-type="navigation" data-to="result">Hand it over</button>
             </div>
         </section>
 

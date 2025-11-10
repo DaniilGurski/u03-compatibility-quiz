@@ -1,13 +1,13 @@
 {
   "responseMessages": {
-    "beforeGame": [
+    "readyMessage": [
       "Ready",
       "Prepare yourself",
       "Focus up",
       "Hey",
       "You're up"
     ],
-    "afterAnswer": [
+    "handoffMessage": [
       "Nice choice",
       "Interesting",
       "Bold move",
@@ -19,12 +19,29 @@
       "Alright then",
       "From the horse's mouth"
     ],
-    "handoffToPlayer": [
-      "Time to switch!",
-      "Your turn now!",
-      "Pass it over!",
-      "Ready for the next player?"
-    ],
+    "syncoMessage": {
+      "good": [
+        "Good job, very synced",
+        "Perfect timing",
+        "Nice sync",
+        "Smooth coordination",
+        "Well synchronized"
+      ],
+      "neutral": [
+        "Synced up",
+        "Coordination noted",
+        "Timing recorded",
+        "Sync acknowledged",
+        "Registered"
+      ],
+      "bad": [
+        "Sync could be better",
+        "Timing's off",
+        "Not quite synced",
+        "Coordination needs work",
+        "Out of rhythm"
+      ]
+    },
     "matchStatus": {
       "match": "You're in sync!",
       "mismatch": "Different takes"
@@ -127,6 +144,162 @@
         {
           "id": "living-5",
           "text": "I could see myself living abroad",
+          "options": [
+            "Agree",
+            "Disagree",
+            "Neutral"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "travel",
+      "title": "What type of traveler are you?",
+      "description": "A fun quiz designed to find out your travel preferences and adventure style.",
+      "questions": [
+        {
+          "id": "travel-1",
+          "text": "I prefer relaxing vacations over adventurous ones.",
+          "options": [
+            "Agree",
+            "Disagree",
+            "Neutral"
+          ]
+        },
+        {
+          "id": "travel-2",
+          "text": "I enjoy visiting historical landmarks when I travel.",
+          "options": [
+            "Agree",
+            "Disagree",
+            "Neutral"
+          ]
+        },
+        {
+          "id": "travel-3",
+          "text": "I like trying local street food in new countries.",
+          "options": [
+            "Agree",
+            "Disagree",
+            "Neutral"
+          ]
+        },
+        {
+          "id": "travel-4",
+          "text": "I prefer traveling with friends rather than alone.",
+          "options": [
+            "Agree",
+            "Disagree",
+            "Neutral"
+          ]
+        },
+        {
+          "id": "travel-5",
+          "text": "I would rather explore cities than nature.",
+          "options": [
+            "Agree",
+            "Disagree",
+            "Neutral"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sport",
+      "title": "Assorted sport questions",
+      "description": "A fun quiz designed to find out what you think about sports and sports related stuff",
+      "questions": [
+        {
+          "id": "sport-1",
+          "text": "Golf shouldn't count as a real sport",
+          "options": [
+            "Agree",
+            "Disagree",
+            "Neutral"
+          ]
+        },
+        {
+          "id": "sport-2",
+          "text": "I secretly believe I could've gone pro… if I really tried.",
+          "options": [
+            "Agree",
+            "Disagree",
+            "Neutral"
+          ]
+        },
+        {
+          "id": "sport-3",
+          "text": "Athletes are paid way too much for what they do.",
+          "options": [
+            "Agree",
+            "Disagree",
+            "Neutral"
+          ]
+        },
+        {
+          "id": "sport-4",
+          "text": "I'd rather my team lose fairly than win by luck.",
+          "options": [
+            "Agree",
+            "Disagree",
+            "Neutral"
+          ]
+        },
+        {
+          "id": "sport-5",
+          "text": "Watching sports is just as valid as playing them.",
+          "options": [
+            "Agree",
+            "Disagree",
+            "Neutral"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cinema",
+      "title": "Some statements about modern cinema",
+      "description": "A fun quiz designed to find out if you share a preference for the great art of cinema",
+      "questions": [
+        {
+          "id": "cinema-1",
+          "text": "Titanic is overrated.",
+          "options": [
+            "Agree",
+            "Disagree",
+            "Neutral"
+          ]
+        },
+        {
+          "id": "cinema-2",
+          "text": "The Lord of the Rings trilogy is a masterpiece.",
+          "options": [
+            "Agree",
+            "Disagree",
+            "Neutral"
+          ]
+        },
+        {
+          "id": "cinema-3",
+          "text": "Pulp Fiction is one of the coolest movies ever made.",
+          "options": [
+            "Agree",
+            "Disagree",
+            "Neutral"
+          ]
+        },
+        {
+          "id": "cinema-4",
+          "text": "Animated movies can be just as emotional as live-action films.",
+          "options": [
+            "Agree",
+            "Disagree",
+            "Neutral"
+          ]
+        },
+        {
+          "id": "cinema-5",
+          "text": "The Godfather is the greatest movie of all time.",
           "options": [
             "Agree",
             "Disagree",
