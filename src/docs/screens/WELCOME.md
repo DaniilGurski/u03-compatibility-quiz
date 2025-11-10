@@ -3,7 +3,7 @@ The welcome screen consists off static HTML that will not be manipulated with Ja
 
 ## Welcome screen markup
 
-```
+```html
         <section class="screen" data-screen="welcome">
             <div class="screen__content">
                 <h1 class="screen__title">Same Wave</h1>

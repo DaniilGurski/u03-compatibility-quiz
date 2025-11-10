@@ -58,7 +58,7 @@ Example: If there are 5 questions, the ready screen appears 10 times total.
 
 ## Ready screen markup
 
-``
+```html
  <section class="screen" data-screen="ready">
             <div class="screen__content">
                 <h1 class="screen__title">
@@ -74,4 +74,4 @@ Example: If there are 5 questions, the ready screen appears 10 times total.
                 </button>
             </div>
         </section>
-``
+```

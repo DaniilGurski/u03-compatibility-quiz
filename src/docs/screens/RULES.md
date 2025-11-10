@@ -3,7 +3,7 @@ The rule screen consists off static HTML that will not be manipulated with JavaS
 
 ## Rules screen markup
 
-``
+```html
 <section class="screen" data-screen="rules">
             <div class="screen__content">
                 <h1 class="screen__title">How to play</h1>
@@ -31,4 +31,4 @@ The rule screen consists off static HTML that will not be manipulated with JavaS
                 </button>
             </div>
         </section>
-``
+```

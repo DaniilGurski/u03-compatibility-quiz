@@ -89,7 +89,7 @@ This game is divided into "screens" (or sections), each screen has a a task that
 ## Example markup of a screen
 For some screens, there exists pre-made text content. For others, JavaScript is used to populate a span for example.
 
-``
+```html
         <section class="screen" data-screen="handoff">
             <div class="screen__content">
                 <h1 class="screen__title">
@@ -100,7 +100,7 @@ For some screens, there exists pre-made text content. For others, JavaScript is 
                 <button class="screen__button" data-to="result"></button>
             </div>
         </section>
-``
+```
 # Looping of screens
 The following screens are repeated/looped and shown until there are no questions left, then we move on to the result screen.
 

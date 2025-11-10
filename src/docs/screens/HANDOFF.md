@@ -157,7 +157,7 @@ When implementing the handoff screen update function:
 
 ## Handoff screen markup
 
-``
+```html
  <section class="screen" data-screen="handoff">
             <div class="screen__content">
                 <h1 class="screen__title">
@@ -170,4 +170,4 @@ When implementing the handoff screen update function:
                 <button class="screen__button" data-type="navigation" data-to="result">Hand it over</button>
             </div>
         </section>
-``
+```

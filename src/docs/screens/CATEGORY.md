@@ -60,7 +60,7 @@ Note: The actual options are created by JavaScript, not written in the HTML file
 
 ## Category screen markup
 
-``
+```html
  <section class="screen" data-screen="category">
             <div class="screen__content">
                 <h1 class="screen__title">Pick a category</h1>
@@ -82,4 +82,4 @@ Note: The actual options are created by JavaScript, not written in the HTML file
                 </button>
             </div>
         </section>
-``
+```

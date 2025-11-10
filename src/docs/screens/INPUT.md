@@ -172,7 +172,7 @@ if (errorSpan) {
 
 ## Input screen markup
 
-``
+```html
         <section class="screen" data-screen="input">
             <div class="screen__content">
                 <h1 class="screen__title">Who's playing?</h1>
@@ -201,4 +201,4 @@ if (errorSpan) {
                 </form>
             </div>
         </section>
-``
+```
