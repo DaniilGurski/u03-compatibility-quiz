@@ -1,4 +1,5 @@
-import { changeScreen, playerState } from "../../index.js";
+import { changeScreen } from "../../index.js";
+import { setPlayerState } from "./playerState.js";
 
 // Elements
 const playersForm = document.getElementById("players-form");
@@ -16,10 +17,10 @@ playersForm.addEventListener("submit", (e) => {
   }
 
   // If validation is successful, save the players names in the playerState object, store it in local storage, and proceed to the next screen.
-  playerState.playerOne = trimmedPlayerOneValue;
-  playerState.playerTwo = trimmedPlayerTwoValue;
-
-  localStorage.setItem("quiz-player-state", JSON.stringify(playerState));
+  setPlayerState({
+    playerOne: trimmedPlayerOneValue,
+    playerTwo: trimmedPlayerTwoValue,
+  });
 
   changeScreen("ready");
 });

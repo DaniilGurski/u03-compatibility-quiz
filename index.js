@@ -13,11 +13,6 @@ const navigationButtons = document.querySelectorAll(
   "button[data-type='navigation']"
 );
 
-// Get playerState from local storage OR, if none exists, assign an empty object.
-export const playerState = JSON.parse(
-  localStorage.getItem("quiz-player-state")
-) ?? { selectedCategory: "movies" };
-
 const handleNavigationButtonClick = (e) => {
   try {
     const button = e.target;
