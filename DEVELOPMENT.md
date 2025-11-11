@@ -121,6 +121,7 @@ project/
 │       └── questions.json          - Question data
 ├── demo.js                 - Working demo (reference only)
 └── game.js                 - Old code (kept for reference)
+```
 
 ## Common Issues
 
@@ -141,4 +142,4 @@ project/
 1. Check `src/docs/JS_MODULE_GUIDE.md`
 2. Look at the completed files (category.js, input.js)
 3. Check the demo to see how it should work
-4. Ask the team lead
+4. Ask anyone in the team chat!
