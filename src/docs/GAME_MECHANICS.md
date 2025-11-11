@@ -18,9 +18,11 @@ The HTML and CSS are static, and the data/user input is dynamic.
 
 - index.html - contains all the markup, section by section
 - style.css - contains global styling for all markup
-- game.js - the actual quiz
-- /src/data/data/questions.json - the questions/categories/statements
-- /src/docs/ - how it all works and comes togheter
+- /src/js/ - modular JavaScript files (main.js, navigation.js, screen files)
+- /src/data/questions.json - the questions/categories/statements
+- /src/docs/ - how it all works and comes together
+- game.js - original working code (kept as reference)
+- demo.js - complete working demo (proof of concept)
 
 ## Welcome screen
 Static HTML, some introduction to the game. Contains a button that takes you to to the "How to play"-section
@@ -30,7 +32,7 @@ Static HTML, some instructions on how the game is played. Contains a button that
 
 ## Pick a category
 
-Static HTML section with a dynamic part. The section contains a `<select>` element which dynamically loads and shows multiple `<option>` elements inside the `<select>`  based on how many categories there exists in **"/data/questions.json"**.
+Static HTML section with a dynamic part. The section contains a `<select>` element which dynamically loads and shows multiple `<option>` elements inside the `<select>`  based on how many categories there exists in **"/src/data/questions.json"**.
 
 - Should populate the `<select>` with as many `<option>` as there are categories
 - Should write out in the `<option>` how many questions there are in a category
@@ -54,13 +56,13 @@ A semi static HTML section with dynamic content that tells the player's whos tur
 
 The game starts and the first question is displayed. Is this a static section? I don't know, it contains dynamic content. Reusable.
 
-- The questions are fetched from **"/data/questions.json"**
+- The questions are fetched from **"/src/data/questions.json"**
 - There is information about which player's turn it is
 - What question (and the total amount of questions) are displayed
 
 Player 1 can choose from "Agree", "Disagree" and "Neutral" and then press a button "Lock in and continue" to "provide their answer".
 
-## Switch (or handoff)
+## Handoff
 
 A new section is scrolled to/loaded into view. Is it a static section? I don't know. The purpose of this screen is to give feedback to Player 1 that their input was recieved, but also to instruct them to pass the screen over to Player 2.
 
@@ -73,7 +75,3 @@ The switch (or handoff)-screen contains a button to load the next question. When
 A section (is this a static section?) where to players input (answers) are displayed in some fancy and fun way (to be decided).
 
 Section contains a button to restart the game. Maybe to "share to social feed" or maybe just as an image?
-
-## Design inpo
-
-https://neo-brutalism-ui-library.vercel.app/
