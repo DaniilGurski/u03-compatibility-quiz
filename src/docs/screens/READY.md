@@ -1,60 +1,74 @@
 # Ready screen
+
 The ready screen appears before each question to let the current player know it's their turn. It shows a random greeting message and the player's name.
 
-## Flow Context
+## What this screen does
 
-**When this screen appears:**
-1. **After player input** - Very first time, after both players enter their names
-2. **After handoff** - After the other player answers (switching between players)
-3. **After handoff** - After both players answer a question (moving to next question)
+This screen needs to:
+1. Display a random greeting message
+2. Show the current player's name
+3. Prepare the player for their question
 
-**How many times:**
-- Appears 2 times per question (once for each player)
-- If there are 5 questions it appears 10 times total
-- Always appears BEFORE the question screen
+---
+
+## When This Screen Appears
+
+The ready screen appears before every question.
+
+**How often:** 2 times per question (once for each player)
+**Example:** If there are 5 questions, this screen appears 10 times total.
+
+**It appears:**
+1. After players enter their names (very first time)
+2. After the handoff screen when switching between players
+3. After the handoff screen when moving to a new question
 
 **Navigation:**
-- Previous screen: Either "input" (first time) or "handoff" (all other times)
-- Next screen: Always "question"
+- Previous: Input screen (first time) or Handoff screen (all other times)
+- Next: Always goes to Question screen
 
-## Elements to be populated by JavaScript
+---
 
-### Player Greeting Message
+## Elements that need content
+
+### 1. Greeting Message
 **Element:** `<span class="screen__title__text screen__title__text--greeting"></span>`
 
-- **What:** A random greeting message to get the player ready
-- **Source:** `responseMessages.readyMessage` array from [questions.json](/src/data/questions.json)
-- **Available options:** "Ready", "Prepare yourself", "Focus up", "Hey", "You're up"
-- **Format:** The message text followed by a comma. Example: "Ready," or "Hey,"
-- **When:** Every time the ready screen is shown (before each question)
-- **Logic:** Pick a random message from the array each time
+**What it should show:**
+A random greeting message.
 
-### Player Name
+**Format:**
+The message followed by a comma.
+Examples: "Ready," or "Hey," or "Focus up,"
+
+**Where the data comes from:**
+`responseMessages.readyMessage` array in [questions.json](/src/data/questions.json)
+
+**Available messages:**
+"Ready", "Prepare yourself", "Focus up", "Hey", "You're up"
+
+---
+
+### 2. Player Name
 **Element:** `<span class="screen__title__text screen__title__text--username"></span>`
 
-- **What:** The name of the player whose turn it is
-- **Source:** From your game state - either playerOne or playerTwo
-- **Format:** Just the player's name. Example: "Sarah" or "John"
-- **When:** Every time the ready screen is shown (before each question)
-- **Logic:** 
-  - Check which player's turn it is (using a player index or turn counter)
-  - If it's player one's turn, use playerOne name
-  - If it's player two's turn, use playerTwo name
+**What it should show:**
+The name of the player whose turn it is to answer.
 
-## How it displays to the user
-The greeting and username combine to form the title. For example:
+**Format:**
+Just the player's name.
+Examples: "Sarah" or "John"
+
+**Where the data comes from:**
+Your saved player names. Show whichever player is currently answering (player one or player two).
+
+**How it displays:**
+The greeting and name combine to form the title:
 - "Ready, Sarah"
 - "Hey, John"
 - "Focus up, Sarah"
 
-## When this screen appears
-The ready screen appears:
-1. After players submit their names (very first time)
-2. After the handoff screen, when moving to the next question
-3. After the handoff screen, when switching to the other player
-
-Total appearances: 2 times per question (once for each player)
-Example: If there are 5 questions, the ready screen appears 10 times total.
+---
 
 ## Ready screen markup
 

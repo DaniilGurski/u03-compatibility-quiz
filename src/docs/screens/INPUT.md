@@ -1,174 +1,163 @@
 # Input screen
-The input screen is where both players enter their names before starting the game. This screen includes form validation to ensure both names are filled in and that they are different from each other.
 
-## Elements to be populated by JavaScript
+The input screen is where both players enter their names before starting the game. This screen validates that both names are filled in and that they're different from each other.
 
-This screen doesn't populate elements with dynamic content - instead, it **captures** user input and **validates** it before saving.
+## What this screen does
+
+This screen needs to:
+1. Capture player one's name
+2. Capture player two's name
+3. Validate that both names are filled in
+4. Validate that the names are different (case-insensitive)
+5. Show error messages if validation fails
+6. Save the names when validation passes
+7. Navigate to the ready screen
+
+---
 
 ## Form inputs to capture
 
 ### Player One Name
 **Element:** `<input class="player-input__field" id="player-one" type="text" name="player-one">`
 
-- **What:** The first player's name
-- **Where to save:** In your game state (as playerOne or similar)
-- **When to save:** When the form is successfully submitted (after validation passes)
+**What to capture:**
+The first player's name.
+
+**When to save:**
+After validation passes (when the form is successfully submitted).
+
+**Where to save:**
+Store this as player one's name in your game data.
+
+---
 
 ### Player Two Name
 **Element:** `<input class="player-input__field" id="player-two" type="text" name="player-two">`
 
-- **What:** The second player's name
-- **Where to save:** In your game state (as playerTwo or similar)
-- **When to save:** When the form is successfully submitted (after validation passes)
+**What to capture:**
+The second player's name.
 
-## Validation requirements
+**When to save:**
+After validation passes (when the form is successfully submitted).
+
+**Where to save:**
+Store this as player two's name in your game data.
+
+---
+
+## Validation Rules
+
+When the form is submitted, validate the names before saving:
 
 ### Rule 1: Both fields must be filled
-- **Check:** Both input values must have at least 1 character (after trimming whitespace)
-- **If fails:** Display error message and prevent form submission
-- **Error message location:** `<span class="player-input__error">` (the span directly after each input)
+Both names must have at least 1 character (ignoring spaces at the beginning or end).
+
+**Error messages:**
+- "Player 1 name cannot be empty"
+- "Player 2 name cannot be empty"
 
 ### Rule 2: Names must be different
-- **Check:** Player one's name cannot be the same as player two's name
-- **Comparison:** Case-insensitive (so "Sarah" and "sarah" should be considered the same)
-- **If fails:** Display error message and prevent form submission
-- **Error message location:** `<span class="player-input__error">` (show error on one or both inputs)
+Player one's name cannot be the same as player two's name. The comparison should be case-insensitive (so "Sarah" and "sarah" are considered the same).
 
-### Validation logic
-When the form is submitted:
+**Error message:**
+- "Names must be different"
 
-1. **Get the values**
-   - Get value from player-one input
-   - Get value from player-two input
-   - Remove extra whitespace from both (trim)
+### Validation flow
 
-2. **Check if empty**
-   - If player one is empty → show error "Player 1 name cannot be empty"
-   - If player two is empty → show error "Player 2 name cannot be empty"
+When the "Start the game" button is clicked:
+1. Get both name values
+2. Remove extra spaces from the beginning and end
+3. Check if either is empty
+4. Check if they're the same (ignoring case)
+5. If any check fails → show error and stay on this screen
+6. If all checks pass → save names and go to the ready screen
 
-3. **Check if identical**
-   - Convert both names to lowercase
-   - If they match → show error "Names must be different"
+---
 
-4. **If all validation passes**
-   - Save both names to game state
-   - Clear any error messages
-   - Navigate to the ready screen
-
-## Error display elements
+## Where to show errors
 
 ### Player One Error
 **Element:** `<span class="player-input__error" aria-live="assertive">` (after player-one input)
 
-- **What:** Error message for player one's input
-- **When to show:** When validation fails
-- **When to clear:** When validation passes or when user starts typing again
-- **Example messages:** 
-  - "Player 1 name cannot be empty"
-  - "Names must be different"
+**When to show:**
+When player one's name is empty or when both names are the same.
+
+**When to clear:**
+When the user starts typing in player one's input, or when validation passes.
+
+---
 
 ### Player Two Error
 **Element:** `<span class="player-input__error" aria-live="assertive">` (after player-two input)
 
-- **What:** Error message for player two's input
-- **When to show:** When validation fails
-- **When to clear:** When validation passes or when user starts typing again
-- **Example messages:** 
-  - "Player 2 name cannot be empty"
-  - "Names must be different"
+**When to show:**
+When player two's name is empty or when both names are the same.
 
-## Form submission handling
+**When to clear:**
+When the user starts typing in player two's input, or when validation passes.
 
-**Element:** `<form id="players-form">`
+---
 
-- **When:** Listen for the form's submit event
-- **What to do:** 
-  1. Prevent default form submission (which would reload the page)
-  2. Run validation
-  3. If validation passes → save names and navigate to next screen
-  4. If validation fails → display errors and stay on current screen
+## Validation Examples
 
-## What to save in game state
+### Scenario 1: Both empty
+- **Input 1:** "" (empty)
+- **Input 2:** "" (empty)
+- **Result:** Show "Player 1 name cannot be empty" and "Player 2 name cannot be empty"
+
+### Scenario 2: One empty
+- **Input 1:** "Sarah"
+- **Input 2:** "" (empty)
+- **Result:** Show "Player 2 name cannot be empty" only
+
+### Scenario 3: Same names
+- **Input 1:** "Sarah"
+- **Input 2:** "Sarah"
+- **Result:** Show "Names must be different" on both inputs
+
+### Scenario 4: Same names, different case
+- **Input 1:** "sarah"
+- **Input 2:** "SARAH"
+- **Result:** Show "Names must be different" on both inputs (case doesn't matter)
+
+### Scenario 5: Valid
+- **Input 1:** "Sarah"
+- **Input 2:** "John"
+- **Result:** Save names and navigate to ready screen
+
+---
+
+## What to Save
 
 After successful validation, save:
-- **playerOne:** The first player's name (trimmed)
-- **playerTwo:** The second player's name (trimmed)
-- **currentPlayerIndex:** Set to 0 (to start with player one)
-- **currentQuestionIndex:** Set to 0 (to start with first question)
+- Player one's name (with spaces removed from beginning/end)
+- Player two's name (with spaces removed from beginning/end)
+- Set up initial game state (starting with player one on question one)
 
-## User flow
+---
 
-1. Players land on the input screen
-2. Player one types their name
-3. Player two types their name
-4. They click "Start the game" button
-5. Form submits and validation runs
-6. If errors → error messages appear, form doesn't submit
-7. If valid → names are saved, navigate to ready screen
+## Implementation Notes
 
-## Validation examples
+### Error Display
 
-### Example 1: Both empty
-- Input 1: "" (empty)
-- Input 2: "" (empty)
-- Result: Show errors on both inputs
+The error spans have `display: none` in the CSS by default. To show an error:
+1. Set the error text
+2. Change the display style to make it visible
 
-### Example 2: One empty
-- Input 1: "Sarah"
-- Input 2: "" (empty)
-- Result: Show error only on input 2
+To hide an error:
+1. Clear the text
+2. Change the display style back to hidden
 
-### Example 3: Same names
-- Input 1: "Sarah"
-- Input 2: "Sarah"
-- Result: Show error on both inputs (names must be different)
+### Form Submission
 
-### Example 4: Same names, different case
-- Input 1: "sarah"
-- Input 2: "SARAH"
-- Result: Show error on both inputs (case-insensitive comparison)
+The "Start the game" button is inside a form and has `type="submit"`. This means clicking it triggers form submission. Make sure:
+- Form validation runs before navigation
+- The page doesn't reload (prevent default form behavior)
+- Navigation only happens if validation passes
 
-### Example 5: Valid
-- Input 1: "Sarah"
-- Input 2: "John"
-- Result: Save names, navigate to ready screen
+### Trimming Whitespace
 
-## IMPORTANT: Form Submit Button Behavior
-
-The "Start the game" button has TWO attributes:
-- `type="submit"` - This makes it submit the form
-- `data-type="navigation"` and `data-to="ready"` - This is for navigation
-
-**The JavaScript MUST:**
-1. Let the form's submit event handler run FIRST (for validation)
-2. Only navigate if validation passes
-3. NOT let the navigation button's click handler bypass the form validation
-
-The form submit handler should call `event.preventDefault()` to stop the default form submission, run validation, and only then manually trigger navigation if validation passes.
-
-## CSS Considerations
-
-**IMPORTANT:** The error span elements have `display: none` in the CSS by default.
-
-- **Problem:** Setting only `textContent` on error spans won't make them visible
-- **Solution:** You must also set inline styles to override the CSS
-- **How to display errors:** `errorSpan.style.display = 'block'`
-- **How to hide errors:** `errorSpan.style.display = 'none'`
-
-Example:
-```javascript
-// Show error
-if (errorSpan) {
-  errorSpan.textContent = 'Player 1 name cannot be empty';
-  errorSpan.style.display = 'block'; // Required to make it visible!
-}
-
-// Hide error
-if (errorSpan) {
-  errorSpan.textContent = '';
-  errorSpan.style.display = 'none';
-}
-```
+When checking if names are empty, ignore spaces at the beginning and end. "  Sarah  " should be treated as "Sarah", but "   " (only spaces) should be treated as empty.
 
 ## Input screen markup
 

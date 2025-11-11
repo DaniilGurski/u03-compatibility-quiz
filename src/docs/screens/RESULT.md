@@ -1,136 +1,144 @@
 # Result screen
-The result screen is where the players get to see how they answered, and if (and how) they've matched on the questions. The HTML is static, but the content will be populated by JavaScript.
 
-We use the `<template>` element and `cloneNode()` method to create multiple result cards - one for each question.
+The result screen is where players see their compatibility score and review how they answered each question. This screen appears once at the end of the game, after both players have answered all questions.
 
-## Score Summary Elements
+## What this screen does
 
-### Match Count
+This screen needs to:
+1. Calculate and display how many questions the players matched on
+2. Show their compatibility percentage (the "sync-o-score")
+3. Display a comment based on their score
+4. Create a card for each question showing both players' answers
+5. Allow players to start a new game
+
+---
+
+## Elements that need content
+
+### 1. Match Count
 **Element:** `<span class="screen__subtitle__match-count"></span>`
 
-- **What:** How many questions both players answered the same way
-- **Source:** Calculate from the answers array in your game state
-- **Format:** "X out of Y questions". Example: "2 out of 5 questions" or "4 out of 5 questions"
-- **When:** When the result screen is shown
-- **Logic:**
-  1. Loop through all answers
-  2. Count how many have playerOne === playerTwo
-  3. Get total number of questions (answers.length)
-  4. Format: `matchCount + " out of " + totalQuestions + " questions"`
+**What it should show:**
+How many questions both players answered identically.
 
-### Sync-o-Score (Percentage)
+**Format:**
+"X out of Y questions"
+Examples: "2 out of 5 questions" or "4 out of 5 questions"
+
+**Where the data comes from:**
+Count how many questions have matching answers from your saved answers. Compare each answer pair and count the matches.
+
+---
+
+### 2. Sync-o-Score (Percentage)
 **Element:** `<span class="screen__subtitle__score"></span>`
 
-- **What:** The compatibility percentage
-- **Source:** Calculate from match count and total questions
-- **Format:** Percentage with % symbol. Example: "40%" or "80%" or "100%"
-- **When:** When the result screen is shown
-- **Logic:**
-  1. Get match count (how many matched)
-  2. Get total questions
-  3. Calculate: (matchCount ÷ totalQuestions) × 100
-  4. Round to nearest whole number
-  5. Format: `percentage + "%"`
+**What it should show:**
+The compatibility percentage between the two players.
 
-### Score Comment
+**Format:**
+A whole number followed by a percent symbol.
+Examples: "40%" or "80%" or "100%"
+
+**Where the data comes from:**
+Calculate: (number of matches ÷ total questions) × 100
+Round to the nearest whole number.
+
+**Example calculation:**
+- 3 matches out of 5 questions
+- (3 ÷ 5) × 100 = 60%
+
+---
+
+### 3. Score Comment
 **Element:** `<span class="screen__subtitle__comment"></span>`
 
-- **What:** A comment about their compatibility based on the percentage
-- **Source:** `responseMessages.syncoMessage` from questions.json
-- **When:** When the result screen is shown
-- **Logic:**
-  - If percentage > 80 → pick random from `syncoMessage.good` array
-  - If percentage >= 40 and <= 80 → pick random from `syncoMessage.neutral` array
-  - If percentage < 40 → pick random from `syncoMessage.bad` array
+**What it should show:**
+A random comment about their compatibility, based on their percentage.
 
-Available comments:
+**Where the data comes from:**
+`responseMessages.syncoMessage` from [questions.json](/src/data/questions.json)
+
+**Which comment to use:**
+- **If percentage is greater than 80%** → Pick randomly from the "good" array
+- **If percentage is between 40% and 80%** → Pick randomly from the "neutral" array
+- **If percentage is less than 40%** → Pick randomly from the "bad" array
+
+**Available comments:**
 - **Good (>80%):** "Good job, very synced", "Perfect timing", "Nice sync", "Smooth coordination", "Well synchronized"
 - **Neutral (40-80%):** "Synced up", "Coordination noted", "Timing recorded", "Sync acknowledged", "Registered"
 - **Bad (<40%):** "Sync could be better", "Timing's off", "Not quite synced", "Coordination needs work", "Out of rhythm"
 
-## Result Cards (Dynamic - Created for Each Question)
+---
 
-For each question in the game, create one result card using the template.
+## Creating Result Cards (One per Question)
 
-### Template Location
-**Element:** `<template id="result-card-template">`
+For **each question** in the game, you need to create one result card. The HTML includes a `<template>` element that contains the structure for a single card. You'll need to make a copy of this template for each question and fill in the data.
 
-- This is a template element that contains the structure for one result card
-- It is NOT visible on the page
-- Clone it using `document.getElementById('result-card-template').content.cloneNode(true)`
+**Template location:** `<template id="result-card-template">`
+**Where to insert cards:** Inside `<div class="screen__results">`
 
-### Where to Insert Cards
-**Element:** `<div class="screen__results">`
+### Card elements to populate
 
-- This is the container where all result cards get inserted
-- Clear it first (set innerHTML to "")
-- Then append each cloned card
+#### Match Tag
+**Element:** `<span class="result-card__tag" data-match="match"></span>` (inside template)
 
-### Match Tag
-**Element:** `<span class="result-card__tag" data-match="match"></span>` (inside the template)
+**What it should show:**
+Whether the players matched on this specific question.
 
-- **What:** Shows if the players matched on this question
-- **Source:** `responseMessages.matchStatus` from questions.json
-- **Text options:**
-  - If matched → "You're in sync!"
-  - If not matched → "Different takes"
-- **Attribute:** Also update the `data-match` attribute:
-  - If matched → `data-match="match"`
-  - If not matched → `data-match="mismatch"`
-- **Logic:**
-  - Compare playerOne and playerTwo answers for this question
-  - If they're the same → it's a match
-  - If they're different → it's a mismatch
+**Where the data comes from:**
+`responseMessages.matchStatus` from [questions.json](/src/data/questions.json)
 
-### Question Title
-**Element:** `<h2 class="result-card__question-title"></h2>` (inside the template)
+**What to display:**
+- If both players gave the **same answer** → Show "You're in sync!" and set `data-match="match"`
+- If players gave **different answers** → Show "Different takes" and set `data-match="mismatch"`
 
-- **What:** Which question number this card is for
-- **Source:** From the loop index when creating cards
-- **Format:** "Question " + number. Example: "Question 1", "Question 2", "Question 5"
-- **Logic:**
-  - When looping through answers, use the index
-  - Add 1 to convert from 0-based to 1-based
-  - Format: `"Question " + (index + 1)`
+---
 
-### Question Description
-**Element:** `<p class="result-card__question-description"></p>` (inside the template)
+#### Question Title
+**Element:** `<h2 class="result-card__question-title"></h2>` (inside template)
 
-- **What:** The actual question text that was asked
-- **Source:** From the answer object's `questionText` property
-- **Format:** Exact text. Example: "I like romantic comedies."
-- **When:** When creating each card
+**What it should show:**
+Which question number this card represents.
 
-### Answer Title
-**Element:** `<h3 class="result-card__answer-title"></h3>` (inside the template)
+**Format:**
+"Question " followed by the number.
+Examples: "Question 1", "Question 2", "Question 5"
 
-- **What:** A label for the answer section
-- **Format:** Always "Breakdown"
-- **This is already in the HTML, no need to populate it**
+**Where the data comes from:**
+The position of the question in the list (first question = 1, second = 2, etc.)
 
-### Answer Summary
-**Element:** `<p class="result-card__answer-summary"></p>` (inside the template)
+---
 
-- **What:** Shows what each player answered
-- **Source:** From the answer object's playerOne and playerTwo properties
-- **Format:** Depends on what they answered (see all scenarios below)
-- **When:** When creating each card
+#### Question Description
+**Element:** `<p class="result-card__question-description"></p>` (inside template)
 
-## Answer Summary Scenarios
+**What it should show:**
+The actual question text that was asked.
 
-### Both players answered the same
+**Format:**
+The exact text from the question.
+Example: "I like romantic comedies."
 
-1. **Both agree**
-   - Format: "You both agree"
+**Where the data comes from:**
+From your saved answers - each answer should have stored the question text.
 
-2. **Both disagree**
-   - Format: "You both disagree"
+---
 
-3. **Both neutral**
-   - Format: "You are both neutral"
+#### Answer Summary
+**Element:** `<p class="result-card__answer-summary"></p>` (inside template)
 
-### Players answered differently
+**What it should show:**
+What each player answered for this question.
 
+**Format depends on their answers:**
+
+**If both players answered the same:**
+- Both agree → "You both agree"
+- Both disagree → "You both disagree"
+- Both neutral → "You are both neutral"
+
+**If players answered differently:**
 Format: "PlayerName verb and PlayerName verb"
 
 Examples:
@@ -138,123 +146,102 @@ Examples:
 - "Sarah disagrees and John is neutral"
 - "Sarah is neutral and John agrees"
 
-**Logic:**
-1. Convert answers to verbs:
-   - "agree" → "agrees"
-   - "disagree" → "disagrees"
-   - "neutral" → "is neutral"
-2. Use player names from game state
-3. Format: `playerOneName + " " + verb1 + " and " + playerTwoName + " " + verb2`
+**Converting answers to verbs:**
+- "agree" becomes "agrees"
+- "disagree" becomes "disagrees"
+- "neutral" becomes "is neutral"
 
-Example implementation:
-```javascript
-const formatAnswer = (ans) => {
-  if (ans === 'agree') return 'agrees';
-  if (ans === 'disagree') return 'disagrees';
-  if (ans === 'neutral') return 'is neutral';
-  return ans;
-};
-
-summary.textContent = `${playerOneName} ${formatAnswer(answer.playerOne)} and ${playerTwoName} ${formatAnswer(answer.playerTwo)}`;
-```
-
-## Creating Result Cards - Step by Step
-
-1. **Get the template**
-   ```javascript
-   const template = document.getElementById("result-card-template");
-   ```
-
-2. **Get the container**
-   ```javascript
-   const container = document.querySelector(".screen__results");
-   ```
-
-3. **Clear existing cards**
-   ```javascript
-   container.innerHTML = "";
-   ```
-
-4. **Loop through all answers**
-   ```javascript
-   // For each answer in gameState.answers
-   ```
-
-5. **For each answer:**
-   - Clone the template: `template.content.cloneNode(true)`
-   - Find elements within the clone (use querySelector on the clone)
-   - Populate all the elements (tag, title, description, summary)
-   - Append the clone to the container
-
-6. **Example structure of one answer object:**
-   ```javascript
-   {
-     questionId: "movies-1",
-     questionText: "I like romantic comedies.",
-     playerOne: "agree",
-     playerTwo: "disagree"
-   }
-   ```
-
-## Complete Example
-
-If there are 5 questions, create 5 result cards.
-
-**Example card 1:**
-- Tag: "Different takes" (data-match="mismatch")
-- Title: "Question 1"
-- Description: "I like romantic comedies."
-- Summary: "Sarah: Agree | John: Disagree"
-
-**Example card 2:**
-- Tag: "You're in sync!" (data-match="match")
-- Title: "Question 2"
-- Description: "I like action movies"
-- Summary: "You both agree"
+---
 
 ## Play Again Button
 
 **Element:** `<button class="screen__button">Play again</button>`
 
-- **What:** Resets the game so players can play again
-- **When clicked:**
-  1. Reset game state (clear answers, reset question index, reset player index)
-  2. Keep player names (don't make them re-enter)
-  3. Clear any selected category (or keep it - your choice)
-  4. Navigate to category screen
+**What it should do:**
+Reset the game so players can play again with a new category.
 
-### What to keep vs what to reset
+**What should reset:**
+- Selected category (clear it)
+- Current question number (back to 0)
+- Current player (back to player 1)
+- All saved answers (clear them)
 
-**Keep:**
-- playerOne name
-- playerTwo name
-- questionsData (the loaded JSON)
+**What should stay:**
+- Player names (keep them so they don't have to re-enter)
+- The loaded questions data
 
-**Reset:**
-- selectedCategory (set to null or keep current - your choice)
-- currentPlayerIndex (set to 0)
-- currentQuestionIndex (set to 0)
-- answers (clear the array: set to [])
+**Where to go next:**
+Navigate to the category selection screen.
 
-## When this screen appears
+---
 
-The result screen appears once per game, after all players have answered all questions.
+## Complete Example
 
-## Full calculation example
+Let's say the game had 5 questions and the players matched on 3 of them (questions 1, 2, and 5):
 
-**Game state:**
-- 5 questions total
-- answers array has 5 objects
-- Matches: questions 1, 2, 5 (3 matches)
+**Summary section would show:**
+- Match count: "3 out of 5 questions"
+- Percentage: "60%"
+- Comment: A random pick from the neutral array, like "Synced up"
 
-**Calculations:**
-- Match count: 3
-- Total questions: 5
-- Match count text: "3 out of 5 questions"
-- Percentage: (3 ÷ 5) × 100 = 60%
-- Score text: "60%"
-- Comment category: Neutral (because 60 is between 40 and 80)
-- Comment: Random from neutral array, e.g., "Synced up"
+**Result cards would show 5 cards:**
+
+**Card 1:**
+- Tag: "You're in sync!" (green styling)
+- Title: "Question 1"
+- Description: "I like romantic comedies."
+- Summary: "You both agree"
+
+**Card 2:**
+- Tag: "You're in sync!" (green styling)
+- Title: "Question 2"
+- Description: "I like action movies"
+- Summary: "You both disagree"
+
+**Card 3:**
+- Tag: "Different takes" (red styling)
+- Title: "Question 3"
+- Description: "I like thriller movies"
+- Summary: "Sarah agrees and John is neutral"
+
+**Card 4:**
+- Tag: "Different takes" (red styling)
+- Title: "Question 4"
+- Description: "I like drama movies."
+- Summary: "Sarah disagrees and John agrees"
+
+**Card 5:**
+- Tag: "You're in sync!" (green styling)
+- Title: "Question 5"
+- Description: "I simply don't like movies."
+- Summary: "You are both neutral"
+
+---
+
+## Implementation Notes
+
+### Working with Templates
+The `<template>` element is a special HTML element that holds content but doesn't display it. To use it:
+1. Find the template in the HTML
+2. Make a copy of its contents
+3. Fill in the copy with your data
+4. Add the copy to the page
+
+This is a standard web development pattern - look up "HTML template element" for more information.
+
+### Clearing Old Cards
+Before creating new cards, make sure the results container is empty. Otherwise, old cards from a previous game might still be visible.
+
+### Answer Data Structure
+Throughout the game, you should have been saving answers in a format that includes:
+- The question ID (e.g., "movies-1")
+- The question text (e.g., "I like romantic comedies.")
+- Player one's answer ("agree", "disagree", or "neutral")
+- Player two's answer ("agree", "disagree", or "neutral")
+
+If you saved this information during the game, you'll have everything you need to populate the result screen.
+
+---
 
 ## Result screen markup
 

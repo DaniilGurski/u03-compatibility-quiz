@@ -1,223 +1,222 @@
 # Question screen
-The questions screen handles showing each player a question and recording each answer. The questions all come from [questions.json](/src/data/questions.json). The players can choose to "Agree", "Disagree" or be "Neutral" to a question/statement.
 
-If a quiz category contains 5 questions, the question screen will be displayed a total of 10 times (each user gets to see each question).
+The question screen shows each player a question and records their answer. The questions come from [questions.json](/src/data/questions.json). Players can choose to "Agree", "Disagree" or be "Neutral" to each statement.
 
-## Elements to be populated by JavaScript
+## How often this screen appears
 
-### Player Turn Indicator
+Each player sees each question once. If a category has 5 questions, the question screen appears 10 times total (5 questions × 2 players).
+
+## What this screen does
+
+This screen needs to:
+1. Display whose turn it is
+2. Show the current question number and total
+3. Display the question text
+4. Show three answer options with labels
+5. Validate that an answer is selected
+6. Save the player's answer
+7. Clear any previous selection when showing a new question
+
+---
+
+## Elements that need content
+
+### 1. Player Turn Indicator
 **Element:** `<span class="question-form__player-name"></span>`
 
-- **What:** Shows whose turn it is to answer
-- **Source:** From your game state - either playerOne or playerTwo (based on currentPlayerIndex)
-- **Format:** Player name + apostrophe s + "turn". Example: "Sarah's turn" or "John's turn"
-- **When:** Every time the question screen is shown
-- **Logic:**
-  - Check which player's turn it is (using currentPlayerIndex or similar)
-  - If currentPlayerIndex is 0 → use playerOne name
-  - If currentPlayerIndex is 1 → use playerTwo name
-  - Format: `playerName + "'s turn"`
+**What it should show:**
+Whose turn it is to answer.
 
-### Current Question Number
+**Format:**
+Player name + apostrophe s + "turn"
+Examples: "Sarah's turn" or "John's turn"
+
+**Where the data comes from:**
+Your saved player names. Track which player is currently answering (player 1 or player 2).
+
+---
+
+### 2. Current Question Number
 **Element:** `<span class="question-form__progress-current"></span>`
 
-- **What:** Which question the player is currently on
-- **Source:** From your game state - currentQuestionIndex
-- **Format:** "Question " + number. Example: "Question 1", "Question 2", "Question 5"
-- **When:** Every time the question screen is shown
-- **Logic:**
-  - Get currentQuestionIndex from game state (this is 0-based)
-  - Add 1 to it (to convert from 0-based to 1-based for display)
-  - Format: `"Question " + (currentQuestionIndex + 1)`
+**What it should show:**
+Which question the player is currently on.
 
-### Total Question Count
+**Format:**
+"Question " followed by the number.
+Examples: "Question 1", "Question 2", "Question 5"
+
+**Where the data comes from:**
+Track which question you're on. Note: If you're counting from 0, remember to add 1 for display (so question 0 shows as "Question 1").
+
+---
+
+### 3. Total Question Count
 **Element:** `<span class="question-form__progress-total"></span>`
 
-- **What:** The total number of questions in the selected category
-- **Source:** `categories[selectedCategoryId].questions.length` from questions.json
-- **Format:** "of " + number. Example: "of 5", "of 10"
-- **When:** Every time the question screen is shown
-- **Logic:**
-  - Find the selected category in the categories array
-  - Get the length of that category's questions array
-  - Format: `"of " + questions.length`
+**What it should show:**
+The total number of questions in the selected category.
 
-### Question Text
+**Format:**
+"of " followed by the number.
+Examples: "of 5", "of 10"
+
+**Where the data comes from:**
+From the selected category's questions array in [questions.json](/src/data/questions.json). Count how many questions are in the `questions` array.
+
+---
+
+### 4. Question Text
 **Element:** `<span class="question-form__fieldset-text"></span>`
 
-- **What:** The actual question or statement the player needs to respond to
-- **Source:** `categories[selectedCategoryId].questions[currentQuestionIndex].text` from questions.json
-- **Format:** Exact text from JSON. Example: "I like romantic comedies."
-- **When:** Every time the question screen is shown
-- **Logic:**
-  - Find the selected category in the categories array
-  - Get the current question using currentQuestionIndex
-  - Use the question's `text` property
+**What it should show:**
+The actual question or statement the player needs to respond to.
 
-### Answer Option Labels (3 elements)
-**Element:** `<span class="answer-option__text"></span>` (there are THREE of these!)
+**Format:**
+Exact text from the questions file.
+Example: "I like romantic comedies."
 
-- **What:** The labels for each answer option
-- **Source:** `categories[selectedCategoryId].questions[currentQuestionIndex].options` array from questions.json
-- **Available options:** Always ["Agree", "Disagree", "Neutral"] (in that order)
-- **Format:** Exact text from the options array
-- **When:** Every time the question screen is shown
-- **Logic:**
-  - Find the selected category in the categories array
-  - Get the current question using currentQuestionIndex
-  - Get the question's `options` array
-  - Loop through all three `.answer-option__text` spans
-  - Set span 1 to options[0] ("Agree")
-  - Set span 2 to options[1] ("Disagree")
-  - Set span 3 to options[2] ("Neutral")
-  - If no choise is given/selected, show an error in this span `<span class="question-form__error" aria-live="assertive"></span>`
+**Where the data comes from:**
+From the current question's `text` property in [questions.json](/src/data/questions.json).
 
-## How the answer options are structured
+---
 
-Each answer option has this HTML structure:
+### 5. Answer Option Labels (3 spans)
+**Element:** `<span class="answer-option__text"></span>` (there are **THREE** of these)
+
+**What they should show:**
+The labels for each answer choice.
+
+**Format:**
+The three options are always: "Agree", "Disagree", "Neutral" (in that order)
+
+**Where the data comes from:**
+From the current question's `options` array in [questions.json](/src/data/questions.json). The first span gets options[0], second gets options[1], third gets options[2].
+
+---
+
+## Understanding the Answer Options
+
+The HTML has three answer options, each with this structure:
 ```html
 <div class="answer-option" data-answer="agree">
   <label for="q1_a1" class="answer-option__label">
     <input type="radio" id="q1_a1" name="question1" value="agree" data-answer="agree" class="answer-option__input" />
-    <span class="answer-option__text"></span> <!-- POPULATE THIS -->
+    <span class="answer-option__text"></span> <!-- This is what you populate -->
   </label>
 </div>
 ```
 
-There are three of these:
-1. First one: data-answer="agree", value="agree" → populate with "Agree"
-2. Second one: data-answer="disagree", value="disagree" → populate with "Disagree"
-3. Third one: data-answer="neutral", value="neutral" → populate with "Neutral"
+**The three options:**
+1. First option: `data-answer="agree"`, `value="agree"` → populate span with "Agree"
+2. Second option: `data-answer="disagree"`, `value="disagree"` → populate span with "Disagree"
+3. Third option: `data-answer="neutral"`, `value="neutral"` → populate span with "Neutral"
 
-## Capturing the answer
+---
 
-### Form submission
+## Capturing and Saving Answers
+
+### When the form is submitted
+
 **Element:** `<form class="question-form">`
 
-- **When:** Listen for the form's submit event (when "Lock in and continue" button is clicked)
-- **What to do:**
-  1. Prevent default form submission
-  2. Check which radio button is selected
-  3. If no radio selected → show error/alert "Please select an answer"
-  4. If radio selected → save the answer and navigate to handoff screen
+When the player clicks "Lock in and continue", the form submits. You need to:
+1. **Validate** - Check if a radio button is selected
+2. **Show error if needed** - Display "Please select an answer" in `<span class="question-form__error">`
+3. **Save the answer** - Record which option they chose
+4. **Navigate** - Go to the handoff screen
 
-### Getting the selected answer
-- **How:** Find which radio input has the `checked` property
-- **What to save:** The radio's `value` attribute ("agree", "disagree", or "neutral")
+### What to save
 
-### Where to save the answer
+Each answer should be saved with this information:
+- **Question ID** (e.g., "movies-1")
+- **Question text** (e.g., "I like romantic comedies.") - needed for the results screen
+- **Player one's answer** ("agree", "disagree", "neutral", or empty if they haven't answered yet)
+- **Player two's answer** ("agree", "disagree", "neutral", or empty if they haven't answered yet)
 
-Save to your game state in an answers array. Each answer should include:
-- **questionId:** The ID of the question (e.g., "movies-1")
-- **questionText:** The question text (for displaying in results later)
-- **playerOne:** Player one's answer ("agree", "disagree", "neutral", or null if not answered yet)
-- **playerTwo:** Player two's answer ("agree", "disagree", "neutral", or null if not answered yet)
+### How answers build up
 
-### Answer saving logic
-
-When player answers:
-1. Get the current question's ID
-2. Check if an answer entry already exists for this questionId
-3. If not, create new entry with both players set to null
-4. Update the current player's answer in that entry
-5. Save to game state
-
-Example answer structure:
-```javascript
-// After player one answers question 1
-{
-  questionId: "movies-1",
-  questionText: "I like romantic comedies.",
-  playerOne: "agree",
-  playerTwo: null  // hasn't answered yet
-}
-
-// After player two also answers question 1
-{
-  questionId: "movies-1",
-  questionText: "I like romantic comedies.",
-  playerOne: "agree",
-  playerTwo: "disagree"
-}
+**After player one answers question 1:**
+```
+Question: "I like romantic comedies."
+Player 1: "agree"
+Player 2: (not answered yet)
 ```
 
-## Clear previous selection
-
-**Important:** When showing a new question, make sure to clear any previously selected radio button!
-
-- **What to do:** Set all radio inputs' `checked` property to false
-- **When:** Before showing each question
-
-## Example: How data flows for question 2 of "movies" category
-
-1. **Game state says:**
-   - selectedCategory: "movies"
-   - currentPlayerIndex: 1 (player two)
-   - currentQuestionIndex: 1 (second question, 0-based)
-
-2. **Populate elements:**
-   - Player name: "John's turn"
-   - Progress current: "Question 2"
-   - Progress total: "of 5"
-   - Question text: "I like action movies"
-   - Option 1: "Agree"
-   - Option 2: "Disagree"
-   - Option 3: "Neutral"
-
-3. **Player selects:** "Agree" radio button
-
-4. **On submit:**
-   - Get value: "agree"
-   - Find/create answer entry for "movies-2"
-   - Set playerTwo: "agree" in that entry
-   - Navigate to handoff screen
-
-## CSS Considerations
-
-**IMPORTANT:** The error span element has `display: none` in the CSS by default.
-
-- **Problem:** Setting only `textContent` on the error span won't make it visible
-- **Solution:** You must also set inline styles to override the CSS
-- **How to display error:** `errorSpan.style.display = 'block'`
-- **How to hide error:** `errorSpan.style.display = 'none'`
-
-Example:
-```javascript
-// Show error when no answer selected
-if (!selectedRadio) {
-  if (errorSpan) {
-    errorSpan.textContent = 'Please select an answer';
-    errorSpan.style.display = 'block'; // Required to make it visible!
-  }
-  return;
-}
-
-// Hide error when answer is selected
-if (errorSpan) {
-  errorSpan.textContent = '';
-  errorSpan.style.display = 'none';
-}
+**After player two also answers question 1:**
+```
+Question: "I like romantic comedies."
+Player 1: "agree"
+Player 2: "disagree"
 ```
 
-## Form Submit Button Behavior
+Now both players have answered this question, and you can move to the next question.
 
-**IMPORTANT:** The "Lock in and continue" button has TWO attributes:
-- `type="submit"` (implied by being inside a form)
-- `data-type="navigation"` and `data-to="handoff"` - This is for navigation
+---
 
-**The JavaScript MUST:**
-1. Let the form's submit event handler run FIRST (for validation)
-2. Only navigate if validation passes (an answer is selected)
-3. NOT let the navigation button's click handler bypass the form validation
+## Important Behaviors
 
-The form submit handler should call `event.preventDefault()` to stop default behavior, check if an answer is selected, and only then manually trigger navigation if validation passes.
+### Clearing previous selections
 
-## When this screen appears
+When showing a new question, **clear any previously selected radio button**. Otherwise, the previous answer might still appear selected.
 
-The question screen appears once per player per question.
+### Validation
 
-Total appearances: 2 × number of questions
-Example: If there are 5 questions, the question screen appears 10 times total.
+If no answer is selected when the form submits, show an error message and don't navigate to the next screen.
+
+**Error element:** `<span class="question-form__error" aria-live="assertive"></span>`
+
+**Error message:** "Please select an answer"
+
+---
+
+## Complete Example
+
+Let's walk through what happens for **question 2** of the **"movies"** category when it's **player two's turn**:
+
+**The screen should display:**
+- Player turn: "John's turn"
+- Progress: "Question 2"
+- Total: "of 5"
+- Question: "I like action movies"
+- Options: "Agree", "Disagree", "Neutral"
+
+**Player interaction:**
+1. Player two (John) reads the question
+2. Player two selects "Agree"
+3. Player two clicks "Lock in and continue"
+
+**What should happen:**
+1. Form validates - an answer is selected ✓
+2. Save the answer "agree" for player two on question "movies-2"
+3. Navigate to the handoff screen
+
+---
+
+## Implementation Notes
+
+### Error Display
+
+The error span has `display: none` in the CSS by default. To show an error:
+1. Set the error text content
+2. Change the display style to make it visible
+
+To hide the error:
+1. Clear the text content
+2. Change the display style back to hidden
+
+### Form vs Navigation
+
+The "Lock in and continue" button is inside a form, which means it triggers form submission. Make sure:
+- Form validation runs before navigation
+- Navigation only happens if validation passes
+- The default form submission behavior is prevented (which would reload the page)
+
+### Getting the Selected Answer
+
+Radio buttons are grouped by their `name` attribute. When the user selects one:
+- The selected radio has a special property indicating it's checked
+- The radio's `value` attribute contains what to save ("agree", "disagree", or "neutral")
 
 ## Question screen markup
 

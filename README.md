@@ -26,7 +26,7 @@ git branch --all
 git checkout -b yournewbranchname
 
 ### Switch to an existing branch that you know the name of
-git swith branchyourswitchingto
+git swith branchtoswitchto
 
 ### Switch to main (in order to delete another branch)
 git checkout main

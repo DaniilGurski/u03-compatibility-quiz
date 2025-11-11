@@ -1,102 +1,125 @@
 # Handoff screen
-The handoff screen appears after a player has answered a question. It confirms their answer was recorded and instructs them to pass the device to the other player. This screen shows a random acknowledgment message and the name of the player who just answered.
 
-## Elements to be populated by JavaScript
+The handoff screen appears after a player answers a question. It confirms their answer was recorded and tells them to pass the device to the other player (or shows final completion if the game is done).
 
-### Acknowledgment Message
+## What this screen does
+
+This screen needs to:
+1. Show a random acknowledgment message
+2. Display the name of the player who just answered
+3. Update the subtitle based on whether it's mid-game or the final handoff
+4. Update the button text and destination based on game progress
+5. Track which player goes next and which question is next
+
+---
+
+## Elements that need content
+
+### 1. Acknowledgment Message
 **Element:** `<span class="screen__title__text screen__title__text--greeting"></span>`
 
-- **What:** A random message acknowledging the player's answer
-- **Source:** `responseMessages.handoffMessage` array from [questions.json](/src/data/questions.json)
-- **Available options:** "Nice choice", "Interesting", "Bold move", "Got it", "Noted", "Spicy take", "Straight up", "Love it", "Alright then", "From the horse's mouth"
-- **Format:** The message text followed by a comma. Example: "Nice choice," or "Bold move,"
-- **When:** Every time the handoff screen is shown (after each player answers)
-- **Logic:** Pick a random message from the array each time
+**What it should show:**
+A random acknowledgment message.
 
-### Player Name
+**Format:**
+The message followed by a comma.
+Examples: "Nice choice," or "Bold move," or "Got it,"
+
+**Where the data comes from:**
+`responseMessages.handoffMessage` array in [questions.json](/src/data/questions.json)
+
+**Available messages:**
+"Nice choice", "Interesting", "Bold move", "Got it", "Noted", "Spicy take", "Straight up", "Love it", "Alright then", "From the horse's mouth"
+
+**Special case - Final handoff:**
+When it's the very last answer of the game, show "All done!" instead of a random message.
+
+---
+
+### 2. Player Name
 **Element:** `<span class="screen__title__text screen__title__text--username"></span>`
 
-- **What:** The name of the player who JUST answered the question
-- **Source:** From your game state - either playerOne or playerTwo
-- **Format:** Just the player's name. Example: "Sarah" or "John"
-- **When:** Every time the handoff screen is shown (after each player answers)
-- **Logic:** 
-  - Check which player just answered (the CURRENT player, before switching)
-  - If player one just answered, show playerOne name
-  - If player two just answered, show playerTwo name
+**What it should show:**
+The name of the player who JUST answered.
 
-## How it displays to the user
-The acknowledgment and username combine to form the title. For example:
+**Format:**
+Just the player's name.
+Examples: "Sarah" or "John"
+
+**Where the data comes from:**
+Your saved player names. Show the name of whichever player just submitted an answer.
+
+**Special case - Final handoff:**
+When it's the very last answer of the game, leave this blank (no player name shown).
+
+**How it displays:**
+The greeting and name combine to form the title:
 - "Nice choice, Sarah"
 - "Bold move, John"
-- "Got it, Sarah"
+- "All done!" (final handoff, no name)
 
-## The handoff button - IMPORTANT!
-The "Hand it over" button has **conditional navigation** - it goes to different screens depending on the game state.
+---
 
-### Button destination logic
+## The Handoff Button (Conditional Navigation)
+
 **Element:** `<button class="screen__button" data-type="navigation" data-to="result">`
 
-The button's `data-to` attribute needs to be updated dynamically based on:
+**IMPORTANT:** This button needs to go to different screens depending on game progress.
 
-**Scenario 1: Only one player has answered the current question**
+### Three possible scenarios:
+
+**Scenario 1: Player one just answered**
 - **Where to go:** Ready screen
-- **Why:** The other player still needs to answer the same question
-- **What happens next:** The other player sees the ready screen, then answers the same question
+- **Why:** Player two needs to answer the same question
+- **Button text:** "Hand it over"
+- **Subtitle:** "Answer recorded. Now close your eyes and pass the device."
 
-**Scenario 2: Both players have answered the current question, and more questions remain**
+**Scenario 2: Player two just answered, more questions remain**
 - **Where to go:** Ready screen
-- **Why:** Move to the next question
-- **What happens next:** Player one sees the ready screen for the next question
+- **Why:** Move to the next question (player one goes first)
+- **Button text:** "Hand it over"
+- **Subtitle:** "Answer recorded. Now close your eyes and pass the device."
 
-**Scenario 3: Both players have answered the current question, and no more questions remain**
+**Scenario 3: Player two just answered the final question**
 - **Where to go:** Result screen
-- **Why:** The game is complete
-- **What happens next:** Players see their compatibility score and results
+- **Why:** The game is complete!
+- **Button text:** "See results"
+- **Subtitle:** "You have both answered all the questions"
 
-### How to determine which scenario
-You need to track:
-1. **Which player just answered** (player one or player two)
-2. **Which question you're on** (question index or number)
-3. **How many total questions exist** in the selected category
+### Determining which scenario
 
-Logic steps:
-- If player one just answered → player two still needs to answer → go to "ready"
-- If player two just answered:
-  - Check if this was the last question
-  - If yes → go to "result"
-  - If no → go to "ready" (for next question with player one)
+You need to know:
+- Which player just answered
+- Which question you're on
+- How many total questions there are
 
-### What to update in game state
-Before the button is clicked, update:
-- **Next player index/flag** - Who will answer next
-- **Next question index** - Which question is next (if both players finished current question)
-- **Button's data-to attribute** - Set to "ready" or "result" based on logic above
+**Decision logic:**
+- Player one answered → Always go to ready screen (player two's turn)
+- Player two answered + more questions → Go to ready screen (next question)
+- Player two answered + no more questions → Go to result screen (game over!)
 
-## Dynamic Content Updates
+---
 
-**CRITICAL:** The handoff screen has multiple elements that change dynamically:
+## Dynamic Elements Summary
 
-### Elements that change:
-1. **Greeting span** - Random message OR "All done!"
-2. **Username span** - Player name OR empty
-3. **Subtitle paragraph** - "Answer recorded..." OR "You have both answered..."
-4. **Button text** - "Hand it over" OR "See results"
-5. **Button data-to** - "ready" OR "result"
+The handoff screen changes based on game state. Update ALL of these each time:
 
-### When to update:
-Update ALL these elements every time the handoff screen is shown (before navigating to it).
+| Element | Normal Handoff | Final Handoff |
+|---------|---------------|---------------|
+| Greeting span | Random message + comma | "All done!" |
+| Username span | Player name | (empty) |
+| Subtitle | "Answer recorded..." | "You have both answered..." |
+| Button text | "Hand it over" | "See results" |
+| Button destination | "ready" | "result" |
 
-## When this screen appears
+## When This Screen Appears
+
 The handoff screen appears after every answer is submitted.
 
-**Total appearances:** 2 times per question (once after each player answers)
-**Example:** If there are 5 questions, the handoff screen appears 10 times total.
+**How often:** 2 times per question (once after each player answers)
+**Example:** If there are 5 questions, this screen appears 10 times total.
 
-## Flow example with 2 questions
-
-**Complete flow showing both handoff states:**
-
+**Game flow with 2 questions:**
 ```
 Ready (P1) → Question (P1) → Handoff [Normal] →
 Ready (P2) → Question (P2) → Handoff [Normal] →
@@ -104,13 +127,11 @@ Ready (P1) → Question (P1) → Handoff [Normal] →
 Ready (P2) → Question (P2) → Handoff [FINAL] → Result
 ```
 
-**State breakdown:**
-- Handoff 1-3: Normal state (show player name, "Hand it over")
-- Handoff 4: Final state (show "All done!", "See results")
+---
 
 ## Visual Examples
 
-### State 1: Normal Handoff
+### Normal Handoff
 ```
 ┌─────────────────────────────────────┐
 │                                     │
@@ -126,7 +147,7 @@ Ready (P2) → Question (P2) → Handoff [FINAL] → Result
 └─────────────────────────────────────┘
 ```
 
-### State 2: Final Handoff
+### Final Handoff
 ```
 ┌─────────────────────────────────────┐
 │                                     │
@@ -142,18 +163,24 @@ Ready (P2) → Question (P2) → Handoff [FINAL] → Result
 └─────────────────────────────────────┘
 ```
 
-## Implementation Checklist
+---
 
-When implementing the handoff screen update function:
+## Implementation Notes
 
-✅ Check if it's the final handoff (player 2, last question)
-✅ Update greeting text based on state
-✅ Update username text based on state
-✅ Update subtitle text based on state
-✅ Update button text based on state
-✅ Update button data-to attribute for navigation
-✅ Update game state (player index, question index)
-✅ Determine correct next screen
+### Detecting Final Handoff
+
+You're on the final handoff when:
+- Player two just answered AND
+- You're on the last question
+
+### Updating State
+
+Before showing the handoff screen, update:
+- Which player answers next
+- Which question is next (if moving to a new question)
+- The button's destination attribute
+
+---
 
 ## Handoff screen markup
 

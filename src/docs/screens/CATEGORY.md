@@ -1,51 +1,72 @@
 # Category screen
-The category screen allows players to choose which quiz category they want to play. The dropdown menu is dynamically populated with all available categories from the [questions.json](/src/data/questions.json) file.
 
-## Elements to be populated by JavaScript
+The category screen allows players to choose which quiz category they want to play. The dropdown menu needs to be populated with all available categories from [questions.json](/src/data/questions.json).
+
+## What this screen does
+
+This screen needs to:
+1. Load all categories from questions.json
+2. Create a dropdown option for each category
+3. Show the category title and question count for each option
+4. Save the selected category when the player chooses one
+5. Validate that a category is selected before continuing
+6. Show an error if they try to continue without selecting
+
+---
+
+## Elements that need content
 
 ### Category Dropdown Options
 **Element:** `<select class="category-select__field" id="category-select">`
 
-- **What:** A list of all available quiz categories with question counts
-- **Source:** `categories` array from questions.json
-- **Format:** "Category Title (X questions)" 
-  - Example: "What movies do you prefer? (5 questions)"
-  - Example: "Where and how do you want to live? (5 questions)"
-- **When:** When the page first loads OR when the questions.json file has been fetched
-- **Logic:** 
-  - Loop through each category in the categories array
-  - For each category, create an `<option>` element
-  - Set the option's value to the category's `id` (e.g., "movies", "living")
-  - Set the option's display text to `category.title + " (" + category.questions.length + " questions)"`
-  - Append each option to the select element
-  - Make sure there is an "empty category" with the text "Choose a category"
-  - If no real category is selected, show a error message in `<span class="category-select__error" aria-live="assertive"></span>`
+**What it should contain:**
+Multiple `<option>` elements - one for each category, plus a default "Choose a category" option.
 
-### What data to extract from each category
-From questions.json, each category object contains:
-- `id` - Used as the option's value attribute (e.g., "movies")
+**Format for each option:**
+"Category Title (X questions)"
+
+**Examples:**
+- "What movies do you prefer? (5 questions)"
+- "Where and how do you want to live? (5 questions)"
+- "What type of traveler are you? (5 questions)"
+
+**Where the data comes from:**
+The `categories` array in [questions.json](/src/data/questions.json). Each category has:
+- `id` - Use this as the option's value (e.g., "movies", "living")
 - `title` - The category name to display (e.g., "What movies do you prefer?")
-- `questions` - An array of question objects
-- `questions.length` - The number of questions (e.g., 5)
+- `questions` - An array of questions. Count the length to show "(X questions)"
 
-### Saving the selected category
-- **What:** Store which category the players chose
-- **When:** When the player changes the dropdown selection
-- **Where to save:** In your game state (could be a variable, object, or localStorage)
-- **What to save:** The category `id` (e.g., "movies", not the full title)
-- **Why:** You'll need this later to know which questions to load during the game
+---
 
-## How it works for the user
-1. Player navigates to the category screen
-2. They see a dropdown with all available categories
-3. They select one category from the list
-4. The selection is saved
-5. They click "Who's playing?" button to continue
-6. If no category is selected and the user tried to go to the next step, an error message is displayed
+## Saving the Selection
 
-## Example of what gets created
-If questions.json has 5 categories, the select element will contain 6 options (5 categories and 1 "Choose a category"):
+**What to save:**
+The category ID (e.g., "movies") - NOT the full title.
 
+**When to save:**
+When the player selects a category from the dropdown.
+
+**Why it's needed:**
+You'll need the category ID later to load the correct questions during the game.
+
+---
+
+## Validation
+
+Before allowing navigation to the input screen:
+- Check if a category has been selected
+- If the dropdown is empty or still shows "Choose a category", show an error
+
+**Error element:** `<span class="category-select__error" aria-live="assertive"></span>`
+**Error message:** "Please select a category"
+
+---
+
+## Example
+
+If questions.json has 5 categories, the dropdown will contain 6 options total:
+
+**The completed select element would look like:**
 ```html
 <select class="category-select__field" id="category-select">
   <option value="">Choose a category</option>
@@ -55,8 +76,29 @@ If questions.json has 5 categories, the select element will contain 6 options (5
   <option value="sport">Assorted sport questions (5 questions)</option>
   <option value="cinema">Some statements about modern cinema (5 questions)</option>
 </select>
+```
 
-Note: The actual options are created by JavaScript, not written in the HTML file.
+**Note:** These options need to be created dynamically - they're not hard-coded in the HTML file.
+
+---
+
+## Implementation Notes
+
+### Creating Options Dynamically
+
+You need to create `<option>` elements for each category found in questions.json. Each option needs:
+- A `value` attribute set to the category ID
+- Display text showing the title and question count
+
+### Default Option
+
+Include an empty default option with text "Choose a category" and an empty value. This helps with validation.
+
+### Error Display
+
+The error span has `display: none` in the CSS by default. To show the error, you need to both set the error text AND change the display style to make it visible.
+
+---
 
 ## Category screen markup
 
