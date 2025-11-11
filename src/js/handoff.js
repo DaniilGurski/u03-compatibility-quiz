@@ -13,16 +13,16 @@
  * - This screen updates automatically when shown (see navigation.js)
  */
 
-import { gameState } from './main.js';
-import { getRandomFromArray } from './data.js';
-import { showScreen } from './navigation.js';
+import { gameState } from "./main.js";
+import { getRandomFromArray } from "./data.js";
+import { showScreen } from "./navigation.js";
 
 export function initHandoff() {
   // STEP 1: Find the HTML elements you need
-  // const acknowledgmentText = document.querySelector('[data-screen="handoff"] .screen__title__text--greeting');
-  // const playerNameText = document.querySelector('[data-screen="handoff"] .screen__title__text--username');
-  // const subtitleText = document.querySelector('[data-screen="handoff"] .screen__subtitle');
-  // const continueButton = document.querySelector('[data-screen="handoff"] [data-type="navigation"]');
+  // const acknowledgmentText = document.querySelector("[data-screen="handoff"] .screen__title__text--greeting");
+  // const playerNameText = document.querySelector("[data-screen="handoff"] .screen__title__text--username");
+  // const subtitleText = document.querySelector("[data-screen="handoff"] .screen__subtitle");
+  // const continueButton = document.querySelector("[data-screen="handoff"] [data-type="navigation"]");
 
   // Expose update function so navigation.js can call it automatically
   window.updateHandoffScreen = updateHandoffScreen;
@@ -40,7 +40,7 @@ export function initHandoff() {
     // STEP 4a: If final handoff (both players answered all questions):
     //   - Set acknowledgmentText to: "All done!"
     //   - Set playerNameText to: "" (empty)
-    //   - Set subtitleText to: "You have both answered all the questions. Let's see your results!"
+    //   - Set subtitleText to: "You have both answered all the questions. Let"s see your results!"
     //   - Set continueButton.textContent to: "See results"
     //   - Set continueButton data-to attribute to: "result"
 
@@ -54,17 +54,17 @@ export function initHandoff() {
   }
 
   // STEP 5: Set up button click listener
-  // Add 'click' event listener to continueButton
+  // Add "click" event listener to continueButton
   // Use event.preventDefault()
-  // Get the destination from continueButton.getAttribute('data-to')
-  // If destination is 'ready': update game state (see STEP 6)
-  // If destination is 'result': just call showScreen('result')
+  // Get the destination from continueButton.getAttribute("data-to")
+  // If destination is "ready": update game state (see STEP 6)
+  // If destination is "result": just call showScreen("result")
 
   // STEP 6: Update game state when continuing
-  // If going to 'ready' screen:
+  // If going to "ready" screen:
   //   - If currentPlayerIndex is 0: switch to player 2 (set currentPlayerIndex to 1)
   //   - If currentPlayerIndex is 1: switch to player 1 AND move to next question
   //     (set currentPlayerIndex to 0, add 1 to currentQuestionIndex)
-  // Then call showScreen('ready')
+  // Then call showScreen("ready")
   // See HANDOFF.md for complete logic diagram
 }

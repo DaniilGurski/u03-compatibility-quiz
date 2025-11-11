@@ -21,12 +21,12 @@ This is the current mode where the team works on separate files.
 
 **Files:**
 - `src/js/main.js` - Loads all the modular files
-- `src/js/category.js` - Category selection (COMPLETED)
-- `src/js/input.js` - Player names (COMPLETED)
-- `src/js/ready.js` - Ready screen (NEEDS WORK)
-- `src/js/question.js` - Questions screen (NEEDS WORK)
-- `src/js/handoff.js` - Handoff screen (NEEDS WORK)
-- `src/js/result.js` - Results screen (NEEDS WORK)
+- `src/js/category.js` - Category selection
+- `src/js/input.js` - Player names
+- `src/js/ready.js` - Ready screen
+- `src/js/question.js` - Questions screen
+- `src/js/handoff.js` - Handoff screen
+- `src/js/result.js` - Results screen
 
 ### Demo Mode (Working Example)
 
@@ -56,42 +56,34 @@ A fully working version to see how the game should function.
    ```
 3. Save and refresh your browser
 
-## What's Already Done
+## Screen Files
 
-Two team members have completed their screens:
-
-### Category Selection (category.js) - DONE
+### Category Selection (category.js)
 - Populates dropdown with categories
 - Saves selection to gameState
 - Validates before continuing
-- Adapted from game.js
 
-### Player Input (input.js) - DONE
+### Player Input (input.js)
 - Captures both player names
 - Validates names are filled
 - Validates names are different
 - Shows proper error messages
-- Adapted from game.js
 
-## What Still Needs Work
-
-Four screens still need to be completed by team members:
-
-### Ready Screen (ready.js) - NEEDS WORK
+### Ready Screen (ready.js)
 - Show random greeting
 - Show current player name
 
-### Question Screen (question.js) - NEEDS WORK
+### Question Screen (question.js)
 - Display question and options
 - Validate answer selected
 - Save answer to gameState
 
-### Handoff Screen (handoff.js) - NEEDS WORK
+### Handoff Screen (handoff.js)
 - Show acknowledgment
 - Handle player switching
 - Handle final handoff
 
-### Results Screen (result.js) - NEEDS WORK
+### Results Screen (result.js)
 - Calculate compatibility
 - Display results
 - Generate result cards
@@ -116,12 +108,12 @@ project/
 │   │   ├── main.js         - Coordinator (DO NOT EDIT)
 │   │   ├── navigation.js   - Screen switching (DO NOT EDIT)
 │   │   ├── data.js         - Data loading (DO NOT EDIT)
-│   │   ├── category.js     - Category screen (DONE)
-│   │   ├── input.js        - Input screen (DONE)
-│   │   ├── ready.js        - Ready screen (TODO)
-│   │   ├── question.js     - Question screen (TODO)
-│   │   ├── handoff.js      - Handoff screen (TODO)
-│   │   └── result.js       - Results screen (TODO)
+│   │   ├── category.js     - Category screen
+│   │   ├── input.js        - Input screen
+│   │   ├── ready.js        - Ready screen
+│   │   ├── question.js     - Question screen
+│   │   ├── handoff.js      - Handoff screen
+│   │   └── result.js       - Results screen
 │   ├── docs/
 │   │   ├── JS_MODULE_GUIDE.md      - Complete JavaScript guide
 │   │   └── screens/                - Documentation for each screen

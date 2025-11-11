@@ -5,27 +5,27 @@
  * Person: [Assign to team member]
  *
  * TODO:
- * - Display whose turn it is (player name + "'s turn")
+ * - Display whose turn it is (player name + ""s turn")
  * - Show current question number and total
  * - Display question text and answer options
  * - Validate that an answer is selected
- * - Save player's answer to gameState.answers array
+ * - Save player"s answer to gameState.answers array
  * - This screen updates automatically when shown (see navigation.js)
  */
 
-import { gameState } from './main.js';
-import { showScreen } from './navigation.js';
+import { gameState } from "./main.js";
+import { showScreen } from "./navigation.js";
 
 export function initQuestion() {
   // STEP 1: Find the HTML elements you need
-  // const questionForm = document.querySelector('[data-screen="question"] .question-form');
-  // const playerTurnText = document.querySelector('.question-form__player-name');
-  // const currentQuestionText = document.querySelector('.question-form__progress-current');
-  // const totalQuestionsText = document.querySelector('.question-form__progress-total');
-  // const questionText = document.querySelector('.question-form__fieldset-text');
-  // const answerLabels = document.querySelectorAll('.answer-option__text');
-  // const answerRadioButtons = document.querySelectorAll('.answer-option__input');
-  // const errorMessage = document.querySelector('.question-form__error');
+  // const questionForm = document.querySelector("[data-screen="question"] .question-form");
+  // const playerTurnText = document.querySelector(".question-form__player-name");
+  // const currentQuestionText = document.querySelector(".question-form__progress-current");
+  // const totalQuestionsText = document.querySelector(".question-form__progress-total");
+  // const questionText = document.querySelector(".question-form__fieldset-text");
+  // const answerLabels = document.querySelectorAll(".answer-option__text");
+  // const answerRadioButtons = document.querySelectorAll(".answer-option__input");
+  // const errorMessage = document.querySelector(".question-form__error");
 
   // Expose update function so navigation.js can call it automatically
   window.updateQuestionScreen = updateQuestionScreen;
@@ -38,7 +38,7 @@ export function initQuestion() {
     // STEP 3: Determine whose turn it is
     // If gameState.currentPlayerIndex is 0, use gameState.playerOne
     // If gameState.currentPlayerIndex is 1, use gameState.playerTwo
-    // Set playerTurnText to: currentPlayerName + "'s turn"
+    // Set playerTurnText to: currentPlayerName + ""s turn"
 
     // STEP 4: Update progress
     // Set currentQuestionText to: "Question " + (gameState.currentQuestionIndex + 1)
@@ -51,19 +51,19 @@ export function initQuestion() {
     // Set answerLabels[2] to: question.options[2] (Neutral)
 
     // STEP 6: Clear previous selection
-    // Loop through answerRadioButtons and set each one's .checked property to false
+    // Loop through answerRadioButtons and set each one"s .checked property to false
   }
 
   // STEP 7: Set up form submit listener
-  // Add 'submit' event listener to questionForm
+  // Add "submit" event listener to questionForm
   // Use event.preventDefault() to stop page reload
-  // Find which radio button is checked (use querySelector with ':checked')
+  // Find which radio button is checked (use querySelector with ":checked")
   // If no answer selected, show error: "Please select an answer"
   // If answer selected, save it and navigate to handoff screen
 
   // STEP 8: Save answer to gameState.answers
   // Check if this question already has an answer record in gameState.answers
   // If not, create new record with: questionId, questionText, playerOneAnswer: null, playerTwoAnswer: null
-  // Update the appropriate player's answer based on gameState.currentPlayerIndex
+  // Update the appropriate player"s answer based on gameState.currentPlayerIndex
   // See QUESTION.md for complete answer record structure
 }

@@ -5,14 +5,14 @@
  * Person: Can be done by team lead or assigned to someone
  */
 
-import { gameState } from './main.js';
+import { gameState } from "./main.js";
 
 /**
  * Loads the questions data from questions.json
  */
 export async function loadQuestions() {
   try {
-    const response = await fetch('/src/data/questions.json');
+    const response = await fetch("/src/data/questions.json");
 
     if (!response.ok) {
       throw new Error(`Failed to load questions: ${response.status}`);
@@ -25,7 +25,7 @@ export async function loadQuestions() {
     return questionsData;
 
   } catch (error) {
-    console.error('Error loading questions:', error);
+    console.error("Error loading questions:", error);
     throw error;
   }
 }

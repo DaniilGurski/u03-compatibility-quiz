@@ -28,7 +28,7 @@ The HTML and CSS are static, and the data/user input is dynamic.
 Static HTML, some introduction to the game. Contains a button that takes you to to the "How to play"-section
 
 ## How to play / rules
-Static HTML, some instructions on how the game is played. Contains a button that takes you the "Category"-selector, were the players can chose from a category of quizzes.
+Static HTML, some instructions on how the game is played. Contains a button that takes you to the "Category"-selector, where the players can choose from a category of quizzes.
 
 ## Pick a category
 
@@ -38,7 +38,7 @@ Static HTML section with a dynamic part. The section contains a `<select>` eleme
 - Should write out in the `<option>` how many questions there are in a category
 - Save the choosen category
 
-The section contains a button that takes you two the "Who's playing?"-section.
+The section contains a button that takes you to the "Who's playing?"-section.
 
 ## Who's playing?
 
@@ -50,7 +50,7 @@ The section contains a button that starts the game.
 
 ## Get ready
 
-A semi static HTML section with dynamic content that tells the player's whos turn it is.
+A semi static HTML section with dynamic content that tells the player whose turn it is.
 
 ## Question
 
@@ -64,7 +64,7 @@ Player 1 can choose from "Agree", "Disagree" and "Neutral" and then press a butt
 
 ## Handoff
 
-A new section is scrolled to/loaded into view. Is it a static section? I don't know. The purpose of this screen is to give feedback to Player 1 that their input was recieved, but also to instruct them to pass the screen over to Player 2.
+A new section is scrolled to/loaded into view. Is it a static section? I don't know. The purpose of this screen is to give feedback to Player 1 that their input was received, but also to instruct them to pass the screen over to Player 2.
 
 Each player answers separately, passing the phone back and forth until there's no questions left.
 

@@ -5,7 +5,7 @@
  * Adapted from: game.js lines 84-120
  */
 
-import { gameState } from './main.js';
+import { gameState } from "./main.js";
 
 export function initCategory() {
   // ============================================================================

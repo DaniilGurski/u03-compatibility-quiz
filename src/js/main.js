@@ -6,14 +6,14 @@
  */
 
 // Import all screen modules
-import { initNavigation } from './navigation.js';
-import { initCategory } from './category.js';
-import { initInput } from './input.js';
-import { initReady } from './ready.js';
-import { initQuestion } from './question.js';
-import { initHandoff } from './handoff.js';
-import { initResult } from './result.js';
-import { loadQuestions } from './data.js';
+import { initNavigation } from "./navigation.js";
+import { initCategory } from "./category.js";
+import { initInput } from "./input.js";
+import { initReady } from "./ready.js";
+import { initQuestion } from "./question.js";
+import { initHandoff } from "./handoff.js";
+import { initResult } from "./result.js";
+import { loadQuestions } from "./data.js";
 
 // ==========================================
 // SHARED GAME STATE
@@ -21,8 +21,8 @@ import { loadQuestions } from './data.js';
 // Everyone can read and write to this object
 export const gameState = {
   // Player information
-  playerOne: '',
-  playerTwo: '',
+  playerOne: "",
+  playerTwo: "",
 
   // Category and questions
   selectedCategoryId: null,
@@ -40,42 +40,42 @@ export const gameState = {
 // INITIALIZATION
 // ==========================================
 async function initializeGame() {
-  console.log('Initializing Same Wave game...');
+  console.log("Initializing Same Wave game...");
 
   try {
     // 1. Load the questions data first
     await loadQuestions();
-    console.log('Questions loaded');
+    console.log("Questions loaded");
 
     // 2. Initialize navigation system
     initNavigation();
-    console.log('Navigation initialized');
+    console.log("Navigation initialized");
 
     // 3. Initialize all screens
     initCategory();
-    console.log('Category screen initialized');
+    console.log("Category screen initialized");
 
     initInput();
-    console.log('Input screen initialized');
+    console.log("Input screen initialized");
 
     initReady();
-    console.log('Ready screen initialized');
+    console.log("Ready screen initialized");
 
     initQuestion();
-    console.log('Question screen initialized');
+    console.log("Question screen initialized");
 
     initHandoff();
-    console.log('Handoff screen initialized');
+    console.log("Handoff screen initialized");
 
     initResult();
-    console.log('Result screen initialized');
+    console.log("Result screen initialized");
 
-    console.log('Game ready!');
+    console.log("Game ready!");
 
   } catch (error) {
-    console.error('Error initializing game:', error);
+    console.error("Error initializing game:", error);
   }
 }
 
 // Start the game when the page loads
-document.addEventListener('DOMContentLoaded', initializeGame);
+document.addEventListener("DOMContentLoaded", initializeGame);

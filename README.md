@@ -66,8 +66,8 @@ export const gameState = {
 
 Each screen file exports an `init` function that sets up that screen's functionality:
 
-- **category.js** - Populates dropdown, saves selection (COMPLETED - adapted from game.js)
-- **input.js** - Captures player names, validates input (COMPLETED - adapted from game.js)
+- **category.js** - Populates dropdown, saves selection
+- **input.js** - Captures player names, validates input
 - **ready.js** - Shows greeting and player name
 - **question.js** - Displays questions, captures answers
 - **handoff.js** - Handles player switching logic

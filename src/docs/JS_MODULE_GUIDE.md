@@ -13,12 +13,12 @@ src/js/
 ├── main.js         - Coordinator and shared data (DO NOT EDIT)
 ├── navigation.js   - Screen switching (DO NOT EDIT)
 ├── data.js         - Loading questions.json (DO NOT EDIT)
-├── category.js     - Category selection screen (COMPLETED - adapted from game.js)
-├── input.js        - Player name input screen (COMPLETED - adapted from game.js)
-├── ready.js        - Ready screen before questions (NEEDS WORK)
-├── question.js     - Question and answer screen (NEEDS WORK)
-├── handoff.js      - Handoff screen between players (NEEDS WORK)
-└── result.js       - Results and compatibility score (NEEDS WORK)
+├── category.js     - Category selection screen
+├── input.js        - Player name input screen
+├── ready.js        - Ready screen before questions
+├── question.js     - Question and answer screen
+├── handoff.js      - Handoff screen between players
+└── result.js       - Results and compatibility score
 ```
 
 ## The Three Core Files (Already Complete)
@@ -91,27 +91,9 @@ const randomGreeting = getRandomFromArray(greetings);
 // randomGreeting will be one of: 'Hello', 'Hi', or 'Hey'
 ```
 
-## Screen Files Status
+## Screen Files
 
-### Already Completed (2 files)
-
-These files have been adapted from game.js and are ready to use:
-
-**category.js - Category Selection** - COMPLETED
-- Populates dropdown with categories
-- Saves selection to `gameState.selectedCategoryId`
-- Validates before continuing
-- You can look at this file as an example
-
-**input.js - Player Names** - COMPLETED
-- Captures both player names
-- Validates names are filled and different
-- Shows proper error messages
-- You can look at this file as an example
-
-### Need to be Completed (4 files)
-
-These files need team members to work on them:
+Each screen file exports an `init` function that sets up that screen's functionality:
 
 ### ready.js - Ready Screen
 

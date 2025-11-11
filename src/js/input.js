@@ -5,8 +5,8 @@
  * Adapted from: game.js lines 127-148
  */
 
-import { gameState } from './main.js';
-import { showScreen } from './navigation.js';
+import { gameState } from "./main.js";
+import { showScreen } from "./navigation.js";
 
 export function initInput() {
   // ============================================================================

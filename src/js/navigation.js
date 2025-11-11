@@ -11,30 +11,30 @@
 
 /**
  * Shows a specific screen and hides all others
- * @param {string} screenName - The data-screen value (e.g., 'welcome', 'category')
+ * @param {string} screenName - The data-screen value (e.g., "welcome", "category")
  */
 export function showScreen(screenName) {
   // Hide all screens and show only the requested one
-  const allScreens = document.querySelectorAll('section');
+  const allScreens = document.querySelectorAll("section");
 
   allScreens.forEach(screenElement => {
-    // Add 'hidden' class to all screens except the target
-    screenElement.classList.toggle('hidden', screenElement.dataset.screen !== screenName);
+    // Add "hidden" class to all screens except the target
+    screenElement.classList.toggle("hidden", screenElement.dataset.screen !== screenName);
 
-    // Toggle 'screen' class (remove from hidden screens to avoid conflicts)
-    screenElement.classList.toggle('screen', screenElement.dataset.screen === screenName);
+    // Toggle "screen" class (remove from hidden screens to avoid conflicts)
+    screenElement.classList.toggle("screen", screenElement.dataset.screen === screenName);
   });
 
   console.log(`Showing screen: ${screenName}`);
 
   // Update dynamic screens when they become active
-  if (screenName === 'ready' && window.updateReadyScreen) {
+  if (screenName === "ready" && window.updateReadyScreen) {
     window.updateReadyScreen();
-  } else if (screenName === 'question' && window.updateQuestionScreen) {
+  } else if (screenName === "question" && window.updateQuestionScreen) {
     window.updateQuestionScreen();
-  } else if (screenName === 'handoff' && window.updateHandoffScreen) {
+  } else if (screenName === "handoff" && window.updateHandoffScreen) {
     window.updateHandoffScreen();
-  } else if (screenName === 'result' && window.updateResultScreen) {
+  } else if (screenName === "result" && window.updateResultScreen) {
     window.updateResultScreen();
   }
 }
@@ -44,17 +44,17 @@ export function showScreen(screenName) {
  * Looks for buttons with data-type="navigation" and data-to="screenname"
  */
 function setupNavigationButtons() {
-  const navigationButtons = document.querySelectorAll('[data-type="navigation"]');
+  const navigationButtons = document.querySelectorAll("[data-type=\"navigation\"]");
 
   navigationButtons.forEach(button => {
     // Skip buttons inside forms - they'll be handled by form validation
-    const isInsideForm = button.closest('form');
+    const isInsideForm = button.closest("form");
     if (isInsideForm) {
       return;
     }
 
-    button.addEventListener('click', () => {
-      const destinationScreen = button.getAttribute('data-to');
+    button.addEventListener("click", () => {
+      const destinationScreen = button.getAttribute("data-to");
       if (destinationScreen) {
         showScreen(destinationScreen);
       }
@@ -70,5 +70,5 @@ export function initNavigation() {
   setupNavigationButtons();
 
   // Show the welcome screen by default
-  showScreen('welcome');
+  showScreen("welcome");
 }

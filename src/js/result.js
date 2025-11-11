@@ -12,16 +12,16 @@
  * - This screen updates automatically when shown (see navigation.js)
  */
 
-import { gameState } from './main.js';
-import { showScreen } from './navigation.js';
+import { gameState } from "./main.js";
+import { showScreen } from "./navigation.js";
 
 export function initResult() {
   // STEP 1: Find the HTML elements you need
-  // const matchingAnswersText = document.querySelector('.result__score__matching-count');
-  // const compatibilityPercentageText = document.querySelector('.result__score__compatibility-percent');
-  // const resultsCardsContainer = document.querySelector('.result__results');
-  // const resultCardTemplate = document.getElementById('result-card-template');
-  // const playAgainButton = document.querySelector('[data-screen="result"] [data-type="navigation"]');
+  // const matchingAnswersText = document.querySelector(".result__score__matching-count");
+  // const compatibilityPercentageText = document.querySelector(".result__score__compatibility-percent");
+  // const resultsCardsContainer = document.querySelector(".result__results");
+  // const resultCardTemplate = document.getElementById("result-card-template");
+  // const playAgainButton = document.querySelector("[data-screen="result"] [data-type="navigation"]");
 
   // Expose update function so navigation.js can call it automatically
   window.updateResultScreen = updateResultScreen;
@@ -56,7 +56,7 @@ export function initResult() {
   }
 
   // STEP 7: Set up play again button
-  // Add 'click' event listener to playAgainButton
+  // Add "click" event listener to playAgainButton
   // Use event.preventDefault()
   // Reset gameState to initial values:
   //   - selectedCategoryId = null
@@ -65,5 +65,5 @@ export function initResult() {
   //   - currentPlayerIndex = 0
   //   - currentQuestionIndex = 0
   //   - answers = []
-  // Navigate back to category screen: showScreen('category')
+  // Navigate back to category screen: showScreen("category")
 }
