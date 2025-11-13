@@ -31,22 +31,12 @@ export function initQuestion() {
   window.updateQuestionScreen = updateQuestionScreen;
 
   function updateQuestionScreen() {
-      // Provisoriskt fix för den hittade ej category/questionsData
-  if (!gameState.selectedCategoryId) {
-    gameState.selectedCategoryId = "movies";
-    console.warn(" No category selected — using default 'movies' for testing");
-  }
 
-    console.log("updateQuestionScreen körs!!!");
-    console.log("gameState.selectedCategoryId:", gameState.selectedCategoryId);
-    console.log("gameState.questionsData:", gameState.questionsData);
     // STEP 2: Find the current category and question
     const category = gameState.questionsData.categories.find(
       (cat) => cat.id === gameState.selectedCategoryId
     );
-    console.log("Vald kategori:", category);
     const question = category.questions[gameState.currentQuestionIndex];
-    console.log("Fråga:", question);
 
     // STEP 3: Determine whose turn it is
     const currentPlayerName =
