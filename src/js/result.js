@@ -1,8 +1,7 @@
 /**
  * RESULT.JS
- *
+ * 
  * Responsible for: Results screen
- * Person: [Assign to team member]
  *
  * TODO:
  * - Calculate compatibility score (count matching answers)
@@ -16,12 +15,66 @@ import { gameState } from "./main.js";
 import { showScreen } from "./navigation.js";
 
 export function initResult() {
-  // STEP 1: Find the HTML elements you need
-  // const matchingAnswersText = document.querySelector(".result__score__matching-count");
-  // const compatibilityPercentageText = document.querySelector(".result__score__compatibility-percent");
-  // const resultsCardsContainer = document.querySelector(".result__results");
-  // const resultCardTemplate = document.getElementById("result-card-template");
-  // const playAgainButton = document.querySelector("[data-screen="result"] [data-type="navigation"]");
+
+
+  const matchCountText = document.querySelector(".screen__subtitle__match-count");
+  const scoreCountText = document.querySelector(".screen__subtitle__score");
+  const commentText = document.querySelector(".screen__subtitle__match-count");
+  const resultsContainer = document.querySelector(".screen__results");
+  const template = document.getElementById("result-card-template");
+
+  const playAgainBtn = document.querySelector(".screen__button");
+
+
+
+  function
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // Expose update function so navigation.js can call it automatically
   window.updateResultScreen = updateResultScreen;
