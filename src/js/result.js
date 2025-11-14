@@ -11,6 +11,8 @@
  * - This screen updates automatically when shown (see navigation.js)
  */
 
+
+
 import { gameState } from "./main.js";
 import { showScreen } from "./navigation.js";
 
@@ -27,11 +29,29 @@ export function initResult() {
 
 
 
-  function
+  function updateResultScreen() {
+
+    const answers = gameState.answers;
+    const playerOne = gameState.playerOne;
+    const playerTwo = gameState.playerTwo;
+
+    if (!answers || answers.length === 0) return;
+
+    const totalQuestions = answers.length;
+    
+    let totalMatches = 0;
+    for (let answer of answers) {
+      if (answer.playerOne === answer.playerTwo) {
+        totalMatches++
+      }
+    }
+
+    const score = Math.round((totalMatches / totalQuestions) * 100);
+
+    matchCountText.textContent = `${totalMatches} out of ${totalQuestions} questions`;
 
 
-
-
+  }
 
 
 
