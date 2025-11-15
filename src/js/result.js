@@ -49,9 +49,55 @@ export function initResult() {
     const score = Math.round((totalMatches / totalQuestions) * 100);
 
     matchCountText.textContent = `${totalMatches} out of ${totalQuestions} questions`;
+    scoreCountText.textContent = `${score}%`;
 
 
-  }
+    const message = {
+      
+      5: ["Full match! You two are basically the same person. Seek help", 
+           "A full sweep. Get a room", 
+           "Perfect match. I’m annoyed at how well this worked for you"],
+        
+      4: ["Great match, but not flawless. Stay humble", 
+           "Almost perfect… but someone had to ruin it", 
+           "Almost perfect! One tiny disagreement keeps things spicy"],
+        
+      3: ["Pretty good! Compatible enough to hang out… or at least not block each other", 
+           "Not bad! You’d survive a coffee date", 
+           "Right in the middle. Could go cute or chaotic"],
+
+      2: ["Hmm. You match, but only in the “we tried” kind of way", 
+           "Barely compatible. Proceed with caution", 
+           "Two out of five. Ehh… tolerable at best"],
+      
+      1: ["You’d make great strangers", 
+           "A single match. Cute, but no", 
+           "One match. A single pity point"],
+
+      0: ["Perfect mismatch. Stunning work", 
+          "Absolutely nothing in common. Impressive, honestly", 
+          "Not a match. Not even accidentally"]
+    }
+
+
+    if (score === 0) {
+
+    }
+    else if (score === 20) {
+
+    }
+    else if (score === 40) {
+      
+    }
+    else if (score === 60) {
+      
+    }
+    else if (score === 80) {
+      
+    }
+    else if (score === 100) {
+      
+    }
 
 
 
