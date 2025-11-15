@@ -37,40 +37,43 @@ export function initResult() {
 
     if (!answers || answers.length === 0) return;
 
+    // Count how many answers match between the two players
     const totalQuestions = answers.length;
     
     let totalMatches = 0;
     for (let answer of answers) {
       if (answer.playerOne === answer.playerTwo) {
-        totalMatches++
+        totalMatches++    
       }
-    }
+    }  
 
+    // Convert match count into a percentage score
     const score = Math.round((totalMatches / totalQuestions) * 100);
 
     matchCountText.textContent = `${totalMatches} out of ${totalQuestions} questions`;
     scoreCountText.textContent = `${score}%`;
 
 
+    // Different comments to display depending on how well the players matched
     const message = {
       
-      5: ["Full match! You two are basically the same person. Seek help", 
+      100: ["Full match! You two are basically the same person. Seek help", 
            "A full sweep. Get a room", 
            "Perfect match. I’m annoyed at how well this worked for you"],
         
-      4: ["Great match, but not flawless. Stay humble", 
+      80: ["Great match, but not flawless. Stay humble", 
            "Almost perfect… but someone had to ruin it", 
            "Almost perfect! One tiny disagreement keeps things spicy"],
         
-      3: ["Pretty good! Compatible enough to hang out… or at least not block each other", 
+      60: ["Pretty good! Compatible enough to hang out… or at least not block each other", 
            "Not bad! You’d survive a coffee date", 
            "Right in the middle. Could go cute or chaotic"],
 
-      2: ["Hmm. You match, but only in the “we tried” kind of way", 
+      40: ["Hmm. You match, but only in the “we tried” kind of way", 
            "Barely compatible. Proceed with caution", 
            "Two out of five. Ehh… tolerable at best"],
       
-      1: ["You’d make great strangers", 
+      20: ["You’d make great strangers", 
            "A single match. Cute, but no", 
            "One match. A single pity point"],
 
@@ -79,24 +82,28 @@ export function initResult() {
           "Not a match. Not even accidentally"]
     }
 
+    // Pick random message from the array
+    function pickRandom(array) {
+      return array[Math.floor(Math.random() * array.length)];  
+}
 
     if (score === 0) {
-
+      commentText.textContent = pickRandom(message[0])
     }
     else if (score === 20) {
-
+      commentText.textContent = pickRandom(message[20]);
     }
     else if (score === 40) {
-      
+      commentText.textContent = pickRandom(message[40]);
     }
     else if (score === 60) {
-      
+      commentText.textContent = pickRandom(message[60]);
     }
     else if (score === 80) {
-      
+      commentText.textContent = pickRandom(message[80]);
     }
-    else if (score === 100) {
-      
+    else {
+      commentText.textContent = pickRandom(message[100]);
     }
 
 
@@ -122,17 +129,7 @@ export function initResult() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+  }
 
 
 
@@ -185,4 +182,4 @@ export function initResult() {
   //   - currentQuestionIndex = 0
   //   - answers = []
   // Navigate back to category screen: showScreen("category")
-}
+  }
