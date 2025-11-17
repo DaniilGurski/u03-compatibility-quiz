@@ -116,8 +116,7 @@ export function initResult() {
       const cardElement = card.querySelector(".result-card");
       const tag = card.querySelector(".result-card__tag");      
       const questitle = card.querySelector(".result-card__question-title");      
-      const quesDescription = card.querySelector(".result-card__question-description");      
-      const answerTitle = card.querySelector(".result-card__answer-title");      
+      const quesDescription = card.querySelector(".result-card__question-description");          
       const answerSummary = card.querySelector(".result-card__answer-summary");
       
       resultsContainer.appendChild(card);
