@@ -4,8 +4,6 @@
  * Responsible for: Results screen
  *
  * TODO:
- * - Calculate compatibility score (count matching answers)
- * - Display score and percentage
  * - Generate result cards for each question showing both answers
  * - Handle "Play again" functionality (reset gameState)
  * - This screen updates automatically when shown (see navigation.js)
@@ -38,6 +36,7 @@ export function initResult() {
     if (!answers || answers.length === 0) return;
 
     // Count how many answers match between the two players
+
     const totalQuestions = answers.length;
     
     let totalMatches = 0;
@@ -48,6 +47,7 @@ export function initResult() {
     }  
 
     // Convert match count into a percentage score
+
     const score = Math.round((totalMatches / totalQuestions) * 100);
 
     matchCountText.textContent = `${totalMatches} out of ${totalQuestions} questions`;
@@ -55,6 +55,7 @@ export function initResult() {
 
 
     // Different comments to display depending on how well the players matched
+
     const message = {
       
       100: ["Full match! You two are basically the same person. Seek help", 
@@ -83,9 +84,10 @@ export function initResult() {
     }
 
     // Pick random message from the array
+
     function pickRandom(array) {
-      return array[Math.floor(Math.random() * array.length)];  
-}
+      return array[Math.floor(Math.random() * array.length)];
+    }
 
     if (score === 0) {
       commentText.textContent = pickRandom(message[0])
@@ -105,6 +107,50 @@ export function initResult() {
     else {
       commentText.textContent = pickRandom(message[100]);
     }
+
+    // Clear old cards
+
+    resultsContainer.innerHTML = "";
+
+    answers.forEach((item, index) => {
+      const card = template.content.cloneNode(true);
+
+      const cardElement = card.querySelector(".result-card");
+      const tag = card.querySelector(".result-card__tag");      
+      const questitle = card.querySelector(".result-card__question-title");      
+      const quesDescription = card.querySelector(".result-card__question-description");      
+      const answerTitle = card.querySelector(".result-card__answer-title");      
+      const answerSummary = card.querySelector(".result-card__answer-summary");
+      
+      resultsContainer.appendChild(card);
+
+      const isMatch = item.playerOneAnwer === item.playerTwoAnswer;
+      
+      if (isMatch) {
+        tag.textContent = "Same take";
+        tag.dataset.match = "match";
+      } else {
+        tag.textContent = "Different takes";
+        tag.dataset.match = "mismatch";
+      }
+
+      questitle.textContent = `Question ${index + 1}`;
+      quesDescription.textContent = item.questionText;
+
+      answerSummary.textContent = `${playerOne}: ${item.playerOneAnwer} | ${playerTwo}: ${playerTwoAnswer}`;
+
+
+
+
+      // Fill in the card content:
+    //   - Player one name and answer
+    //   - Player two name and answer
+    // If answers match, add class "result-card--matching" to the card
+    // Append card to resultsCardsContainer
+
+    })
+
+
 
 
 
@@ -142,34 +188,6 @@ export function initResult() {
   // Expose update function so navigation.js can call it automatically
   window.updateResultScreen = updateResultScreen;
 
-  function updateResultScreen() {
-    // STEP 2: Calculate matching answers
-    // Count how many items in gameState.answers have matching answers
-    // An answer matches if: playerOneAnswer === playerTwoAnswer
-    // Get total: gameState.answers.length
-
-    // STEP 3: Calculate percentage
-    // Percentage = (matchingCount / totalAnswers) * 100
-    // Use Math.round() to round to nearest whole number
-
-    // STEP 4: Update score display
-    // Set matchingAnswersText to: matchingCount + " out of " + totalAnswers + " questions"
-    // Set compatibilityPercentageText to: percentage + "%"
-
-    // STEP 5: Clear previous result cards
-    // Set resultsCardsContainer.innerHTML to "" (empty string)
-
-    // STEP 6: Create result card for each question
-    // Loop through gameState.answers
-    // For each answer, clone the template: resultCardTemplate.content.cloneNode(true)
-    // Fill in the card content:
-    //   - Question number (index + 1)
-    //   - Question text
-    //   - Player one name and answer
-    //   - Player two name and answer
-    // If answers match, add class "result-card--matching" to the card
-    // Append card to resultsCardsContainer
-  }
 
   // STEP 7: Set up play again button
   // Add "click" event listener to playAgainButton
