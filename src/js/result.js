@@ -113,7 +113,6 @@ export function initResult() {
     answers.forEach((item, index) => {
       const card = template.content.cloneNode(true);
 
-      const cardElement = card.querySelector(".result-card");
       const tag = card.querySelector(".result-card__tag");      
       const questitle = card.querySelector(".result-card__question-title");      
       const quesDescription = card.querySelector(".result-card__question-description");          
