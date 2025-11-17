@@ -19,7 +19,7 @@ export function initResult() {
 
   const matchCountText = document.querySelector(".screen__subtitle__match-count");
   const scoreCountText = document.querySelector(".screen__subtitle__score");
-  const commentText = document.querySelector(".screen__subtitle__match-count");
+  const commentText = document.querySelector(".screen__subtitle__comment");
   const resultsContainer = document.querySelector(".screen__results");
   const template = document.getElementById("result-card-template");
 
@@ -117,10 +117,8 @@ export function initResult() {
       const questitle = card.querySelector(".result-card__question-title");      
       const quesDescription = card.querySelector(".result-card__question-description");          
       const answerSummary = card.querySelector(".result-card__answer-summary");
-      
-      resultsContainer.appendChild(card);
 
-      const isMatch = item.playerOneAnwer === item.playerTwoAnswer;
+      const isMatch = item.playerOne === item.playerTwo;
       
       if (isMatch) {
         tag.textContent = "Same take";
@@ -133,7 +131,7 @@ export function initResult() {
       questitle.textContent = `Question ${index + 1}`;
       quesDescription.textContent = item.questionText;
 
-      answerSummary.textContent = `${playerOne}: ${item.playerOneAnwer} | ${playerTwo}: ${playerTwoAnswer}`;
+      answerSummary.textContent = `${playerOne}: ${item.playerOne} | ${playerTwo}: ${item.playerTwo}`;
 
       resultsContainer.appendChild(card);
     })
@@ -142,17 +140,15 @@ export function initResult() {
   }
 
   const playAgainBtn = document.querySelector(".screen__button");
+
   playAgainBtn.addEventListener("click", (event) => {
     event.preventDefault();
     
-    gameState = {
-      selectedCategoryId: null,
-      playerOne: "",
-      playerTwo: "",
-      currentPlayerIndex: 0,
-      currentQuestionIndex: 0, 
-      answers: []
-    };
-    showScreen("category")
+    gameState.selectedCategoryId = null;
+    gameState.currentPlayerIndex = 0;
+    gameState.currentQuestionIndex = 0; 
+    gameState.answers = [];
+
+    showScreen("category");
   })
 }
