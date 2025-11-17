@@ -139,7 +139,7 @@ export function initResult() {
 
   }
 
-  const playAgainBtn = document.querySelector(".screen__button");
+  const playAgainBtn = document.querySelector(".play__again__button");
 
   playAgainBtn.addEventListener("click", (event) => {
     event.preventDefault();
