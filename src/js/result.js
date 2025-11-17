@@ -23,9 +23,7 @@ export function initResult() {
   const resultsContainer = document.querySelector(".screen__results");
   const template = document.getElementById("result-card-template");
 
-  const playAgainBtn = document.querySelector(".screen__button");
-
-
+  window.updateResultScreen = updateResultScreen;
 
   function updateResultScreen() {
 
@@ -139,65 +137,24 @@ export function initResult() {
 
       answerSummary.textContent = `${playerOne}: ${item.playerOneAnwer} | ${playerTwo}: ${playerTwoAnswer}`;
 
-
-
-
-      // Fill in the card content:
-    //   - Player one name and answer
-    //   - Player two name and answer
-    // If answers match, add class "result-card--matching" to the card
-    // Append card to resultsCardsContainer
-
+      resultsContainer.appendChild(card);
     })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   }
 
-
-
-
-
-
-
-
-
-  // Expose update function so navigation.js can call it automatically
-  window.updateResultScreen = updateResultScreen;
-
-
-  // STEP 7: Set up play again button
-  // Add "click" event listener to playAgainButton
-  // Use event.preventDefault()
-  // Reset gameState to initial values:
-  //   - selectedCategoryId = null
-  //   - playerOne = ""
-  //   - playerTwo = ""
-  //   - currentPlayerIndex = 0
-  //   - currentQuestionIndex = 0
-  //   - answers = []
-  // Navigate back to category screen: showScreen("category")
-  }
+  const playAgainBtn = document.querySelector(".screen__button");
+  playAgainBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    
+    gameState = {
+      selectedCategoryId: null,
+      playerOne: "",
+      playerTwo: "",
+      currentPlayerIndex: 0,
+      currentQuestionIndex: 0, 
+      answers: []
+    };
+    showScreen("category")
+  })
+}
