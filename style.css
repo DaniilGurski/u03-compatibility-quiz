@@ -148,7 +148,8 @@ h6 {
 }
 
 :where(:any-link:is(:focus-visible)) {
-  outline: max(1px, 0.125em) dashed light-dark(var(--color-black), var(--color-white));
+  outline: max(1px, 0.125em) dashed
+    light-dark(var(--color-black), var(--color-white));
   outline-offset: 0.125em;
 }
 
@@ -205,7 +206,7 @@ legend {
 }
 
 .screen[data-screen="ready"] {
-    background-color: var(--color-orange-200);
+  background-color: var(--color-orange-200);
 }
 
 .screen[data-screen="question"] {
@@ -603,4 +604,74 @@ legend {
 
 .result-card__answer-summary {
   font-size: 1.125rem;
+}
+
+/* Ready screen */
+.section[data-screen="ready"] .screen__content {
+  max-width: 720px;
+  margin: 6vh auto;
+  padding: 36px 40px;
+  border-radius: 14px;
+  background: rgba(255, 255, 0.92);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.09);
+  text-align: center;
+}
+
+.screen__title {
+  margin: 0 0 12px;
+  font-size: 32px;
+  line-height: 1.05;
+  color: #16314a;
+}
+
+.screen__title__text.screen__title__text--greeting,
+.screen__title__text.screen__title__text-username {
+  display: block;
+}
+
+.screen__title__text.screen__title__text--greeting {
+  font-weight: 700;
+  font-size: 34px;
+}
+
+.screen__title__text.screen__title__text--username {
+  font-weight: 400;
+  font-size: 26px;
+  color: #586b7f;
+  font-size: 15px;
+}
+
+.screen__content > button.screen__button {
+  padding: 12px 22px;
+  border-radius: 10px;
+  background: #2759a8;
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(39, 89, 168, 0.16);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.screen__content > button.screen__button:active {
+  transform: translateY(1px);
+  box-shadow: 0 4px 10px rgba(39, 89, 168, 0.12);
+}
+
+section[data-screen="ready"] .screen__title__text {
+  visibility: visible;
+  opacity: 1;
+}
+
+:root {
+  --bg-start: #8ec5fc;
+  --bg-end: #e0c3fc;
+  --card-bg: rgba(255, 255, 0.86);
+  --accent-1: #6a11cb;
+  --accent-2: #2575fc;
+  --text-primary: #222;
+  --text-muted: #555;
+  --radius-1g: 20px;
+  --gap: 1rem;
+  --max-width-card: 640px;
 }
