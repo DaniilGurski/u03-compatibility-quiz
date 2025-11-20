@@ -11,6 +11,7 @@
 
 import { gameState } from "./main.js";
 import { showScreen } from "./navigation.js";
+import { getRandomFromArray } from "./data.js";
 
 export function initResult() {
 
@@ -48,59 +49,20 @@ export function initResult() {
     matchCountText.textContent = `${totalMatches} out of ${totalQuestions} questions`;
     scoreCountText.textContent = `${score}%`;
 
+    // Get the sync messages from questions.json
+    const syncoMessages = gameState.questionsData.responseMessages.syncoMessage;
 
-    // Different comments to display depending on how well the players matched
-
-    const message = {
-      
-      100: ["Full match! You two are basically the same person. Seek help", 
-           "A full sweep. Get a room", 
-           "Perfect match. I’m annoyed at how well this worked for you"],
-        
-      80: ["Great match, but not flawless. Stay humble", 
-           "Almost perfect… but someone had to ruin it", 
-           "Almost perfect! One tiny disagreement keeps things spicy"],
-        
-      60: ["Pretty good! Compatible enough to hang out… or at least not block each other", 
-           "Not bad! You’d survive a coffee date", 
-           "Right in the middle. Could go cute or chaotic"],
-
-      40: ["Hmm. You match, but only in the “we tried” kind of way", 
-           "Barely compatible. Proceed with caution", 
-           "Two out of five. Ehh… tolerable at best"],
-      
-      20: ["You’d make great strangers", 
-           "A single match. Cute, but no", 
-           "One match. A single pity point"],
-
-      0: ["Perfect mismatch. Stunning work", 
-          "Absolutely nothing in common. Impressive, honestly", 
-          "Not a match. Not even accidentally"]
-    }
-
-    // Pick random message from the array
-
-    function pickRandom(array) {
-      return array[Math.floor(Math.random() * array.length)];
-    }
-
+    // Pick the appropriate message based on the score percentage
     if (score === 0) {
-      commentText.textContent = pickRandom(message[0])
-    }
-    else if (score === 20) {
-      commentText.textContent = pickRandom(message[20]);
-    }
-    else if (score === 40) {
-      commentText.textContent = pickRandom(message[40]);
-    }
-    else if (score === 60) {
-      commentText.textContent = pickRandom(message[60]);
-    }
-    else if (score === 80) {
-      commentText.textContent = pickRandom(message[80]);
-    }
-    else {
-      commentText.textContent = pickRandom(message[100]);
+      commentText.textContent = getRandomFromArray(syncoMessages.zero);
+    } else if (score === 100) {
+      commentText.textContent = getRandomFromArray(syncoMessages.full);
+    } else if (score > 0 && score <= 30) {
+      commentText.textContent = getRandomFromArray(syncoMessages.bad);
+    } else if (score > 30 && score < 70) {
+      commentText.textContent = getRandomFromArray(syncoMessages.neutral);
+    } else if (score >= 70 && score < 100) {
+      commentText.textContent = getRandomFromArray(syncoMessages.good);
     }
 
     // Clear old cards
