@@ -16,6 +16,12 @@ export function initCategory() {
 
   // For each category in the categories array, create an option element and add it to the categorySelect element.
   function createOptions(categories) {
+    // Add default "Please select" option
+    const defaultOption = document.createElement("option");
+    defaultOption.textContent = "Please select a category";
+    defaultOption.value = "";
+    categorySelect.appendChild(defaultOption);
+
     categories.forEach(({ id, title, questions }) => {
       const option = document.createElement("option");
       const questionCount = questions.length;

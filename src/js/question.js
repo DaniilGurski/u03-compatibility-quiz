@@ -18,10 +18,16 @@ import { showScreen } from "./navigation.js";
 
 export function initQuestion() {
   // STEP 1: Find the HTML elements you need
-  const questionForm = document.querySelector('[data-screen="question"] .question-form');
+  const questionForm = document.querySelector(
+    '[data-screen="question"] .question-form'
+  );
   const playerTurnText = document.querySelector(".question-form__player-name");
-  const currentQuestionText = document.querySelector(".question-form__progress-current");
-  const totalQuestionsText = document.querySelector(".question-form__progress-total");
+  const currentQuestionText = document.querySelector(
+    ".question-form__progress-current"
+  );
+  const totalQuestionsText = document.querySelector(
+    ".question-form__progress-total"
+  );
   const questionText = document.querySelector(".question-form__fieldset-text");
   const answerLabels = document.querySelectorAll(".answer-option__text");
   const answerRadioButtons = document.querySelectorAll(".answer-option__input");
@@ -31,7 +37,6 @@ export function initQuestion() {
   window.updateQuestionScreen = updateQuestionScreen;
 
   function updateQuestionScreen() {
-
     // STEP 2: Find the current category and question
     const category = gameState.questionsData.categories.find(
       (cat) => cat.id === gameState.selectedCategoryId
@@ -40,11 +45,15 @@ export function initQuestion() {
 
     // STEP 3: Determine whose turn it is
     const currentPlayerName =
-      gameState.currentPlayerIndex === 0 ? gameState.playerOne : gameState.playerTwo;
+      gameState.currentPlayerIndex === 0
+        ? gameState.playerOne
+        : gameState.playerTwo;
     playerTurnText.textContent = `${currentPlayerName}'s turn`;
 
     // STEP 4: Update progress
-    currentQuestionText.textContent = `Question ${gameState.currentQuestionIndex + 1}`;
+    currentQuestionText.textContent = `Question ${
+      gameState.currentQuestionIndex + 1
+    }`;
     totalQuestionsText.textContent = `of ${category.questions.length}`;
 
     // STEP 5: Update question and answers
@@ -62,7 +71,9 @@ export function initQuestion() {
   questionForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const selectedAnswer = questionForm.querySelector('input[type="radio"]:checked');
+    const selectedAnswer = questionForm.querySelector(
+      'input[type="radio"]:checked'
+    );
     if (!selectedAnswer) {
       errorMessage.textContent = "Please select an answer.";
       return;
@@ -76,7 +87,9 @@ export function initQuestion() {
     const question = category.questions[gameState.currentQuestionIndex];
 
     // STEP 8: Save answer to gameState.answers
-    let existingAnswer = gameState.answers.find((a) => a.questionId === question.id);
+    let existingAnswer = gameState.answers.find(
+      (a) => a.questionId === question.id
+    );
     if (!existingAnswer) {
       existingAnswer = {
         questionId: question.id,

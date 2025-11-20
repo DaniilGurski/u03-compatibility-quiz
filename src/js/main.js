@@ -33,7 +33,7 @@ export const gameState = {
   currentQuestionIndex: 0, // Which question we're on (0-based)
 
   // Answers storage
-  answers: [] // Array of answer objects
+  answers: [], // Array of answer objects
 };
 
 // ==========================================
@@ -71,7 +71,6 @@ async function initializeGame() {
     console.log("Result screen initialized");
 
     console.log("Game ready!");
-
   } catch (error) {
     console.error("Error initializing game:", error);
   }
