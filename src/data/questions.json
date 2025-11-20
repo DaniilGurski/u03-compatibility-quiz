@@ -20,6 +20,9 @@
       "From the horse's mouth"
     ],
     "syncoMessage": {
+      "zero": [
+        "Absolutely nothing in common. Impressive, honestly"
+      ],
       "good": [
         "Good job, very synced",
         "Perfect timing",
@@ -40,7 +43,10 @@
         "Not quite synced",
         "Coordination needs work",
         "Out of rhythm"
-      ]
+      ],
+      "full": [
+        "Perfect match!"
+        ]
     },
     "matchStatus": {
       "match": "You're in sync!",
