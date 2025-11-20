@@ -23,7 +23,6 @@ export async function loadQuestions() {
 
     console.log(`Loaded ${questionsData.categories.length} categories`);
     return questionsData;
-
   } catch (error) {
     console.error("Error loading questions:", error);
     throw error;
