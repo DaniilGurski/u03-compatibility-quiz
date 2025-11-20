@@ -15,6 +15,7 @@
 
 import { gameState } from "./main.js";
 import { showScreen } from "./navigation.js";
+import { showError, clearError, clearErrorOnInteraction } from "./validation.js";
 
 export function initQuestion() {
   // STEP 1: Find the HTML elements you need
@@ -51,9 +52,8 @@ export function initQuestion() {
     playerTurnText.textContent = `${currentPlayerName}'s turn`;
 
     // STEP 4: Update progress
-    currentQuestionText.textContent = `Question ${
-      gameState.currentQuestionIndex + 1
-    }`;
+    currentQuestionText.textContent = `Question ${gameState.currentQuestionIndex + 1
+      }`;
     totalQuestionsText.textContent = `of ${category.questions.length}`;
 
     // STEP 5: Update question and answers
@@ -64,20 +64,21 @@ export function initQuestion() {
 
     // STEP 6: Clear previous selection
     answerRadioButtons.forEach((radio) => (radio.checked = false));
-    errorMessage.textContent = "";
   }
 
   // STEP 7: Set up form submit listener
   questionForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const selectedAnswer = questionForm.querySelector(
-      'input[type="radio"]:checked'
-    );
+    // Find which answer the user selected using :checked selector (didn't use :checked before and returned null)
+    const selectedAnswer = questionForm.querySelector('input[type="radio"]:checked');
     if (!selectedAnswer) {
-      errorMessage.textContent = "Please select an answer.";
+      // We use our new showError insead.
+      showError(errorMessage, "Please select an answer");
       return;
     }
+
+    clearError(errorMessage);
 
     const answerValue = selectedAnswer.value; // agree/disagree/neutral
 
@@ -107,5 +108,10 @@ export function initQuestion() {
     }
 
     showScreen("handoff");
+  });
+
+  // Clear any error when the players selects any answer
+  answerRadioButtons.forEach((radio) => {
+    clearErrorOnInteraction(radio, errorMessage, "change");
   });
 }
