@@ -87,6 +87,10 @@ export function initCookieConsent() {
     return new Promise((resolve) => {
         const storedConsent = getLocalStorageConsent();
 
+        acceptButton(resolve);
+        rejectButton(resolve);
+
+
         if (storedConsent) {
             if (storedConsent === "accepted") {
                 addAnalytics();
@@ -95,7 +99,5 @@ export function initCookieConsent() {
             return;
         }
         showModal()
-        acceptButton(resolve);
-        rejectButton(resolve);
     });
 }
