@@ -14,6 +14,53 @@
 // getLocalStorageConsent()
 // setLocalStorageConsent()
 
-export function initCookieConsent() {
+// The localStorage key
 
+const STORAGE_KEY = "cookie_consent";
+
+function hideModal() {
+    const modal = document.querySelector(".cookie-consent");
+    modal.setAttribute("hidden", "");
+    document.body.style.overflow = "";
+}
+
+function showModal() {
+    const modal = document.querySelector(".cookie-consent");
+    modal.removeAttribute("hidden", "");
+    document.body.style.overflow = "hidden";
+}
+
+function handleAccept() {
+    const acceptButton = document.querySelector(".cookie-consent__button--accept");
+}
+
+function handleReject() {
+    const acceptButton = document.querySelector(".cookie-consent__button--reject");
+}
+
+function modalTrigger() {
+    const cookieModalTrigger = document.querySelector(".cookie-consent-trigger");
+}
+
+function getLocalStorageConsent() {
+
+}
+
+function setLocalStorageConsent() {
+
+}
+
+function addAnalytics() {
+
+}
+
+function removeAnalytics {
+    
+}
+
+export function initCookieConsent() {
+    return new Promise((resolve) => {
+
+        resolve();
+    });
 }

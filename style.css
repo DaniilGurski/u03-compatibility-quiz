@@ -93,6 +93,7 @@ body {
   color: light-dark(var(--color-black), var(--color-white));
   line-height: 1.5;
   min-block-size: 100vb;
+  position: relative;
 }
 
 img,
@@ -624,6 +625,9 @@ legend {
   place-items: center;
   inline-size: 100dvi;
   block-size: 100dvb;
+  position: fixed;
+  z-index: 100;
+  background-color: oklch(from var(--color-black) l c h / 0.5);
 }
 
 .cookie-consent__dialog {
@@ -695,4 +699,21 @@ legend {
   display: flex;
   flex-flow: row wrap;
   gap: 1.25rem;
+}
+
+.cookie-consent-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: var(--color-black);
+  border: none;
+  position: absolute;
+  right: 1.25rem;
+  bottom: 1.25rem;
+}
+
+.cookie-consent-trigger__icon {
+  inline-size: 2rem;
+  block-size: auto;
 }
