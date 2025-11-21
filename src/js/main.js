@@ -42,7 +42,7 @@ export const gameState = {
 // ==========================================
 async function initializeGame() {
 
-  // To block everything else
+  // To block everything else and wait for the user to chose yes/no to cookie consent
   await initCookieConsent();
 
   console.log("Initializing Same Wave game...");

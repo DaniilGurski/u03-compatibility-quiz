@@ -14,7 +14,7 @@
 // getLocalStorageConsent()
 // setLocalStorageConsent()
 
-// The localStorage key
+// The localStorage key (will get value "accepted" or "rejected")
 
 const STORAGE_KEY = "cookie_consent";
 
@@ -31,36 +31,71 @@ function showModal() {
 }
 
 function handleAccept() {
-    const acceptButton = document.querySelector(".cookie-consent__button--accept");
+    setLocalStorageConsent("accepted");
+    addAnalytics();
+    hideModal();
 }
 
 function handleReject() {
-    const acceptButton = document.querySelector(".cookie-consent__button--reject");
+    setLocalStorageConsent("rejected");
+    removeAnalytics();
+    hideModal();
+}
+
+function acceptButton(resolve) {
+    const acceptButton = document.querySelector(".cookie-consent__button--accept");
+    acceptButton.addEventListener("click", () => {
+        handleAccept();
+        resolve("accepted");
+    })
+}
+
+function rejectButton(resolve) {
+    const rejectButton = document.querySelector(".cookie-consent__button--reject");
+    rejectButton.addEventListener("click", () => {
+        handleReject();
+        resolve("rejected");
+    })
 }
 
 function modalTrigger() {
     const cookieModalTrigger = document.querySelector(".cookie-consent-trigger");
+    cookieModalTrigger.addEventListener("click", () => {
+        showModal();
+    })
 }
 
 function getLocalStorageConsent() {
-
+    return localStorage.getItem(STORAGE_KEY);
 }
 
-function setLocalStorageConsent() {
+function setLocalStorageConsent(value) {
+    localStorage.setItem(STORAGE_KEY, value);
 
 }
 
 function addAnalytics() {
-
+    console.log("Added analytics script.")
 }
 
-function removeAnalytics {
-    
+function removeAnalytics() {
+    console.log("Removed analytics script.")
 }
 
 export function initCookieConsent() {
+    modalTrigger();
     return new Promise((resolve) => {
+        const storedConsent = getLocalStorageConsent();
 
-        resolve();
+        if (storedConsent) {
+            if (storedConsent === "accepted") {
+                addAnalytics();
+            }
+            resolve(storedConsent);
+            return;
+        }
+        showModal()
+        acceptButton(resolve);
+        rejectButton(resolve);
     });
 }
