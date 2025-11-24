@@ -75,11 +75,56 @@ function setLocalStorageConsent(value) {
 }
 
 function addAnalytics() {
-    console.log("Added analytics script.")
+    const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+
+    if (isLocalhost) {
+        document.cookie = "_ga_test=test_value; path=/";
+        console.log("Analytics added (test cookie on localhost)");
+        return;
+    }
+
+    if (document.getElementById("ga-script")) return;
+
+    const script = document.createElement("script");
+    script.id = "ga-script";
+    script.async = true;
+    script.src = "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"; // Replace with your GA ID
+    document.head.appendChild(script);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag("js", new Date());
+    gtag("config", "G-XXXXXXXXXX");
+
+    console.log("Analytics added");
 }
 
 function removeAnalytics() {
-    console.log("Removed analytics script.")
+    const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+
+    if (isLocalhost) {
+        document.cookie = "_ga_test=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+        console.log("Analytics removed (test cookie on localhost)");
+        return;
+    }
+
+    const script = document.getElementById("ga-script");
+    if (script) {
+        script.remove();
+    }
+
+    window.dataLayer = [];
+    delete window.gtag;
+
+    document.cookie.split(";").forEach((cookie) => {
+        const name = cookie.split("=")[0].trim();
+        if (name.startsWith("_ga") || name.startsWith("_gid")) {
+            document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${window.location.hostname}`;
+        }
+    });
+
+    console.log("Analytics removed");
 }
 
 export function initCookieConsent() {
