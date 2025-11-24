@@ -37,7 +37,7 @@ export function initResult() {
 
     let totalMatches = 0;
     for (let answer of answers) {
-      if (answer.playerOne === answer.playerTwo) {
+      if (answer.playerOneAnswer === answer.playerTwoAnswer) {
         totalMatches++
       }
     }
@@ -77,7 +77,7 @@ export function initResult() {
       const quesDescription = card.querySelector(".result-card__question-description");
       const answerSummary = card.querySelector(".result-card__answer-summary");
 
-      const isMatch = item.playerOne === item.playerTwo;
+      const isMatch = item.playerOneAnswer === item.playerTwoAnswer;
 
       if (isMatch) {
         tag.textContent = "Same take";
