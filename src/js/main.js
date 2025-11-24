@@ -6,6 +6,7 @@
  */
 
 // Import all screen modules
+import { initCookieConsent } from "./cookie-consent.js";
 import { initNavigation } from "./navigation.js";
 import { initCategory } from "./category.js";
 import { initInput } from "./input.js";
@@ -40,6 +41,10 @@ export const gameState = {
 // INITIALIZATION
 // ==========================================
 async function initializeGame() {
+
+  // To block everything else and wait for the user to chose yes/no to cookie consent
+  await initCookieConsent();
+
   console.log("Initializing Same Wave game...");
 
   try {
