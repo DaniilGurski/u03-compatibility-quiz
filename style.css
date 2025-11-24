@@ -162,6 +162,20 @@ legend {
   display: none;
 }
 
+/* Error handling */
+
+.category-select__error,
+.player-input__error,
+.question-form__error {
+  display: none;
+}
+
+.error--visible {
+  display: block;
+  color: red;
+  font-size: 0.875rem;
+}
+
 /* Screens layout */
 
 .screens {
@@ -205,7 +219,7 @@ legend {
 }
 
 .screen[data-screen="ready"] {
-    background-color: var(--color-orange-200);
+  background-color: var(--color-orange-200);
 }
 
 .screen[data-screen="question"] {
@@ -371,10 +385,6 @@ legend {
     color: var(--color-slate--500);
   }
 }
-
-/* .player-input__error {
-  display: none;
-} */
 
 /* Questions */
 

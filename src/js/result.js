@@ -34,13 +34,13 @@ export function initResult() {
     // Count how many answers match between the two players
 
     const totalQuestions = answers.length;
-    
+
     let totalMatches = 0;
     for (let answer of answers) {
       if (answer.playerOne === answer.playerTwo) {
-        totalMatches++    
+        totalMatches++
       }
-    }  
+    }
 
     // Convert match count into a percentage score
 
@@ -72,13 +72,13 @@ export function initResult() {
     answers.forEach((item, index) => {
       const card = template.content.cloneNode(true);
 
-      const tag = card.querySelector(".result-card__tag");      
-      const questitle = card.querySelector(".result-card__question-title");      
-      const quesDescription = card.querySelector(".result-card__question-description");          
+      const tag = card.querySelector(".result-card__tag");
+      const questitle = card.querySelector(".result-card__question-title");
+      const quesDescription = card.querySelector(".result-card__question-description");
       const answerSummary = card.querySelector(".result-card__answer-summary");
 
       const isMatch = item.playerOne === item.playerTwo;
-      
+
       if (isMatch) {
         tag.textContent = "Same take";
         tag.dataset.match = "match";
@@ -98,15 +98,15 @@ export function initResult() {
     })
 
   }
-
+  //This class does not exist, we need to fix this.
   const playAgainBtn = document.querySelector(".play__again__button");
 
   playAgainBtn.addEventListener("click", (event) => {
     event.preventDefault();
-    
+
     gameState.selectedCategoryId = null;
     gameState.currentPlayerIndex = 0;
-    gameState.currentQuestionIndex = 0; 
+    gameState.currentQuestionIndex = 0;
     gameState.answers = [];
 
     showScreen("category");
