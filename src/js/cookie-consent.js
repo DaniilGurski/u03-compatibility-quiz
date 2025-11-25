@@ -88,7 +88,7 @@ function addAnalytics() {
     const script = document.createElement("script");
     script.id = "ga-script";
     script.async = true;
-    script.src = "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"; // Replace with your GA ID
+    script.src = "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX";
     document.head.appendChild(script);
 
     window.dataLayer = window.dataLayer || [];
