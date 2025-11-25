@@ -48,6 +48,7 @@ project/
     │   ├── data.js         Loads questions.json
     │   ├── validation.js   Input validation utilities
     │   ├── cookie-consent.js  Cookie consent banner
+    │   ├── timer.js        Keeps track of how long a game takes
     │   ├── category.js     Category selection
     │   ├── input.js        Player name input
     │   ├── ready.js        Ready screen
