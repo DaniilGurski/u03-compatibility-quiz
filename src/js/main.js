@@ -15,6 +15,7 @@ import { initQuestion } from "./question.js";
 import { initHandoff } from "./handoff.js";
 import { initResult } from "./result.js";
 import { loadQuestions } from "./data.js";
+import { initTimer } from "./timer.js";
 
 // ==========================================
 // SHARED GAME STATE
@@ -35,13 +36,13 @@ export const gameState = {
 
   // Answers storage
   answers: [], // Array of answer objects
+  completionTimeSeconds: 0,
 };
 
 // ==========================================
 // INITIALIZATION
 // ==========================================
 async function initializeGame() {
-
   // To block everything else and wait for the user to chose yes/no to cookie consent
   await initCookieConsent();
 
@@ -74,6 +75,9 @@ async function initializeGame() {
 
     initResult();
     console.log("Result screen initialized");
+
+    initTimer();
+    console.log("Timer initialized");
 
     console.log("Game ready!");
   } catch (error) {

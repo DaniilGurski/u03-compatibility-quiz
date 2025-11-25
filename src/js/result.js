@@ -1,6 +1,6 @@
 /**
  * RESULT.JS
- * 
+ *
  * Responsible for: Results screen
  *
  * TODO:
@@ -12,22 +12,27 @@
 import { gameState } from "./main.js";
 import { showScreen } from "./navigation.js";
 import { getRandomFromArray } from "./data.js";
+import { formatTime, stopTimer } from "./timer.js";
 
 export function initResult() {
-
-  const matchCountText = document.querySelector(".screen__subtitle__match-count");
+  const matchCountText = document.querySelector(
+    ".screen__subtitle__match-count"
+  );
   const scoreCountText = document.querySelector(".screen__subtitle__score");
   const commentText = document.querySelector(".screen__subtitle__comment");
   const resultsContainer = document.querySelector(".screen__results");
+  const completionTimeText = document.querySelector(".screen__completion-time");
   const template = document.getElementById("result-card-template");
 
   window.updateResultScreen = updateResultScreen;
 
   function updateResultScreen() {
+    stopTimer();
 
     const answers = gameState.answers;
     const playerOne = gameState.playerOne;
     const playerTwo = gameState.playerTwo;
+    const completionTimeSeconds = gameState.completionTimeSeconds;
 
     if (!answers || answers.length === 0) return;
 
@@ -38,7 +43,7 @@ export function initResult() {
     let totalMatches = 0;
     for (let answer of answers) {
       if (answer.playerOneAnswer === answer.playerTwoAnswer) {
-        totalMatches++
+        totalMatches++;
       }
     }
 
@@ -65,8 +70,12 @@ export function initResult() {
       commentText.textContent = getRandomFromArray(syncoMessages.good);
     }
 
-    // Clear old cards
+    // Set completion time
+    completionTimeText.textContent = `Completion time: ${formatTime(
+      completionTimeSeconds
+    )}`;
 
+    // Clear old cards
     resultsContainer.innerHTML = "";
 
     answers.forEach((item, index) => {
@@ -74,7 +83,9 @@ export function initResult() {
 
       const tag = card.querySelector(".result-card__tag");
       const questitle = card.querySelector(".result-card__question-title");
-      const quesDescription = card.querySelector(".result-card__question-description");
+      const quesDescription = card.querySelector(
+        ".result-card__question-description"
+      );
       const answerSummary = card.querySelector(".result-card__answer-summary");
 
       const isMatch = item.playerOneAnswer === item.playerTwoAnswer;
@@ -92,11 +103,10 @@ export function initResult() {
 
       answerSummary.textContent = `${playerOne}: ${item.playerOneAnswer} | ${playerTwo}: ${item.playerTwoAnswer}`;
 
-      console.log(item)
+      console.log(item);
 
       resultsContainer.appendChild(card);
-    })
-
+    });
   }
   //This class does not exist, we need to fix this.
   const playAgainBtn = document.querySelector(".play__again__button");
@@ -108,7 +118,8 @@ export function initResult() {
     gameState.currentPlayerIndex = 0;
     gameState.currentQuestionIndex = 0;
     gameState.answers = [];
+    gameState.completionTimeSeconds = 0;
 
     showScreen("category");
-  })
+  });
 }
