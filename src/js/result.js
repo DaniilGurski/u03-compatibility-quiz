@@ -21,7 +21,9 @@ export function initResult() {
   const scoreCountText = document.querySelector(".screen__subtitle__score");
   const commentText = document.querySelector(".screen__subtitle__comment");
   const resultsContainer = document.querySelector(".screen__results");
-  const completionTimeText = document.querySelector(".screen__completion-time");
+  const completionTimeText = document.querySelector(
+    ".screen__completion-time > span"
+  );
   const template = document.getElementById("result-card-template");
 
   window.updateResultScreen = updateResultScreen;
@@ -71,9 +73,7 @@ export function initResult() {
     }
 
     // Set completion time
-    completionTimeText.textContent = `Completion time: ${formatTime(
-      completionTimeSeconds
-    )}`;
+    completionTimeText.textContent = formatTime(completionTimeSeconds);
 
     // Clear old cards
     resultsContainer.innerHTML = "";
@@ -108,6 +108,7 @@ export function initResult() {
       resultsContainer.appendChild(card);
     });
   }
+
   //This class does not exist, we need to fix this.
   const playAgainBtn = document.querySelector(".play__again__button");
 
