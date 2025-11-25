@@ -9,12 +9,29 @@ Same Wave is a game for anyone curious about compatibility. For life's big, smal
 ## How to Play
 Same Wave is a two-player game where you discover if you think alike on various topics. Both players share one device and take turns answering questions privately.
 
-### Game flow
+### Game Flow
 
 1. **Choose a category** - Pick something you're both into (or think you are)
 2. **Take turns answering** - Tap "Agree", "Disagree", or "Neutral" - no overthinking!
 3. **Pass the device** - Hand off between rounds (trust us, it's part of the fun)
 4. **See your results** - Find out if you're on the same wavelength
+
+## Game Mechanics
+
+The game works by having two players take turns answering questions separately, passing the device back and forth. The entire experience is broken down into screens that guide players through the journey:
+
+### Screen Flow
+
+1. **Welcome Screen** - Game title and description, button to continue
+2. **Rules Screen** - How to play instructions, button to category selection
+3. **Category Screen** - Dropdown menu populated with categories from the questions data, shows question count for each category
+4. **Input Screen** - Both players enter their names (with validation), button to start
+5. **Get Ready Screen** - Tells the current player it's their turn
+6. **Question Screen** - Displays the question with "Agree", "Disagree", and "Neutral" options, shows player name and progress
+7. **Handoff Screen** - Confirms answer was received, prompts to pass device to other player
+8. **Result Screen** - Shows both players' answers in a fun way, option to restart
+
+The HTML and CSS provide the static structure and styling, while JavaScript handles the dynamic content and user interactions.
 
 ## Project Structure
 
@@ -22,26 +39,28 @@ Same Wave is a two-player game where you discover if you think alike on various 
 project/
 ├── index.html              Main HTML file
 ├── style.css               All styles
-├── src/
-│   ├── js/                 JavaScript modules
-│   │   ├── main.js         Coordinator and shared gameState
-│   │   ├── navigation.js   Screen switching logic
-│   │   ├── data.js         Loads questions.json
-│   │   ├── category.js     Category selection 
-│   │   ├── input.js        Player name input
-│   │   ├── ready.js        Ready screen
-│   │   ├── question.js     Question screen
-│   │   ├── handoff.js      Handoff screen
-│   │   └── result.js       Results screen
-│   ├── data/
-│   │   └── questions.json  Question data
-│   └── docs/               Documentation
-└── demo.js                 Complete working demo
+├── favicon.ico             Browser favicon (ICO format)
+├── favicon.svg             Browser favicon (SVG format)
+└── src/
+    ├── js/                 JavaScript modules
+    │   ├── main.js         Coordinator and shared gameState
+    │   ├── navigation.js   Screen switching logic
+    │   ├── data.js         Loads questions.json
+    │   ├── validation.js   Input validation utilities
+    │   ├── cookie-consent.js  Cookie consent banner
+    │   ├── category.js     Category selection
+    │   ├── input.js        Player name input
+    │   ├── ready.js        Ready screen
+    │   ├── question.js     Question screen
+    │   ├── handoff.js      Handoff screen
+    │   └── result.js       Results screen
+    └── data/
+        └── questions.json  Question data
 ```
 
 ## JavaScript Organization
 
-The JavaScript is split into modular files to allow team members to work independently without merge conflicts.
+The JavaScript is split into modular files to allow team members to work independently without merge conflicts. All screens exist as sections in the HTML, and JavaScript handles showing/hiding them and managing the dynamic content.
 
 ### Core Files (Do Not Edit)
 
@@ -62,6 +81,10 @@ export const gameState = {
 
 **data.js** - Loads questions.json and provides `getRandomFromArray()` helper
 
+**validation.js** - Provides input validation utilities
+
+**cookie-consent.js** - Handles cookie consent banner display and user preferences
+
 ### Screen Files
 
 Each screen file exports an `init` function that sets up that screen's functionality:
@@ -80,40 +103,4 @@ Each screen file exports an `init` function that sets up that screen's functiona
 3. Screen modules read from and write to the shared `gameState`
 4. Navigation between screens uses `showScreen('screenName')`
 
-### Working Demo
-
-To see the complete working game, switch to demo mode in `index.html`:
-
-```html
-<!-- Comment out main.js -->
-<!-- <script type="module" src="src/js/main.js"></script> -->
-
-<!-- Uncomment demo.js -->
-<script type="module" src="demo.js"></script>
-```
-
-## Git stuff
-
-### See available branches
-git branch --all
-
-### Create a branch and switch to it
-git checkout -b yournewbranchname
-
-### Switch to an existing branch that you know the name of
-git swith branchtoswitchto
-
-### Switch to main (in order to delete another branch)
-git checkout main
-
-### Multi kill (delete local and remote branches)
-git branch -D yourbranchname && git push origin --delete yourbranchname
-
-### Stage (add to index)
-git add . (to add everything) or git add thefileyouwanttostage to stage files individually
-
-### Commit (create a point in time)
-git commit -m "Your commit message"
-
-### Push (send your branch to GitHub)
-git push -u orgin yourbranchname
+Create by group 2.
