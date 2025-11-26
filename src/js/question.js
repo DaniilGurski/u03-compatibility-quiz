@@ -1,24 +1,18 @@
 /**
  * QUESTION.JS
- *
  * Responsible for: Question screen
- * Person: [Assign to team member]
- *
- * TODO:
- * - Display whose turn it is (player name + ""s turn")
- * - Show current question number and total
- * - Display question text and answer options
- * - Validate that an answer is selected
- * - Save player"s answer to gameState.answers array
- * - This screen updates automatically when shown (see navigation.js)
  */
 
 import { gameState } from "./main.js";
 import { showScreen } from "./navigation.js";
-import { showError, clearError, clearErrorOnInteraction } from "./validation.js";
+import {
+  showError,
+  clearError,
+  clearErrorOnInteraction,
+} from "./validation.js";
 
 export function initQuestion() {
-  // STEP 1: Find the HTML elements you need
+  // Find the HTML elements you need
   const questionForm = document.querySelector(
     '[data-screen="question"] .question-form'
   );
@@ -38,40 +32,43 @@ export function initQuestion() {
   window.updateQuestionScreen = updateQuestionScreen;
 
   function updateQuestionScreen() {
-    // STEP 2: Find the current category and question
+    // Find the current category and question
     const category = gameState.questionsData.categories.find(
       (cat) => cat.id === gameState.selectedCategoryId
     );
     const question = category.questions[gameState.currentQuestionIndex];
 
-    // STEP 3: Determine whose turn it is
+    // Determine whose turn it is
     const currentPlayerName =
       gameState.currentPlayerIndex === 0
         ? gameState.playerOne
         : gameState.playerTwo;
     playerTurnText.textContent = `${currentPlayerName}'s turn`;
 
-    // STEP 4: Update progress
-    currentQuestionText.textContent = `Question ${gameState.currentQuestionIndex + 1
-      }`;
+    // Update progress
+    currentQuestionText.textContent = `Question ${
+      gameState.currentQuestionIndex + 1
+    }`;
     totalQuestionsText.textContent = `of ${category.questions.length}`;
 
-    // STEP 5: Update question and answers
+    // Update question and answers
     questionText.textContent = question.text;
     answerLabels[0].textContent = question.options[0];
     answerLabels[1].textContent = question.options[1];
     answerLabels[2].textContent = question.options[2];
 
-    // STEP 6: Clear previous selection
+    // Clear previous selection
     answerRadioButtons.forEach((radio) => (radio.checked = false));
   }
 
-  // STEP 7: Set up form submit listener
+  // Set up form submit listener
   questionForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
     // Find which answer the user selected using :checked selector (didn't use :checked before and returned null)
-    const selectedAnswer = questionForm.querySelector('input[type="radio"]:checked');
+    const selectedAnswer = questionForm.querySelector(
+      'input[type="radio"]:checked'
+    );
     if (!selectedAnswer) {
       // We use our new showError insead.
       showError(errorMessage, "Please select an answer");
@@ -87,7 +84,7 @@ export function initQuestion() {
     );
     const question = category.questions[gameState.currentQuestionIndex];
 
-    // STEP 8: Save answer to gameState.answers
+    //  Save answer to gameState.answers
     let existingAnswer = gameState.answers.find(
       (a) => a.questionId === question.id
     );

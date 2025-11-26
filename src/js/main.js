@@ -1,6 +1,5 @@
 /**
  * MAIN.JS - Game Coordinator
- *
  * This file coordinates all the different parts of the game.
  * Everyone imports from here and contributes to the shared gameState.
  */
@@ -16,9 +15,6 @@ import { initHandoff } from "./handoff.js";
 import { initResult } from "./result.js";
 import { loadQuestions } from "./data.js";
 
-// ==========================================
-// SHARED GAME STATE
-// ==========================================
 // Everyone can read and write to this object
 export const gameState = {
   // Player information
@@ -37,11 +33,7 @@ export const gameState = {
   answers: [], // Array of answer objects
 };
 
-// ==========================================
-// INITIALIZATION
-// ==========================================
 async function initializeGame() {
-
   // To block everything else and wait for the user to chose yes/no to cookie consent
   await initCookieConsent();
 

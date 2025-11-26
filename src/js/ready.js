@@ -1,13 +1,6 @@
 /**
  * READY.JS
- *
  * Responsible for: Ready screen before each question
- * Person: [Assign to team member]
- *
- * TODO:
- * - Display random greeting message from questions.json
- * - Show current player"s name
- * - This screen updates automatically when shown (see navigation.js)
  */
 
 import { gameState } from "./main.js";
@@ -17,7 +10,7 @@ let greetingText;
 let playerName;
 
 export function initReady() {
-  // STEP 1: Find the HTML elements you need
+  // Find the HTML elements you need
 
   greetingText = document.querySelector(
     '[data-screen="ready"] .screen__title__text--greeting'
@@ -32,7 +25,7 @@ export function initReady() {
 function updateReadyScreen() {
   console.log("updateReadyScreen running - start");
 
-  // STEP 2: Get random greeting message
+  // Get random greeting message
 
   if (gameState.questionsData === null) {
     console.error("No questions data");
@@ -44,13 +37,13 @@ function updateReadyScreen() {
   if (maybeMessages) {
     const randomGreeting = getRandomFromArray(maybeMessages);
 
-    // STEP 3: Get current player"s name
+    // Get current player"s name
 
     const idx = gameState?.currentPlayerIndex;
     const currentPlayerName =
       idx === 0 ? gameState.playerOne : gameState.playerTwo;
 
-    // STEP 4: Update the screen
+    // Update the screen
 
     if (!greetingText || !playerName) {
       console.warn("One of DOM elements is null:", {

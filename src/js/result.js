@@ -1,12 +1,6 @@
 /**
  * RESULT.JS
- * 
  * Responsible for: Results screen
- *
- * TODO:
- * - Generate result cards for each question showing both answers
- * - Handle "Play again" functionality (reset gameState)
- * - This screen updates automatically when shown (see navigation.js)
  */
 
 import { gameState } from "./main.js";
@@ -14,8 +8,9 @@ import { showScreen } from "./navigation.js";
 import { getRandomFromArray } from "./data.js";
 
 export function initResult() {
-
-  const matchCountText = document.querySelector(".screen__subtitle__match-count");
+  const matchCountText = document.querySelector(
+    ".screen__subtitle__match-count"
+  );
   const scoreCountText = document.querySelector(".screen__subtitle__score");
   const commentText = document.querySelector(".screen__subtitle__comment");
   const resultsContainer = document.querySelector(".screen__results");
@@ -24,7 +19,6 @@ export function initResult() {
   window.updateResultScreen = updateResultScreen;
 
   function updateResultScreen() {
-
     const answers = gameState.answers;
     const playerOne = gameState.playerOne;
     const playerTwo = gameState.playerTwo;
@@ -38,7 +32,7 @@ export function initResult() {
     let totalMatches = 0;
     for (let answer of answers) {
       if (answer.playerOneAnswer === answer.playerTwoAnswer) {
-        totalMatches++
+        totalMatches++;
       }
     }
 
@@ -74,7 +68,9 @@ export function initResult() {
 
       const tag = card.querySelector(".result-card__tag");
       const questitle = card.querySelector(".result-card__question-title");
-      const quesDescription = card.querySelector(".result-card__question-description");
+      const quesDescription = card.querySelector(
+        ".result-card__question-description"
+      );
       const answerSummary = card.querySelector(".result-card__answer-summary");
 
       const isMatch = item.playerOneAnswer === item.playerTwoAnswer;
@@ -92,13 +88,12 @@ export function initResult() {
 
       answerSummary.textContent = `${playerOne}: ${item.playerOneAnswer} | ${playerTwo}: ${item.playerTwoAnswer}`;
 
-      console.log(item)
+      console.log(item);
 
       resultsContainer.appendChild(card);
-    })
-
+    });
   }
-  //This class does not exist, we need to fix this.
+
   const playAgainBtn = document.querySelector(".play__again__button");
 
   playAgainBtn.addEventListener("click", (event) => {
@@ -110,5 +105,5 @@ export function initResult() {
     gameState.answers = [];
 
     showScreen("category");
-  })
+  });
 }

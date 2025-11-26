@@ -1,8 +1,6 @@
 /**
  * DATA.JS
- *
  * Responsible for: Loading questions.json data
- * Person: Can be done by team lead or assigned to someone
  */
 
 import { gameState } from "./main.js";

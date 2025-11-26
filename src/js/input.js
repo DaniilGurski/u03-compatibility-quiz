@@ -1,19 +1,17 @@
 /**
  * INPUT.JS
- *
  * Responsible for: Player name input screen
- * Adapted from: game.js lines 127-148
  */
 
 import { gameState } from "./main.js";
 import { showScreen } from "./navigation.js";
-import { showError, clearError, clearErrorOnInteraction } from "./validation.js";
+import {
+  showError,
+  clearError,
+  clearErrorOnInteraction,
+} from "./validation.js";
 
 export function initInput() {
-  // ============================================================================
-  // PLAYER INPUT
-  // ============================================================================
-
   // Elements
   const playersForm = document.getElementById("players-form");
   const playerOneInput = playersForm.querySelector("#player-one");
@@ -32,7 +30,6 @@ export function initInput() {
     clearError(playerOneError);
     clearError(playerTwoError);
 
-
     let isInputValid = true;
 
     // Check if player 1 has entered a name
@@ -48,10 +45,20 @@ export function initInput() {
       isInputValid = false;
     }
     // Check to see if the players have entered the same name
-    if (trimmedPlayerOneValue && trimmedPlayerTwoValue &&
-      trimmedPlayerOneValue.toLowerCase() === trimmedPlayerTwoValue.toLowerCase()) {
-      showError(playerOneError, "Both players are not allowed to use the same name.");
-      showError(playerTwoError, "Both players are not allowed to use the same name.");
+    if (
+      trimmedPlayerOneValue &&
+      trimmedPlayerTwoValue &&
+      trimmedPlayerOneValue.toLowerCase() ===
+        trimmedPlayerTwoValue.toLowerCase()
+    ) {
+      showError(
+        playerOneError,
+        "Both players are not allowed to use the same name."
+      );
+      showError(
+        playerTwoError,
+        "Both players are not allowed to use the same name."
+      );
       // Set flag to false, keep validating..
       isInputValid = false;
     }
@@ -68,5 +75,3 @@ export function initInput() {
   clearErrorOnInteraction(playerOneInput, playerOneError, "input");
   clearErrorOnInteraction(playerTwoInput, playerTwoError, "input");
 }
-
-

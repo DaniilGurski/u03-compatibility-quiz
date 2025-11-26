@@ -1,13 +1,7 @@
 /**
  * NAVIGATION.JS
- *
  * Responsible for: Screen navigation and showing/hiding screens
- * Person: Team lead or most experienced person
  */
-
-// ==========================================
-// NAVIGATION FUNCTIONS
-// ==========================================
 
 /**
  * Shows a specific screen and hides all others
@@ -17,12 +11,18 @@ export function showScreen(screenName) {
   // Hide all screens and show only the requested one
   const allScreens = document.querySelectorAll("section");
 
-  allScreens.forEach(screenElement => {
+  allScreens.forEach((screenElement) => {
     // Add "hidden" class to all screens except the target
-    screenElement.classList.toggle("hidden", screenElement.dataset.screen !== screenName);
+    screenElement.classList.toggle(
+      "hidden",
+      screenElement.dataset.screen !== screenName
+    );
 
     // Toggle "screen" class (remove from hidden screens to avoid conflicts)
-    screenElement.classList.toggle("screen", screenElement.dataset.screen === screenName);
+    screenElement.classList.toggle(
+      "screen",
+      screenElement.dataset.screen === screenName
+    );
   });
 
   console.log(`Showing screen: ${screenName}`);
@@ -44,9 +44,11 @@ export function showScreen(screenName) {
  * Looks for buttons with data-type="navigation" and data-to="screenname"
  */
 function setupNavigationButtons() {
-  const navigationButtons = document.querySelectorAll("[data-type=\"navigation\"]");
+  const navigationButtons = document.querySelectorAll(
+    '[data-type="navigation"]'
+  );
 
-  navigationButtons.forEach(button => {
+  navigationButtons.forEach((button) => {
     // Skip buttons inside forms - they'll be handled by form validation
     const isInsideForm = button.closest("form");
     if (isInsideForm) {
