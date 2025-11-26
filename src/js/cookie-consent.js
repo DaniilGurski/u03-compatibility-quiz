@@ -66,7 +66,7 @@ function addAnalytics() {
     const script = document.createElement("script");
     script.id = "ga-script";
     script["async"] = true;
-    script.src = "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX";
+    script.src = "https://www.googletagmanager.com/gtag/js?id=G-HY34VF7V3L";
     document.head.appendChild(script);
     window.dataLayer = window.dataLayer || [];
 
@@ -75,7 +75,7 @@ function addAnalytics() {
     }
     window.gtag = gtag;
     gtag("js", new Date);
-    gtag("config", "G-XXXXXXXXXX");
+    gtag("config", "G-HY34VF7V3L");
     console.log("Analytics added")
 }
 
