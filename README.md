@@ -104,4 +104,12 @@ Each screen file exports an `init` function that sets up that screen's functiona
 3. Screen modules read from and write to the shared `gameState`
 4. Navigation between screens uses `showScreen('screenName')`
 
-Create by group 2.
+## SEO
+
+The site is optimized for search engines with structured data and semantic markup. We've implemented JSON-LD VideoGame schema that tells search engines what the game is about, who can play it, and where to find it. The page uses proper heading hierarchy, descriptive meta tags, and a canonical URL. Accessibility features like ARIA labels and visually-hidden content help both screen readers and search crawlers understand the page structure. Performance optimizations include font-display swap for faster text rendering and modern CSS for better Core Web Vitals scores.
+
+## Analytics
+
+We use Google Analytics 4 with a privacy-first approach. The analytics script only loads after users accept cookies through the consent banner. User preferences are stored in localStorage and remembered across sessions. If users reject tracking, all Google Analytics cookies are removed and the script won't load. Users can change their preference anytime using the cookie settings button. During development, the system uses test cookies instead of real analytics.
+
+Create by Group 2 (Team 2). Link to live version: [https://aquamarine-cascaron-d4bd3d.netlify.app](https://aquamarine-cascaron-d4bd3d.netlify.app).
